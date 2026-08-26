@@ -39,19 +39,21 @@ $durationMs:=Milliseconds-$startedAt
 If ($result.errors#Null)
     For each ($error; $result.errors)
         $location:=$error.code.file.fullName+":"+String($error.lineInFile)
-
+        
         If ($error.isError)
             $errorCount:=$errorCount+1
             LOG EVENT(Into system standard outputs; $bold+$red+"[ERROR] "+$reset+$location+"\n        "+$error.message+"\n"; Error message)
-        Else
+        Else 
             $warningCount:=$warningCount+1
             LOG EVENT(Into system standard outputs; $bold+$yellow+"[WARN]  "+$reset+$location+"\n        "+$error.message+"\n"; Warning message)
-        End if
-    End for each
-End if
+        End if 
+    End for each 
+End if 
 
 If ($result.success)
     LOG EVENT(Into system standard outputs; $dim+"-------------------------------"+$reset+"\n"+$bold+$green+"[PASS] "+$reset+"Syntax check completed | "+String($warningCount)+" warning(s) | Duration: "+String($durationMs)+" ms\n"; Information message)
-Else
+Else 
     LOG EVENT(Into system standard outputs; $dim+"-------------------------------"+$reset+"\n"+$bold+$red+"[FAIL] "+$reset+"Syntax check failed | "+String($errorCount)+" error(s), "+String($warningCount)+" warning(s) | Duration: "+String($durationMs)+" ms\n"; Error message)
-End if
+End if 
+
+QUIT 4D()
