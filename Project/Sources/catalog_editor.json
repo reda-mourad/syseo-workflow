@@ -1,0 +1,36 @@
+{
+	"tables": {
+		"Patient": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 290,
+				"top": 0,
+				"width": 229.060546875,
+				"height": 3737.33203125
+			},
+			"displayable_fields_count": 176,
+			"fields_ordering": 1
+		},
+		"Utilisateur": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 0,
+				"top": 0,
+				"width": 177.720703125,
+				"height": 1784.33203125
+			},
+			"displayable_fields_count": 83,
+			"fields_ordering": 1
+		}
+	}
+}

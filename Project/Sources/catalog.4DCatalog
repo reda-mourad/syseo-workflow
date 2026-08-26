@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd">
+<base name="syseo-workflow" uuid="9A5FDF89F3D16B4DA4ACF03BAA71EE63" collation_locale="en">
+	<schema name="DEFAULT_SCHEMA" />
+	<table name="Utilisateur" uuid="5E35284DDAEBFA4D8356C24B552461AD" id="1">
+		<field name="Nom" uuid="7D9E695B4179E14181ED540BA7CE060A" type="10" limiting_length="50"
+			never_null="true" id="1" />
+		<field name="xNumUser" uuid="42B89A41E4789A49BCDE67BF5434DE6F" type="4" unique="true"
+			never_null="true" id="2" />
+		<field name="Privilèges" uuid="BDF4DD4D13CEF042B2C2F30E26D8B6E1" type="4" never_null="true"
+			id="3" />
+		<field name="ValiditéMP" uuid="2A61DBD8B8F74248B3F86719E6F5AF1E" type="4" never_null="true"
+			id="4" />
+		<field name="AffichageCristal" uuid="7888DDB2E4EAD44C924511801CB41B98" type="1"
+			never_null="true" id="5" />
+		<field name="x" uuid="AB40CF595C56E84380E33C662542141F" type="4" never_null="true" id="6" />
+		<field name="PréférencesCR" uuid="FEA905699B96024FAE1A29916849848D" type="1"
+			never_null="true" id="7" />
+		<field name="Mot de passe" uuid="61BEB156BBE4064FA562BA45987F707E" type="10"
+			limiting_length="255" never_null="true" id="8" />
+		<field name="DateReference" uuid="9F32498C91BB2F45A0A26ABB05BCC2A2" type="8"
+			never_null="true" id="9" />
+		<field name="SaisieHono" uuid="4D25DF2D35CA2941853874CE4DC12CB9" type="1" never_null="true"
+			id="10" />
+		<field name="NumSénior" uuid="3C178B4DA00995438E772172C85B5970" type="4" never_null="true"
+			id="11" />
+		<field name="Initiales" uuid="9292DDD18C5444448BC941FE09286961" type="10"
+			limiting_length="3" never_null="true" id="12" />
+		<field name="Lib1" uuid="392DD83CEE7BD84CA5727884205F0288" type="10" limiting_length="50"
+			never_null="true" id="13" />
+		<field name="Lib2" uuid="92D9C10A40D16340B4D3D4182A4E4886" type="10" limiting_length="50"
+			never_null="true" id="14" />
+		<field name="Lib3" uuid="56EDE66A64E8734E8F312AE9C31FFBD2" type="10" limiting_length="50"
+			never_null="true" id="15" />
+		<field name="Lib4" uuid="4ED1B27F8B5B9245AF9AFD195D5AA4FF" type="10" limiting_length="50"
+			never_null="true" id="16" />
+		<field name="Lib5" uuid="63F5AD03BC7C314A9E990AB5FF86DBED" type="10" limiting_length="50"
+			never_null="true" id="17" />
+		<field name="Lib6" uuid="FBB5F279C55EAB46826EAA50BD4FB4E2" type="10" limiting_length="50"
+			never_null="true" id="18" />
+		<field name="Numero" uuid="ABA2F3332E8D8C4387205375E78403C9" type="4" never_null="true"
+			id="19" />
+		<field name="CAB" uuid="E7633861E9872E4FA9961644AE6B880B" type="4" never_null="true" id="20" />
+		<field name="CONV" uuid="79A2902E0711D146A592DA7082A542F7" type="4" never_null="true"
+			id="21" />
+		<field name="Z" uuid="66FED3162941C6459B0CE69D619CEA90" type="4" never_null="true" id="22" />
+		<field name="ISD" uuid="F42746FA8549B9499F42652EF7277B49" type="4" never_null="true" id="23" />
+		<field name="IK" uuid="BB528C02CB55E146843707B1B3B93FA7" type="4" never_null="true" id="24" />
+		<field name="EnteteFact" uuid="7ACDCBA52DCD85449AE775EE278FEE31" type="10" never_null="true"
+			id="25" />
+		<field name="xIDSRM" uuid="A3FF2F9831E3F94C8D46485529278612" type="4" never_null="true"
+			id="26" />
+		<field name="Groupe" uuid="2F1E30F1C08B2B4386AEA44C4649AC04" type="4" never_null="true"
+			id="27" />
+		<field name="DateConnection" uuid="D7D629D812D7464F91BA16A6B8CBBD2E" type="8"
+			never_null="true" id="28" />
+		<field name="HeureConnection" uuid="8AEE25D8DD0D4945BF3A0BF27AD80EB0" type="9"
+			never_null="true" id="29" />
+		<field name="xIDRéférence" uuid="A870D7E41406D54C8D8D5B13E1898533" type="10"
+			limiting_length="20" never_null="true" id="30" />
+		<field name="Spécialité" uuid="79E11F35F1BA7C49A11A78AF8C0F9629" type="10"
+			limiting_length="4" never_null="true" id="31" />
+		<field name="zone" uuid="A68222C1B8794543A54B884D1CB01F59" type="10" limiting_length="2"
+			never_null="true" id="32" />
+		<field name="Banque" uuid="20A51A72031EC7448D7FE3349A66B983" type="10" limiting_length="20"
+			never_null="true" id="33" />
+		<field name="NumBanque" uuid="C138901721F1AD4AAC99E8DC6433AA09" type="10"
+			limiting_length="7" never_null="true" id="34" />
+		<field name="Guichet" uuid="853BDF16AFD38B4C9D0423710B5F7340" type="10" limiting_length="7"
+			never_null="true" id="35" />
+		<field name="NumCompte" uuid="57C6FC86E1F1D246BCA974CCEC0B9484" type="10"
+			limiting_length="15" never_null="true" id="36" />
+		<field name="Clé" uuid="29038E4962649F459C9CA3ED05CF3002" type="10" limiting_length="2"
+			never_null="true" id="37" />
+		<field name="xDesactivation" uuid="E17709600AC20A4B90B17ECF4098934F" type="1"
+			never_null="true" id="38" />
+		<field name="xTransfert" uuid="E0BA55AF7D7A7645B480517DB63EC361" type="4" never_null="true"
+			id="39" />
+		<field name="Num_Identification" uuid="9FF9332AD3F1DA4A94F0FBADDED18906" type="10"
+			limiting_length="20" never_null="true" id="40" />
+		<field name="UserPict" uuid="F9E8935DF8A5344C81CB7B05DCAB7754" type="12" never_null="true"
+			id="41" />
+		<field name="EditionFS" uuid="173EFEC135218E4980FB26002E543CED" type="1" never_null="true"
+			id="42" />
+		<field name="Blob_GroupeAutorisé" uuid="3EC7630706E2454B8E944C33BAEA041E" type="18"
+			never_null="true" id="43" />
+		<field name="DateDesactivation" uuid="41D27C8BE1C37344BFC73DA5AAA15949" type="8"
+			never_null="true" id="44" />
+		<field name="xSuperviseur" uuid="358DCC27AFB7874FB8940859222499CC" type="1"
+			never_null="true" id="45" />
+		<field name="CR_TypeSaisie" uuid="97DD8603AA51284EB86F4A173EF4757C" type="4"
+			never_null="true" id="46" />
+		<field name="xIDOperateur_Associé" uuid="7F9DE4FE4608C74DAD1EE05ACC78D98E" type="4"
+			never_null="true" id="47" />
+		<field name="SeniorsAssocies" uuid="7D4345CF13BF074AA977C33C63C73DDA" type="1"
+			never_null="true" id="48" />
+		<field name="JuniorsAssocies" uuid="A5832B74F66E34449A08D927378F7F96" type="1"
+			never_null="true" id="49" />
+		<field name="xNumMessagerie" uuid="506C7322ACC4EE41A7EB36C5F5D8267D" type="4"
+			never_null="true" id="50" />
+		<field name="PAYS" uuid="58E1E1911899FD43B52663CD48B14C2A" type="10" limiting_length="20"
+			never_null="true" id="51" hide_in_REST="true">
+			<field_extra visible="false" />
+		</field>
+		<field name="AffichagePalette" uuid="3D58A1BC47E3694A8A3C47E20ED5FAC3" type="1"
+			never_null="true" id="52" />
+		<field name="PasRepriseAppareil" uuid="EC42707A4FD8B248B842E3A0E634B8D4" type="1"
+			never_null="true" id="53" />
+		<field name="SMS_Autorisation" uuid="C8583C3CF2E0464692E8A426BDF9955B" type="1"
+			never_null="true" id="54" />
+		<field name="CodeOperateur" uuid="42057EA56886BD4284118E052351826A" type="10"
+			limiting_length="20" never_null="true" id="55" />
+		<field name="NotifPlaWeb" uuid="28436787CEE93346A7F0F9A407FB3B46" type="1" never_null="true"
+			id="56" />
+		<field name="xNum_UserAnnuaire" uuid="7D65FDD8E3E6BD41AAF1225FC8D5F168" type="4"
+			never_null="true" id="57" />
+		<field name="UID" uuid="A145F274E909CA43B75AB6A36D9C0F44" type="4" never_null="true" id="58" />
+		<field name="ID_Creation" uuid="710FE520EA549344A2BDC83E86124B39" type="4" never_null="true"
+			id="59" />
+		<field name="Date_Creation" uuid="4D642910C441034F8A765DBA24CBCA79" type="8"
+			never_null="true" id="60" />
+		<field name="Site_Creation" uuid="44E917CF1D22D7458461891F820D9EC4" type="4"
+			never_null="true" id="61" />
+		<field name="Maj_UID" uuid="83B245B58C1D824093DB94F2A6808992" type="1" never_null="true"
+			id="62" />
+		<field name="UID_Creation" uuid="3C8F5EADE80A0B438FAABE40A8B51895" type="4"
+			never_null="true" id="63" />
+		<field name="Site_Emetteur" uuid="DF3E5E4D38FDBE4BBD5359F8748AED9B" type="4"
+			never_null="true" id="64" />
+		<field name="INS_Affiche" uuid="344F1BECD497F04BBCA143272379C72E" type="1" never_null="true"
+			id="65" />
+		<field name="INS_Appel" uuid="395B36A2593ABC4B8120654E27ADD5CF" type="1" never_null="true"
+			id="66" />
+		<field name="Statistique" uuid="1D76EF673E877B4AAA51267F6348D44F" type="1" never_null="true"
+			id="67" />
+		<field name="SYSEO_LB1" uuid="14FEE40951A2884991BE399C440FF8C8" type="18" never_null="true"
+			id="68" />
+		<field name="SYSEO_LB2" uuid="361158FB9102FF4DA46831098D5DE122" type="18" never_null="true"
+			id="69" />
+		<field name="SYSEO_LB3" uuid="5EC9E8E151080F4A9CA648157D2765F4" type="18"
+			blob_switch_size="2147483647" never_null="true" id="70" />
+		<field name="SYSEO_PJ" uuid="EB842DFC156B68468F3EAD49AA9A5A26" type="21"
+			blob_switch_size="2147483647" id="71" />
+		<field name="SYSEO_Code" uuid="86565F2AEB10DD4F994A16A530738B84" type="10"
+			limiting_length="255" id="72" />
+		<field name="LDAP_Matricule" uuid="7400E7CC0F8E2A41840226153626F4EF" type="10"
+			limiting_length="255" id="73" />
+		<field name="LDAP_Actif" uuid="836D06EDC96F3E4BB26ED222AD74B7A8" type="1" id="74" />
+		<field name="LDAP_SSO" uuid="BB663AA1CBC60044ADBAEA8FD76F1148" type="1" id="75" />
+		<field name="WpZoom" uuid="6CD72E5B9FF86D4F89B0D327C9B41333" type="4" id="76" />
+		<field name="PassWordOld" uuid="BE6383C3EB4CE04EAE8DD5A181FC60E1" type="10"
+			limiting_length="255" id="77" />
+		<field name="Licence Mistral" uuid="E4CA4A4F9483A34581D769CE5EE41647" type="1" id="78" />
+		<field name="Rapport_Auto" uuid="A08EBED96C0E9340A2A34C09E12C1BF5" type="1" id="79" />
+		<field name="RPPS" uuid="F5B09F8278EDB547A3BB409D00A5B4AC" type="10" limiting_length="255"
+			id="80" />
+		<field name="Titre" uuid="2408EC8EC406F34893780BF2D6375367" type="10" id="81">
+			<field_extra multi_line="true" />
+		</field>
+		<field name="Mistral_UserID_Ref" uuid="F8003C26BCADAA4EAF2031393B4C05D2" type="4" id="82" />
+		<field name="Mistral_NbExemples" uuid="BE850DD877557646A676C9C5EDF821DF" type="4" id="83" />
+		<primary_key field_name="xNumUser" field_uuid="42B89A41E4789A49BCDE67BF5434DE6F" />
+		<table_extra trigger_insert="true" trigger_delete="true" trigger_update="true" />
+	</table>
+	<table name="Patient" uuid="FA881584FA334247A62D2AAFCC421EB7" id="2">
+		<field name="NoDossier" uuid="BC9A30FB27D29F44A25487E5829405F6" type="4" unique="true"
+			never_null="true" id="1" />
+		<field name="Nom" uuid="2CF04D04368ACC4ABD89F6E768F72C27" type="10" limiting_length="80"
+			never_null="true" id="2" />
+		<field name="Prénom" uuid="CB7C0033B10D4C459BA8AF4EDA9ACF7D" type="10" limiting_length="80"
+			never_null="true" id="3" />
+		<field name="Nom Naissance" uuid="4748A8BBCE7EE245836E7E0AA4B64C68" type="10"
+			limiting_length="80" never_null="true" id="4" />
+		<field name="Adresse ligne1" uuid="1093188E12FA3F47AD6A9F1C22DF673E" type="10"
+			limiting_length="40" never_null="true" id="5" />
+		<field name="Adresse ligne2" uuid="67F864F64348A149A59106187C87DD82" type="10"
+			limiting_length="40" never_null="true" id="6" />
+		<field name="Adresse ligne3" uuid="755D5BB669675F43A08CDA8369DD7909" type="10"
+			limiting_length="40" never_null="true" id="7" />
+		<field name="Code Postal" uuid="AB160646F453E041BD66D198CB42A873" type="10"
+			limiting_length="50" never_null="true" id="8" />
+		<field name="Localité" uuid="B04DE06278833F4A83239869B8A7F551" type="10"
+			limiting_length="35" never_null="true" id="9" />
+		<field name="Date Naissance" uuid="D958314C55FE3F469575504CDAE2D95A" type="8"
+			never_null="true" id="10" />
+		<field name="Lieu Naissance" uuid="B0B9503AF13D2546B65209C1BED249B9" type="10"
+			limiting_length="35" never_null="true" id="11" />
+		<field name="Genre" uuid="7795C1978384AC418DBC622A39ABB15E" type="10" limiting_length="20"
+			never_null="true" id="12" />
+		<field name="Sexe" uuid="E43B2243A9B44446AE4CC6954AEDBAD6" type="10" limiting_length="2"
+			never_null="true" id="13" />
+		<field name="Prescripteur" uuid="1BFF5F19F7CAA049B63F4D54F4408593" type="4"
+			never_null="true" id="14" />
+		<field name="Médecin" uuid="1E09D800E811FB469B85FCB12773C1CC" type="10" limiting_length="25"
+			never_null="true" id="15" />
+		<field name="Téléphone1" uuid="E879BAAC508920469EC555D0CA1818C0" type="10"
+			limiting_length="18" never_null="true" id="16" />
+		<field name="Téléphone2" uuid="B36B3086391F5348B1B4769A4A94B0B4" type="10"
+			limiting_length="50" never_null="true" id="17" />
+		<field name="Date Creation Dossier" uuid="5DA77A1801D92B4699040F5CEFBF94FF" type="8"
+			never_null="true" id="18" />
+		<field name="Date Modification Dossier" uuid="27EF7F4066540347863A18F72C54AA65" type="8"
+			never_null="true" id="19" />
+		<field name="Medecin responsable" uuid="1BB3875C1DA5C345A6A6484F7C6B7CB4" type="4"
+			never_null="true" id="20" />
+		<field name="xDoubles" uuid="99CFBF64519FA74B91662430A6CE9E43" type="10" never_null="true"
+			id="21" />
+		<field name="xOrgID" uuid="876A9CC4751D004D92F3E289494B2668" type="4" never_null="true"
+			id="22" />
+		<field name="xOrganisme" uuid="AA9A9501C8A6EF4CA05C51304A01D445" type="10"
+			limiting_length="2" never_null="true" id="23" />
+		<field name="Numero hospitalisation" uuid="770C732C723F164FB0661572FC45FE6F" type="10"
+			limiting_length="20" never_null="true" id="24">
+			<field_extra enterable="false" />
+		</field>
+		<field name="Antécédents Familiaux" uuid="AFC705FE3A84224583C83FF6D9B19771" type="10"
+			never_null="true" id="25" />
+		<field name="Antécédents Médicaux" uuid="690C1E15E716144491F2D4A4C2D6D88A" type="10"
+			never_null="true" id="26" />
+		<field name="Habitudes de Vie" uuid="0FAEB0C5A84F354A99BB65751F359712" type="10"
+			never_null="true" id="27" />
+		<field name="Date Recontact" uuid="4A97E2F0D49F434EA9F544D5A9451E01" type="8"
+			never_null="true" id="28" />
+		<field name="xstamp" uuid="99B559AA510A154780B8DF17FF730B90" type="4" never_null="true"
+			id="29" />
+		<field name="HD" uuid="03867F2E17583345860999ACFC877882" type="10" limiting_length="15"
+			never_null="true" id="30" />
+		<field name="xNumSRM" uuid="916F451C227AE3468E6136966CE29275" type="4" never_null="true"
+			id="31" />
+		<field name="Sujet de Recontact" uuid="0D64B1D9F392D6468ADD639A883CDD91" type="10"
+			limiting_length="80" never_null="true" id="32" />
+		<field name="xListe_IdLap" uuid="34A50B19EA224B4B87756D6C9F2B0A4C" type="10"
+			never_null="true" id="33" />
+		<field name="xIDRéférence" uuid="BD2467526B47364598D1E9E7576A0D72" type="10"
+			limiting_length="20" never_null="true" id="34" />
+		<field name="Date Décès" uuid="4D9098D46BD51A449505AFB164D4400E" type="8" never_null="true"
+			id="35" />
+		<field name="xnum_IPP" uuid="137E7C91947C2B458FFE4C920708C181" type="10"
+			limiting_length="17" never_null="true" id="36" />
+		<field name="xTransfert" uuid="0A09D9147D67F945AD7D42DECDC2EF15" type="4" never_null="true"
+			id="37" />
+		<field name="NoDossierHospitalisé" uuid="3E2CCAAA2F88DF48AD0D00616D573EEB" type="4"
+			never_null="true" id="38" />
+		<field name="Dossier privé" uuid="FDC87587DD143C428FB9CCF5B56AEEC2" type="1"
+			never_null="true" id="39" />
+		<field name="Email" uuid="64C82CC2D9B28E499E1B79FDED4FC6C6" type="10" never_null="true"
+			id="40" />
+		<field name="xBlob_DocLie_Document" uuid="FD5DB96407A4484CAE381FA99C00F428" type="18"
+			never_null="true" id="41" />
+		<field name="xBlob_DocLie_VideoAudio" uuid="860D64725ED61B4F91BB1D1AB47F108E" type="18"
+			never_null="true" id="42" />
+		<field name="Blob_Photo" uuid="E7B61307E476B146A48E7AF7DD502E6B" type="18" never_null="true"
+			id="43" />
+		<field name="IPP" uuid="3E68B536F7902D4CA90F48C2FC14A37E" type="10" limiting_length="80"
+			never_null="true" id="44" />
+		<field name="xIndex" uuid="FCAF9FF1E0EDD74F9B0DA7487F011086" type="10" limiting_length="12"
+			never_null="true" id="45" />
+		<field name="Informations_Fondamentales" uuid="8FEC4EC4A07A8D44B2AC9536CED4D7A3" type="10"
+			never_null="true" id="46" />
+		<field name="Assure_Nom" uuid="4B9696665F091A428C0EC5CD6B313B5E" type="10"
+			limiting_length="80" never_null="true" id="47" />
+		<field name="Assure_NomUsuel" uuid="6CB9CA04DBF43048B72A0B822EFAE1E3" type="10"
+			limiting_length="80" never_null="true" id="48" />
+		<field name="Assure_ImmatriculationSS" uuid="F624F5E2BEC4F3459F3D12A91CCE15AF" type="10"
+			limiting_length="15" never_null="true" id="49" />
+		<field name="Assure_CleImmatriculation" uuid="351638C6C5839B45B10B28213002C60B" type="10"
+			limiting_length="2" never_null="true" id="50" />
+		<field name="Assure_Adresse" uuid="4F5F7D8B2FD93043965D70F45D60F952" type="10"
+			never_null="true" id="51" />
+		<field name="Assure_Ddn" uuid="20A15B9AF3EB6C4089D78FA6C95CD3DA" type="8" never_null="true"
+			id="52" />
+		<field name="Assure_CaisseGestionnaire" uuid="D12F16FE57398743BD59EE704C98F95B" type="10"
+			limiting_length="3" never_null="true" id="53" />
+		<field name="Assure_CentreGestionnaire" uuid="71EC85EE5FEC274EB6C780C53C90E7C7" type="10"
+			limiting_length="4" never_null="true" id="54" />
+		<field name="Assure_CentreInformatique" uuid="B89B6E245BC4CA419EE786A8C95ED12A" type="10"
+			limiting_length="4" never_null="true" id="55" />
+		<field name="Assure_CodeRegime" uuid="F1DE6EE2927FAB45AB8E2ED73096E511" type="10"
+			limiting_length="2" never_null="true" id="56" />
+		<field name="Assure_CodeGestion" uuid="1FB635560DBBD843A6C16BE6F912F3F2" type="10"
+			limiting_length="2" never_null="true" id="57" />
+		<field name="Assure_RangGemellaire" uuid="99DB47928520A6418F3D1F5975FF2F21" type="10"
+			limiting_length="2" never_null="true" id="58" />
+		<field name="Assure_Qualite" uuid="0D1A2FC8836A04409DC8D90BE1AE25C3" type="10"
+			limiting_length="2" never_null="true" id="59" />
+		<field name="Assure_OuvertureAMO" uuid="23FE19921D5C96419F9231A15EAD6BC7" type="10"
+			limiting_length="2" never_null="true" id="60" />
+		<field name="Assure_CodeALD" uuid="917DE39CE6943E4CB293D989F97CD18D" type="10"
+			limiting_length="2" never_null="true" id="61" />
+		<field name="Assure_CodeSituation" uuid="5804E07D9AAEEB4A8F448B89E0D59F48" type="10"
+			limiting_length="4" never_null="true" id="62" />
+		<field name="Assure_NumeroMutuelle" uuid="D8301283F36C5C4C9DC8CDBA0D207EB5" type="10"
+			limiting_length="50" never_null="true" id="63" />
+		<field name="Assure_OuvertureMutuelle" uuid="A8F426DF0AB27247B2F74FA0513500F2" type="10"
+			limiting_length="2" never_null="true" id="64" />
+		<field name="Assure_GarantieMutuelle" uuid="87D68A72806D0D468284078C13EF42BB" type="10"
+			limiting_length="8" never_null="true" id="65" />
+		<field name="Assure_IDOrganisme" uuid="8051FD32066F6A4F96B08FBE432167AE" type="4"
+			never_null="true" id="66" />
+		<field name="Assure_DateLecture" uuid="8A831C117C71BF48BF2C8CF75BEEDFFC" type="8"
+			never_null="true" id="67" />
+		<field name="Assure_TypeImmatriculation" uuid="553F30618D62B64A82A66F402B08721C" type="10"
+			limiting_length="2" never_null="true" id="68" />
+		<field name="Assure_OrganismeDestiantaire" uuid="FECCE3A20079894E94E42F1487DC3C3B" type="10"
+			limiting_length="20" never_null="true" id="69" />
+		<field name="Assure_FinDroitAMO" uuid="9D0C9A255F7A6648983D8962A8B1EBAE" type="8"
+			never_null="true" id="70" />
+		<field name="Assure_DroitSV" uuid="07BE950CB144DA489DE75F07DBE91CEC" type="10"
+			never_null="true" id="71" />
+		<field name="Assure_DateOuvertureMutuelle" uuid="37633A70289A1944A6CBEFF4A395C15F" type="8"
+			never_null="true" id="72" />
+		<field name="Assure_DateFermetureMutuelle" uuid="8EC6F7DC3B2CF34592ED7FE5E78AE1FE" type="8"
+			never_null="true" id="73" />
+		<field name="Assure_Prenom" uuid="AFE6AB877C5303408F23C6F684016FEA" type="10"
+			limiting_length="80" never_null="true" id="74" />
+		<field name="Assure_NumAdherent" uuid="2DAC60611B11D34081B6E2E8D07E5CD7" type="10"
+			limiting_length="20" never_null="true" id="75" />
+		<field name="Assure_OrganismeDestinataire" uuid="7564D376B1A4584390738A0487E528C2" type="10"
+			limiting_length="3" never_null="true" id="76" />
+		<field name="Pays" uuid="521882475FAA554CB07FCF86F428C0C5" type="10" limiting_length="80"
+			never_null="true" id="77" />
+		<field name="Assure_DateNaissance" uuid="0F5ABD38BDCCC24F9D8058E726C36D3C" type="8"
+			never_null="true" id="78" />
+		<field name="Assure_IDMutuelle" uuid="453369E1F419594793BAB3ADCD2FE1C4" type="4"
+			never_null="true" id="79" />
+		<field name="Recontact_Fait" uuid="C2E113581B42754C8E809F7F4E4FE190" type="8"
+			never_null="true" id="80" />
+		<field name="Blob_AntecedentFamiliaux" uuid="036B71989FE23642BFE1DF0F33B46E93" type="18"
+			never_null="true" id="81" />
+		<field name="Blob_AntecedentMedicaux" uuid="29FA5CE30AFC6147B104219DD82A813A" type="18"
+			never_null="true" id="82" />
+		<field name="Blob_Habitudes de vie" uuid="F1E3ECCCC966644C9D32C1C34447B5CC" type="18"
+			never_null="true" id="83" />
+		<field name="TraitementsEnCours" uuid="5D0E2C5EB65EB0438F129929E30E407E" type="10"
+			never_null="true" id="84" />
+		<field name="Code Postal Naissance" uuid="1B739E1D9CCF9D489D91C28FDB5F432D" type="10"
+			limiting_length="50" never_null="true" id="85" />
+		<field name="CodePays" uuid="0A829FFD7F2909468CD1EDAD1A1D22BE" type="4" never_null="true"
+			id="86" />
+		<field name="Date_CreationDPPR" uuid="30F10C13B41287408F1F37BECCA1620F" type="8"
+			never_null="true" id="87" />
+		<field name="Assure_AttestationMutuelle" uuid="DCE421D086ABE547B1A0E66009489F0D" type="1"
+			never_null="true" id="88" />
+		<field name="Id_LAP" uuid="D2694E4FBBFBD549AB57778B69A3A544" type="10" limiting_length="80"
+			never_null="true" id="89" />
+		<field name="Assure_IdentAMC" uuid="38212741361A6543AE6DA3D4F62EFC6A" type="10"
+			limiting_length="15" never_null="true" id="90" />
+		<field name="Assure_TauxRemboursement" uuid="1C28E1BBA6252942AF9D97392A7326FE" type="4"
+			never_null="true" id="91" />
+		<field name="Assure_TypeRemboursement" uuid="EEF63CE27654EE40B9855F7FA6552159" type="10"
+			limiting_length="10" never_null="true" id="92" />
+		<field name="Assure_PresenceALD" uuid="4D7A0B42E70E424CACA6F77085846E3A" type="1"
+			never_null="true" id="93" />
+		<field name="Assure_PresenceMT" uuid="B8EE2782CC857743993158A4C46CAD4A" type="1"
+			never_null="true" id="94" />
+		<field name="Cle_Patient_SSV" uuid="D50AC838D1F4814383FDF60B8B1D3D20" type="10"
+			never_null="true" id="95" />
+		<field name="Assure_ForcageALD" uuid="CA05B8E30894F84CB88E1C40FF37BE1E" type="10"
+			limiting_length="2" never_null="true" id="96" />
+		<field name="Assure_ATOrganisme0" uuid="B2D68A45DE758A4788DFCBD9B3196FA1" type="10"
+			limiting_length="9" never_null="true" id="97" />
+		<field name="Assure_ATOrganisme1" uuid="F9DF0D14A3CE03418CBE47508C22B3A3" type="10"
+			limiting_length="9" never_null="true" id="98" />
+		<field name="Assure_ATIdentifiant1" uuid="874A343A4F203447896D6A60F93C7635" type="10"
+			limiting_length="9" never_null="true" id="99" />
+		<field name="Assure_ATOrganisme2" uuid="72AA2DD677D7EB4FBA439F7CD10D5223" type="10"
+			limiting_length="9" never_null="true" id="100" />
+		<field name="Assure_ATIdentifiant2" uuid="92995BCF2BC2B84293AC2C354819D964" type="10"
+			limiting_length="9" never_null="true" id="101" />
+		<field name="DossierNumerise" uuid="C3BBC15377FB0A4B8F9443DA3C8D8A5C" type="1"
+			never_null="true" id="102" />
+		<field name="File_CI" uuid="82C1EAF52709A540AF40751733D0E156" type="10" never_null="true"
+			id="103" />
+		<field name="Id_Externe" uuid="03F4B76380C47744997ED0EB9930FACA" type="10"
+			limiting_length="50" never_null="true" id="104" />
+		<field name="Prevenir" uuid="F1EBE98111566F48832F85A8163E0DD8" type="10" never_null="true"
+			id="105" />
+		<field name="UID" uuid="D0B926FB79524C40A6A65B9913E7AC0D" type="4" never_null="true"
+			id="106" />
+		<field name="ID_Creation" uuid="CF646D31B4E352469E517BE58F5215CD" type="4" never_null="true"
+			id="107" />
+		<field name="Date_Creation" uuid="EBEB3EA8FB1B40469EF31999F67352BA" type="8"
+			never_null="true" id="108" />
+		<field name="Site_Creation" uuid="57CACE570F4DAA45A7731838CF7B3480" type="4"
+			never_null="true" id="109" />
+		<field name="Maj_UID" uuid="C2235D34A590834CAF8C96F7CA008021" type="1" never_null="true"
+			id="110" />
+		<field name="UID_Creation" uuid="5DB4D210E47C3D48A9C6F37C2084EA51" type="4"
+			never_null="true" id="111" />
+		<field name="Telephone3" uuid="8EC32ED389A635459A41EDA503EB240E" type="10"
+			limiting_length="50" never_null="true" id="112" />
+		<field name="Site_Emetteur" uuid="2FF5E46C84141E4088812AE6D182DC86" type="4"
+			never_null="true" id="113" />
+		<field name="IPP_Old" uuid="17D6E67E39E0224896D2E0B9EB02495A" type="10" limiting_length="20"
+			never_null="true" id="114" />
+		<field name="SuiviDeGrossesse" uuid="57895E506710174CB9C4A60A685781BE" type="10"
+			never_null="true" id="115" />
+		<field name="Blob_TraitementEncours" uuid="9B105237CCD0754B891E0C69C301F54D" type="18"
+			never_null="true" id="116" />
+		<field name="Blob_SuiviDeGrossesse" uuid="9D4E5508A042C942BB360EEF82D1B0A9" type="18"
+			never_null="true" id="117" />
+		<field name="Assure_AlsaceMoselle" uuid="EA37F9E97027694B9DF8AF9C9E8B13B4" type="1"
+			never_null="true" id="118" />
+		<field name="Assure_CMUC" uuid="D357407F48512E419F791B2080BB9CE2" type="10"
+			limiting_length="2" never_null="true" id="119" />
+		<field name="Assure_CodeServiceAMO" uuid="11E9FDE19924404DB50229C10011E5D5" type="10"
+			limiting_length="5" never_null="true" id="120" />
+		<field name="Assure_Période_serviceAMO_1" uuid="4CB58CA898CE274D8219DC65B21D51DB" type="8"
+			never_null="true" id="121" />
+		<field name="Assure_Période_serviceAMO_2" uuid="0FC59FAB324B0D459B9D912223852FC5" type="8"
+			never_null="true" id="122" />
+		<field name="IPP_Alternate" uuid="5B977E8DE5A59C41908E087F4EC401F0" type="10"
+			limiting_length="80" never_null="true" id="123" />
+		<field name="Assure_Debut_AMO" uuid="C11F53F446FF0546927F32191D954DDE" type="8"
+			never_null="true" id="124" />
+		<field name="Assure_Fin_AMO" uuid="9C88773247F50A42961507D144339AFD" type="8"
+			never_null="true" id="125" />
+		<field name="Assure_Migrant" uuid="5767836C2930254E9CD1795D64BD3901" type="10"
+			limiting_length="2" never_null="true" id="126" />
+		<field name="Assure_Cle_patient_INSC" uuid="3A63A30DBF63A64DBB3145C89AE3DEB0" type="10"
+			limiting_length="20" never_null="true" id="127" />
+		<field name="Assure_Numero_INSC" uuid="282E2406FC28AF4B8C46B5F1287C7801" type="10"
+			limiting_length="20" never_null="true" id="128" />
+		<field name="Assure_Cle_INSC" uuid="5756E62F1C9BC84FA861DF04946950F5" type="10"
+			limiting_length="20" never_null="true" id="129" />
+		<field name="INS_OID" uuid="B5E69A495A51864B8CF6D503D00A8F88" type="10" limiting_length="20"
+			never_null="true" id="130" />
+		<field name="INS_MatriculeINS" uuid="0B846C7169E8CE47BB69B443419D9DA7" type="10"
+			limiting_length="80" never_null="true" id="131" />
+		<field name="INS_PrenomNaissanceListe" uuid="CC689CAAFDE6CD4A98C5CD8ED3F7B68D" type="10"
+			limiting_length="80" never_null="true" id="132" />
+		<field name="INS_PrenomNaissancePremier" uuid="400272393BA11A44B67561C96A2834C2" type="10"
+			limiting_length="80" never_null="true" id="133" />
+		<field name="INS_DateNaissanceAAAAMMJJ" uuid="21F2AFFD9C8C8B498A497343D932D2DD" type="10"
+			limiting_length="10" never_null="true" id="134" />
+		<field name="INS_CodeLieuNaissance" uuid="6596044F075FD94F915631F2FE4D3287" type="10"
+			limiting_length="50" never_null="true" id="135" />
+		<field name="INS_NatureJustificatifIdent" uuid="8FE0CE38662BF746B780E3F8B4C30A08" type="10"
+			limiting_length="50" never_null="true" id="136" />
+		<field name="INS_Age" uuid="7F9BD4210D4E204597A8681E40DC6705" type="4" never_null="true"
+			id="137" />
+		<field name="INS_DateFictive" uuid="6EB464CB15513049931066462BFF8190" type="1"
+			never_null="true" id="138" />
+		<field name="INS_CodePaysNaissance" uuid="0ACDB1C31EBDD5459EAE174C8542562D" type="10"
+			limiting_length="5" never_null="true" id="139" />
+		<field name="INS_NomPaysNaissance" uuid="5DD44A70FF105D4082CF6CFDC86DB07A" type="10"
+			limiting_length="80" never_null="true" id="140" />
+		<field name="INS_IDentitéAttribut" uuid="9257D70E51D55B489E5CC046252EFAC2" type="4"
+			never_null="true" id="141" />
+		<field name="INS_IDentitéStatut" uuid="2818EDDDEF7F364A9914220147CA9CDF" type="4"
+			never_null="true" id="142" />
+		<field name="INS_NatureIdentité" uuid="29E2B51A4C13A1439B3C60D291925927" type="4"
+			never_null="true" id="143" />
+		<field name="Assure_ADRAMO" uuid="711E388CED8F2D438F309DEB1E385B05" type="10"
+			limiting_length="10" never_null="true" id="144" />
+		<field name="Assure_ADRDatetime" uuid="3D52DA7DE81B6B48B84228FE40C3CF50" type="10"
+			limiting_length="20" never_null="true" id="145" />
+		<field name="Assure_ADRDateRef" uuid="68AFE73321A541469D2D614622C0A57B" type="10"
+			limiting_length="20" never_null="true" id="146" />
+		<field name="Assure_DateNaissance_Spe" uuid="62D345CDA6F82140ADA7D4CA3864AD3D" type="10"
+			limiting_length="10" never_null="true" id="147" />
+		<field name="Assure_NIR_Individuel" uuid="7B7286932083224CB15AD1309E792C91" type="10"
+			limiting_length="13" never_null="true" id="148" />
+		<field name="Assure_CleNIR_Individuel" uuid="0D5A863B388A6E4BA32ED688B912D12A" type="10"
+			limiting_length="2" never_null="true" id="149" />
+		<field name="Assure_ADRAMC" uuid="E4C054A94319184B8EE71BF210CDEDFC" type="10"
+			limiting_length="10" never_null="true" id="150" />
+		<field name="INS_CleINS" uuid="A145731A0DFEBE4B8E9747A3050CFAF2" type="10"
+			limiting_length="5" never_null="true" id="151" />
+		<field name="INS_MatriculeHistoriqueINS" uuid="733BA1ABF523FE419478A3F092B550A6" type="10"
+			limiting_length="20" never_null="true" id="152" />
+		<field name="INS_CleHistoriqueINS" uuid="41B822642114E5428E4D10E3E80E75BB" type="10"
+			limiting_length="5" never_null="true" id="153" />
+		<field name="INS_CodeRetour" uuid="D44F55504EA74349AE01256D1F774320" type="10"
+			limiting_length="5" never_null="true" id="154" />
+		<field name="ECV_identifiant" uuid="4A5338DFC3C8B74CA0ACEDF5D6226124" type="10"
+			limiting_length="50" never_null="true" id="155" />
+		<field name="ECV_token" uuid="AB2E9FA2D048FE43AE8AD3555C537F9A" type="10"
+			limiting_length="50" never_null="true" id="156" />
+		<field name="ECV_fin_validite" uuid="9FC7E02A2AF04C4285C4BEAE962020A3" type="10"
+			limiting_length="20" never_null="true" id="157" />
+		<field name="INS_ImageDatamatrix" uuid="BA8B25EE62CD4D45A74DFE57A62C799E" type="12"
+			never_null="true" id="158" />
+		<field name="MSS_NonConsentement" uuid="EA63FA192536294F8E7A89B9B72332C1" type="1"
+			never_null="true" id="159" />
+		<field name="INS_CarteVitale" uuid="B9C2100209B7DC41BF22ED1B78A9CECC" type="4"
+			never_null="true" id="160" />
+		<field name="MSS_Pro_NonConsentement" uuid="7C23F8CF046B4540B08F1DCA878D9BE6" type="1"
+			never_null="true" id="161" />
+		<field name="SYS_Surveillance" uuid="5C135DA8611B1C4EAF8E96425C2DFCCC" type="4"
+			never_null="true" id="162" />
+		<field name="SYS_NoteAssociee" uuid="40D4FA7DBC7B3248B7D200B283BD9AE2" type="10"
+			limiting_length="255" never_null="true" id="163" />
+		<field name="SYS_Protocole" uuid="AFC590E87079A84489D2F27AF2FD7E24" type="21"
+			blob_switch_size="2147483647" id="164" />
+		<field name="Objet_AntecedentMedicaux" uuid="EA004696F077A94EA716C26DF49AA95D" type="21"
+			blob_switch_size="2147483647" id="165" />
+		<field name="Objet_AntecedentFamiliaux" uuid="96344FFA1A7A96409FF61A1C957AA4F2" type="21"
+			blob_switch_size="2147483647" id="166" />
+		<field name="Objet_HabitudeVie" uuid="874372C952C1084497DF396CDC895A70" type="21"
+			blob_switch_size="2147483647" id="167" />
+		<field name="Assure_RAMQ_Expiration" uuid="38B2B85D0427914A9C41479C5FD9CE22" type="10"
+			limiting_length="50" id="168" />
+		<field name="IPP_Collection" uuid="3673900C10A5274DB2DFEBB3FC45A62F" type="21"
+			blob_switch_size="2147483647" id="169" />
+		<field name="Correspondant_Collection" uuid="91156A4375620B4CB0D9D4C9B3FC65FE" type="21"
+			blob_switch_size="2147483647" id="170" />
+		<field name="Correspondant_CR" uuid="05ADEDDAECD7A5498A60A729E10AED01" type="21"
+			blob_switch_size="2147483647" id="171" />
+		<field name="ColStudyInstanceUID" uuid="4F85B9C3C2CEAD438E8C04BEAE9DD84D" type="21"
+			blob_switch_size="2147483647" id="172" />
+		<field name="DMP_NonConsentement" uuid="5217FF3C60745D4A8FA149362C065D9D" type="1" id="173" />
+		<field name="NotesPat" uuid="0C1EFB718D8FA349A9663ADEF47AFB7E" type="21"
+			blob_switch_size="2147483647" id="174" />
+		<field name="APCV" uuid="77402C3EF12A9D44BD6657288EB8B41C" type="1" id="175" />
+		<field name="INS_DateLecture" uuid="10E3C2DD4EC6E441A36A52B6D5489BD2" type="4" id="176" />
+		<primary_key field_name="NoDossier" field_uuid="BC9A30FB27D29F44A25487E5829405F6" />
+		<table_extra trigger_insert="true" trigger_delete="true" trigger_update="true" />
+	</table>
+	<index kind="regular" unique_keys="true" uuid="6A97F5DCCF1A0243B6417B0FCB3FC488" type="1">
+		<field_ref uuid="42B89A41E4789A49BCDE67BF5434DE6F" name="xNumUser">
+			<table_ref uuid="5E35284DDAEBFA4D8356C24B552461AD" name="Utilisateur" />
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="A5D4042FBDD6694AA52C2BBC1058D1FD" type="1">
+		<field_ref uuid="BC9A30FB27D29F44A25487E5829405F6" name="NoDossier">
+			<table_ref uuid="FA881584FA334247A62D2AAFCC421EB7" name="Patient" />
+		</field_ref>
+	</index>
+	<base_extra>
+		<journal_file journal_file_enabled="true" />
+	</base_extra>
+</base>
