@@ -105,6 +105,14 @@ Function patientFullName()->$fullName : Text
 	End if 
 	
 	
+Function taskPatientFullName($patient : cs.PatientEntity)->$fullName : Text
+	If ($patient#Null)
+		$fullName:=$patient.Nom+" "+$patient.Prénom
+	Else 
+		$fullName:=""
+	End if 
+	
+	
 Function assigneeNames()->$names : Text
 	If (This.currentTask=Null)
 		$names:=""

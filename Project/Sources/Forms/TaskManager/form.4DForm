@@ -197,7 +197,7 @@
 							"footer": {
 								"name": "footerPatient"
 							},
-							"dataSource": "This:C1470.patient.Nom",
+							"dataSource": "Form:C1466.handler.taskPatientFullName(This:C1470.patient)",
 							"horizontalPadding": 5,
 							"verticalPadding": 5,
 							"rowHeightAuto": true,

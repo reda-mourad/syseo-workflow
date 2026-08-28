@@ -1,14 +1,16 @@
 //%attributes = {}
 var $descriptions; $tagLabels; $availableIndexes : Collection
 var $users : cs.UtilisateurSelection
+var $patients : cs.PatientSelection
 var $tags : cs.TagSelection
 var $task : cs.TaskEntity
+var $patient : cs.PatientEntity
 var $tag : cs.TagEntity
 var $taskTag : cs.TaskTagEntity
 var $assignee : cs.TaskAssigneeEntity
 var $creator; $assignedUser : cs.UtilisateurEntity
 var $taskNumber; $tagNumber; $assigneeNumber; $randomPosition; $randomIndex; $tagCount; $maxTagCount; $assigneeCount; $maxAssigneeCount : Integer
-var $completionRoll; $urgentRoll; $createdDaysAgo; $daysSinceCreation; $updatedDaysAfterCreation; $createdTimeSeconds; $updatedTimeSeconds : Integer
+var $completionRoll; $urgentRoll; $patientRoll; $createdDaysAgo; $daysSinceCreation; $updatedDaysAfterCreation; $createdTimeSeconds; $updatedTimeSeconds : Integer
 var $description; $updatedAt : Text
 var $today; $dueDate; $createdDate; $updatedDate : Date
 var $isUrgent : Boolean
@@ -31,6 +33,7 @@ ds.Conversation.all().drop()
 //$users:=ds.Utilisateur.fromCollection(JSON Parse(Folder(fk desktop folder).file("users.json").getText()))
 //ds.Patient.fromCollection(JSON Parse(Folder(fk desktop folder).file("patients.json").getText()))
 $users:=ds.Utilisateur.all()
+$patients:=ds.Patient.all()
 
 $today:=Current date
 
@@ -111,6 +114,13 @@ For ($taskNumber; 1; 500)
 	$task.due_at:=String($dueDate; ISO date)
 	$creator:=$users[Random%$users.length]
 	$task.creator:=$creator
+	
+	// Relate roughly 70% of seeded tasks to a random patient.
+	$patientRoll:=Random%100
+	If (($patientRoll<70) && ($patients.length>0))
+		$patient:=$patients[Random%$patients.length]
+		$task.patient:=$patient
+	End if 
 	$task.save()
 	
 	// Assign between one and five distinct tags.
