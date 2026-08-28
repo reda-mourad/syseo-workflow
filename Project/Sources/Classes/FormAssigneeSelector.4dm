@@ -1,9 +1,11 @@
 property searchText : Text
 property assignees : cs.UtilisateurSelection
 property selectedAssignees : cs.UtilisateurSelection
+property initialAssignees : cs.UtilisateurSelection
 
-Class constructor()
+Class constructor($initialAssignees : cs.UtilisateurSelection)
 	This.searchText:=""
+	This.initialAssignees:=$initialAssignees
 	This.load()
 
 
@@ -25,7 +27,10 @@ Function hasSelection()->$hasSelection : Boolean
 Function handleEvents()
 	Case of 
 		: (FORM Event.code=On Load)
-			OBJECT SET ENABLED(*; "btnSelect"; False)
+			If (This.initialAssignees#Null)
+				LISTBOX SELECT ROWS(*; "lbAssignees"; This.initialAssignees; lk replace selection)
+			End if 
+			OBJECT SET ENABLED(*; "btnSelect"; This.hasSelection())
 
 		: (FORM Event.code=On Data Change) && (FORM Event.objectName="inputSearch")
 			This.selectedAssignees:=Null

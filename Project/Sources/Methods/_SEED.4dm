@@ -8,10 +8,9 @@ var $taskTag : cs.TaskTagEntity
 var $assignee : cs.TaskAssigneeEntity
 var $creator; $assignedUser : cs.UtilisateurEntity
 var $taskNumber; $tagNumber; $assigneeNumber; $randomPosition; $randomIndex; $tagCount; $maxTagCount; $assigneeCount; $maxAssigneeCount : Integer
-var $dateRangeDays : Integer
 var $completionRoll; $urgentRoll; $createdDaysAgo; $daysSinceCreation; $updatedDaysAfterCreation; $createdTimeSeconds; $updatedTimeSeconds : Integer
 var $description; $updatedAt : Text
-var $today; $oneMonthFromToday; $dueDate; $createdDate; $updatedDate : Date
+var $today; $dueDate; $createdDate; $updatedDate : Date
 var $isUrgent : Boolean
 
 // Delete dependent entities first so that all relations remain valid during cleanup.
@@ -34,8 +33,6 @@ ds.Conversation.all().drop()
 $users:=ds.Utilisateur.all()
 
 $today:=Current date
-$oneMonthFromToday:=Add to date($today; 0; 1; 0)
-$dateRangeDays:=$oneMonthFromToday-$today
 
 $descriptions:=New collection(\
 "Examiner les derniers résultats de laboratoire du patient"; \
@@ -106,15 +103,11 @@ For ($taskNumber; 1; 500)
 		$task.completed_at:=$updatedAt
 	End if 
 	
-	// Keep urgent work uncommon and give it a nearer deadline.
+	// Keep urgent work uncommon; all tasks are due between today and three days from now.
 	$urgentRoll:=Random%100
 	$isUrgent:=($urgentRoll<15)
 	$task.is_urgent:=$isUrgent
-	If ($isUrgent)
-		$dueDate:=$today+(Random%8)
-	Else 
-		$dueDate:=$today+(Random%($dateRangeDays+1))
-	End if 
+	$dueDate:=$today+(Random%4)
 	$task.due_at:=String($dueDate; ISO date)
 	$creator:=$users[Random%$users.length]
 	$task.creator:=$creator

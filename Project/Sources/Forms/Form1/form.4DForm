@@ -3,48 +3,62 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"windowSizingX": "variable",
-	"windowSizingY": "variable",
-	"windowMinWidth": 0,
-	"windowMinHeight": 0,
-	"windowMaxWidth": 32767,
-	"windowMaxHeight": 32767,
-	"rightMargin": 20,
-	"bottomMargin": 20,
-	"events": [
-		"onLoad",
-		"onPageChange",
-		"onValidate",
-		"onClick",
-		"onDoubleClick",
-		"onOutsideCall",
-		"onBeginDragOver",
-		"onDragOver",
-		"onDrop",
-		"onAfterKeystroke",
-		"onMenuSelect",
-		"onPluginArea",
-		"onAfterEdit",
-		"onTimer",
-		"onBoundVariableChange"
-	],
-	"windowTitle": "window title",
-	"destination": "detailScreen",
+	"events": [],
 	"pages": [
 		{
 			"objects": {}
 		},
 		{
 			"objects": {
-				"bgDiscussionContent": {
+				"Rectangle": {
 					"type": "rectangle",
-					"top": 71,
-					"left": 163,
-					"width": 87,
-					"height": 722
+					"top": 348,
+					"left": 0,
+					"width": 612,
+					"height": 60,
+					"stroke": "#c0c0c0",
+					"sizingY": "move",
+					"sizingX": "grow"
+				},
+				"Input": {
+					"type": "input",
+					"left": 9,
+					"top": 361,
+					"width": 594,
+					"height": 35,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"placeholder": "Votre message",
+					"sizingY": "move",
+					"sizingX": "grow"
+				},
+				"Rectangle1": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 612,
+					"height": 328,
+					"stroke": "#c0c0c0",
+					"sizingY": "grow",
+					"sizingX": "grow"
 				}
 			}
 		}
 	],
-	"geometryStamp": 2
+	"geometryStamp": 109,
+	"editor": {
+		"groups": {
+			"Group": [
+				"Rectangle",
+				"Input"
+			]
+		},
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"rightMargin": 0,
+	"bottomMargin": 0
 }

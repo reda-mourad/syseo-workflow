@@ -1,9 +1,11 @@
 property searchText : Text
 property categories : cs.TagSelection
 property selectedCategories : cs.TagSelection
+property initialCategories : cs.TagSelection
 
-Class constructor()
+Class constructor($initialCategories : cs.TagSelection)
 	This.searchText:=""
+	This.initialCategories:=$initialCategories
 	This.load()
 
 
@@ -25,7 +27,10 @@ Function hasSelection()->$hasSelection : Boolean
 Function handleEvents()
 	Case of 
 		: (FORM Event.code=On Load)
-			OBJECT SET ENABLED(*; "btnSelect"; False)
+			If (This.initialCategories#Null)
+				LISTBOX SELECT ROWS(*; "lbCategories"; This.initialCategories; lk replace selection)
+			End if 
+			OBJECT SET ENABLED(*; "btnSelect"; This.hasSelection())
 
 		: (FORM Event.code=On Data Change) && (FORM Event.objectName="inputSearch")
 			This.selectedCategories:=Null
