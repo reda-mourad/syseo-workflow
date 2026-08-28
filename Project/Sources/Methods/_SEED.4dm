@@ -7,10 +7,12 @@ var $tag : cs.TagEntity
 var $taskTag : cs.TaskTagEntity
 var $assignee : cs.TaskAssigneeEntity
 var $creator; $assignedUser : cs.UtilisateurEntity
-var $taskNumber; $tagNumber; $assigneeNumber; $randomPosition; $randomIndex; $tagCount; $assigneeCount; $maxAssigneeCount : Integer
+var $taskNumber; $tagNumber; $assigneeNumber; $randomPosition; $randomIndex; $tagCount; $maxTagCount; $assigneeCount; $maxAssigneeCount : Integer
 var $dateRangeDays : Integer
-var $description : Text
-var $today; $oneMonthFromToday; $dueDate : Date
+var $completionRoll; $urgentRoll; $createdDaysAgo; $daysSinceCreation; $updatedDaysAfterCreation; $createdTimeSeconds; $updatedTimeSeconds : Integer
+var $description; $updatedAt : Text
+var $today; $oneMonthFromToday; $dueDate; $createdDate; $updatedDate : Date
+var $isUrgent : Boolean
 
 // Delete dependent entities first so that all relations remain valid during cleanup.
 ds.TaskActivity.all().drop()
@@ -58,7 +60,6 @@ $descriptions:=New collection(\
 "Informer l'équipe soignante de la mise à jour de l'état du patient")
 
 $tagLabels:=New collection(\
-"Urgent"; \
 "Suivi"; \
 "Administratif"; \
 "Clinique"; \
@@ -82,16 +83,56 @@ For ($taskNumber; 1; 500)
 	$task:=ds.Task.new()
 	$description:=$descriptions[Random%$descriptions.length]
 	$task.description:=$description
-	$task.status:="open"
-	$dueDate:=$today+(Random%($dateRangeDays+1))
+	
+	// Create tasks during the previous 45 days, with updates occurring between creation and today.
+	$createdDaysAgo:=(Random%45)+1
+	$createdDate:=$today-$createdDaysAgo
+	$daysSinceCreation:=$today-$createdDate
+	$updatedDaysAfterCreation:=Random%($daysSinceCreation+1)
+	$updatedDate:=$createdDate+$updatedDaysAfterCreation
+	$createdTimeSeconds:=(Random%32401)+28800  // Between 08:00 and 17:00.
+	If ($updatedDate=$createdDate)
+		$updatedTimeSeconds:=$createdTimeSeconds+(Random%(61201-$createdTimeSeconds))
+	Else 
+		$updatedTimeSeconds:=(Random%32401)+28800
+	End if 
+	$task.created_at:=String($createdDate; ISO date; Time($createdTimeSeconds))
+	$updatedAt:=String($updatedDate; ISO date; Time($updatedTimeSeconds))
+	$task.updated_at:=$updatedAt
+	
+	// Roughly 30% of seeded tasks are completed; a null completion date means pending.
+	$completionRoll:=Random%100
+	If ($completionRoll<30)
+		$task.completed_at:=$updatedAt
+	End if 
+	
+	// Keep urgent work uncommon and give it a nearer deadline.
+	$urgentRoll:=Random%100
+	$isUrgent:=($urgentRoll<15)
+	$task.is_urgent:=$isUrgent
+	If ($isUrgent)
+		$dueDate:=$today+(Random%8)
+	Else 
+		$dueDate:=$today+(Random%($dateRangeDays+1))
+	End if 
 	$task.due_at:=String($dueDate; ISO date)
 	$creator:=$users[Random%$users.length]
 	$task.creator:=$creator
 	$task.save()
 	
-	// Assign between one and five distinct random tags.
-	$availableIndexes:=New collection(0; 1; 2; 3; 4; 5; 6; 7; 8; 9)
-	$tagCount:=(Random%5)+1
+	// Assign between one and five distinct tags.
+	$availableIndexes:=New collection
+	For ($tagNumber; 0; $tags.length-1)
+		$availableIndexes.push($tagNumber)
+	End for 
+	$maxTagCount:=$tags.length
+	If ($maxTagCount>5)
+		$maxTagCount:=5
+	End if 
+	$tagCount:=0
+	If ($maxTagCount>0)
+		$tagCount:=(Random%$maxTagCount)+1
+	End if 
 	For ($tagNumber; 1; $tagCount)
 		$randomPosition:=Random%$availableIndexes.length
 		$randomIndex:=$availableIndexes[$randomPosition]

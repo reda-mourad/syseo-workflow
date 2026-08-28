@@ -60,6 +60,19 @@ Treat the repository metadata as authoritative. Continue targeting 4D 20 R7 unti
 
 Do not rename existing schema objects solely to enforce these conventions unless the task explicitly requests a schema migration.
 
+## 4D form object naming conventions
+
+- Use semantic `camelCase` names for form objects.
+- Prefix form object names according to their type:
+  - Checkboxes: `chk`
+  - Radio buttons: `rdb`
+  - List boxes: `lb`
+  - Buttons: `btn`
+  - Rectangles: `bg`
+  - Inputs: `input`
+  - Text objects: `txt`
+- When renaming a form object, update every reference in 4D code and in form metadata such as editor groups and views.
+
 ## 4D compilation verification
 
 - After writing or modifying 4D code, run `compile-test.bat` from the repository root.

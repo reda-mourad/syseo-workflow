@@ -1,0 +1,189 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 500,
+	"windowMinHeight": 350,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"windowTitle": "Sélection des assignés",
+	"destination": "detailScreen",
+	"events": [
+		"onLoad",
+		"onDataChange",
+		"onSelectionChange"
+	],
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"txtTitle": {
+					"type": "text",
+					"text": "Sélection des assignés",
+					"left": 20,
+					"top": 20,
+					"width": 250,
+					"height": 24,
+					"fontSize": 18,
+					"fontWeight": "bold"
+				},
+				"bgSearch": {
+					"type": "rectangle",
+					"left": 20,
+					"top": 60,
+					"width": 760,
+					"height": 34,
+					"stroke": "#c0c0c0",
+					"sizingX": "grow"
+				},
+				"inputSearch": {
+					"type": "input",
+					"left": 30,
+					"top": 68,
+					"width": 740,
+					"height": 18,
+					"placeholder": "Rechercher par nom ou initiales",
+					"dataSource": "Form:C1466.handler.searchText",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none",
+					"sizingX": "grow"
+				},
+				"lbAssignees": {
+					"type": "listbox",
+					"left": 20,
+					"top": 110,
+					"width": 760,
+					"height": 320,
+					"events": [
+						"onSelectionChange"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.handler.assignees",
+					"selectedItemsSource": "Form:C1466.handler.selectedAssignees",
+					"selectionMode": "multiple",
+					"sortable": false,
+					"showHeaders": true,
+					"headerHeight": "30px",
+					"rowHeight": "26px",
+					"scrollbarHorizontal": "automatic",
+					"scrollbarVertical": "automatic",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"columns": [
+						{
+							"header": {
+								"text": "Nom",
+								"name": "headerName"
+							},
+							"name": "columnName",
+							"width": 360,
+							"dataSource": "This:C1470.Nom",
+							"enterable": false,
+							"horizontalPadding": 6,
+							"verticalAlign": "middle"
+						},
+						{
+							"header": {
+								"text": "Initiales",
+								"name": "headerInitials"
+							},
+							"name": "columnInitials",
+							"width": 120,
+							"dataSource": "This:C1470.Initiales",
+							"enterable": false,
+							"horizontalPadding": 6,
+							"verticalAlign": "middle"
+						},
+						{
+							"header": {
+								"text": "Spécialité",
+								"name": "headerSpecialty"
+							},
+							"name": "columnSpecialty",
+							"width": 260,
+							"dataSource": "This:C1470.Spécialité",
+							"enterable": false,
+							"horizontalPadding": 6,
+							"verticalAlign": "middle"
+						}
+					]
+				},
+				"bgCancel": {
+					"type": "rectangle",
+					"left": 360,
+					"top": 450,
+					"width": 200,
+					"height": 30,
+					"stroke": "#c0c0c0",
+					"fill": "#E5E5E5",
+					"sizingX": "move",
+					"sizingY": "move"
+				},
+				"btnCancel": {
+					"type": "button",
+					"style": "custom",
+					"borderStyle": "none",
+					"text": "Annuler",
+					"action": "cancel",
+					"left": 360,
+					"top": 450,
+					"width": 200,
+					"height": 30,
+					"sizingX": "move",
+					"sizingY": "move"
+				},
+				"bgSelect": {
+					"type": "rectangle",
+					"left": 580,
+					"top": 450,
+					"width": 200,
+					"height": 30,
+					"stroke": "#c0c0c0",
+					"fill": "#C1F3A0",
+					"sizingX": "move",
+					"sizingY": "move"
+				},
+				"btnSelect": {
+					"type": "button",
+					"style": "custom",
+					"borderStyle": "none",
+					"text": "Sélectionner",
+					"action": "accept",
+					"left": 580,
+					"top": 450,
+					"width": 200,
+					"height": 30,
+					"sizingX": "move",
+					"sizingY": "move"
+				}
+			}
+		}
+	],
+	"geometryStamp": 1,
+	"method": "method.4dm",
+	"editor": {
+		"groups": {
+			"Group": [
+				"bgCancel",
+				"btnCancel"
+			],
+			"Group1": [
+				"bgSelect",
+				"btnSelect"
+			]
+		},
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}
