@@ -1,1 +1,0 @@
-tool4d .\Project\syseo-workflow.4DProject --dataless --skip-onstartup --startup-method CLI_UUID

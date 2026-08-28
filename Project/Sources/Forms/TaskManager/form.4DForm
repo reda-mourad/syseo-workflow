@@ -1,0 +1,268 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Rectangle1": {
+					"type": "rectangle",
+					"top": 20,
+					"left": 1270,
+					"width": 30,
+					"height": 30,
+					"borderRadius": 30,
+					"stroke": "#c0c0c0"
+				},
+				"taskCounter": {
+					"type": "input",
+					"left": 1050,
+					"top": 27,
+					"width": 200,
+					"height": 16,
+					"dataSource": "Form:C1466.handler.taskCounter",
+					"enterable": false,
+					"focusable": false,
+					"fontWeight": "bold",
+					"sizingX": "move",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"textAlign": "right"
+				},
+				"btnAddTask": {
+					"type": "button",
+					"style": "circular",
+					"text": "➕",
+					"left": 1270,
+					"top": 20,
+					"width": 30,
+					"height": 30,
+					"events": [
+						"onClick"
+					],
+					"sizingX": "move"
+				},
+				"radioAll": {
+					"type": "radio",
+					"text": "Toutes les tâches",
+					"left": 20,
+					"top": 67,
+					"width": 107,
+					"height": 15,
+					"radioGroup": "taskScope",
+					"dataSource": "Form:C1466.handler.showAll",
+					"events": [
+						"onClick"
+					]
+				},
+				"radioMine": {
+					"type": "radio",
+					"text": "Mes tâches à faire",
+					"left": 147,
+					"top": 67,
+					"width": 111,
+					"height": 15,
+					"radioGroup": "taskScope",
+					"dataSource": "Form:C1466.handler.onlyMine",
+					"events": [
+						"onClick"
+					]
+				},
+				"radioDelegated": {
+					"type": "radio",
+					"text": "Tâches que j'ai déléguées",
+					"left": 278,
+					"top": 67,
+					"width": 151,
+					"height": 15,
+					"radioGroup": "taskScope",
+					"dataSource": "Form:C1466.handler.onlyDelegated",
+					"events": [
+						"onClick"
+					]
+				},
+				"chkToday": {
+					"type": "checkbox",
+					"text": "Tâches d'aujourd'hui",
+					"left": 481,
+					"top": 67,
+					"width": 128,
+					"height": 15,
+					"dataSource": "Form:C1466.handler.onlyToday",
+					"events": [
+						"onClick"
+					]
+				},
+				"chkClosed": {
+					"type": "checkbox",
+					"text": "Tâches clôturées",
+					"left": 629,
+					"top": 67,
+					"width": 105,
+					"height": 15,
+					"dataSource": "Form:C1466.handler.showClosed",
+					"events": [
+						"onClick"
+					]
+				},
+				"taskList": {
+					"type": "listbox",
+					"left": 20,
+					"top": 105,
+					"width": 1280,
+					"height": 560,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.handler.tasks",
+					"scrollbarHorizontal": "automatic",
+					"scrollbarVertical": "automatic",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"alternateFill": "automaticAlternate",
+					"headerHeight": "34px",
+					"rowHeight": "28px",
+					"selectionMode": "single",
+					"verticalLineStroke": "transparent",
+					"columns": [
+						{
+							"header": {
+								"text": "Statut",
+								"name": "headerStatus"
+							},
+							"name": "columnStatus",
+							"width": 75,
+							"footer": {
+								"name": "footerStatus"
+							},
+							"dataSource": "\"⏳\"",
+							"horizontalPadding": 5,
+							"verticalPadding": 5,
+							"textAlign": "center",
+							"verticalAlign": "middle",
+							"rowHeightAuto": true,
+							"wordwrap": "normal"
+						},
+						{
+							"header": {
+								"text": "Tâche",
+								"name": "headerTask"
+							},
+							"name": "columnTask",
+							"footer": {
+								"name": "footerTask"
+							},
+							"dataSource": "This:C1470.description",
+							"horizontalPadding": 5,
+							"verticalPadding": 5,
+							"width": 512,
+							"rowHeightAuto": true,
+							"wordwrap": "normal"
+						},
+						{
+							"header": {
+								"text": "Patient",
+								"name": "headerPatient"
+							},
+							"name": "columnPatient",
+							"width": 150,
+							"footer": {
+								"name": "footerPatient"
+							},
+							"dataSource": "This:C1470.patient.Nom",
+							"horizontalPadding": 5,
+							"verticalPadding": 5,
+							"rowHeightAuto": true,
+							"wordwrap": "normal"
+						},
+						{
+							"header": {
+								"text": "Catégories",
+								"name": "headerCategories"
+							},
+							"name": "columnCategories",
+							"width": 308,
+							"footer": {
+								"name": "footerCategories"
+							},
+							"dataSource": "This:C1470.taskTags.tag.label.join(\", \")",
+							"horizontalPadding": 5,
+							"verticalPadding": 5,
+							"rowHeightAuto": true,
+							"wordwrap": "normal"
+						},
+						{
+							"header": {
+								"text": "Échéance",
+								"name": "headerDueAt"
+							},
+							"name": "columnDueAt",
+							"width": 120,
+							"footer": {
+								"name": "footerDueAt"
+							},
+							"dataSource": "Date(This:C1470.due_at)",
+							"dateFormat": "systemShort",
+							"horizontalPadding": 5,
+							"verticalPadding": 5,
+							"rowHeightAuto": true,
+							"wordwrap": "normal"
+						}
+					]
+				},
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 20,
+					"left": 20,
+					"width": 500,
+					"height": 30,
+					"borderRadius": 15,
+					"stroke": "#c0c0c0"
+				},
+				"searchInput": {
+					"type": "input",
+					"left": 30,
+					"top": 27,
+					"width": 480,
+					"height": 16,
+					"placeholder": "Rechercher une tâche, un patient, un membre du personnel ou une catégorie",
+					"dataSource": "Form:C1466.handler.searchText",
+					"events": [],
+					"sizingX": "grow",
+					"fill": "transparent",
+					"borderStyle": "none"
+				}
+			}
+		}
+	],
+	"geometryStamp": 74,
+	"method": "method.4dm",
+	"editor": {
+		"groups": {
+			"Group": [
+				"Rectangle1",
+				"btnAddTask"
+			]
+		},
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

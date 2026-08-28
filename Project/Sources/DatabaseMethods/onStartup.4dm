@@ -1,1 +1,1 @@
-ALERT("Hello!")
+_()
