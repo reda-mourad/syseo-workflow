@@ -55,5 +55,3 @@ If ($result.success)
 Else 
     LOG EVENT(Into system standard outputs; $dim+"-------------------------------"+$reset+"\n"+$bold+$red+"[FAIL] "+$reset+"Syntax check failed | "+String($errorCount)+" error(s), "+String($warningCount)+" warning(s) | Duration: "+String($durationMs)+" ms\n"; Error message)
 End if 
-
-QUIT 4D()

@@ -1,5 +1,9 @@
 //%attributes = {}
-var $window : Integer
-$window:=Open form window("TaskManager"; Movable form dialog box)
-DIALOG("TaskManager"; {handler: cs.FormTaskManager.new(17)})
-CLOSE WINDOW($window)
+var $registration : Object
+var $userId : Integer
+
+$userId:=Num(Request("") || 17)
+$registration:=Messaging_Client_Register($userId)
+If ($registration.success)
+	Launcher_Client_Open
+End if 

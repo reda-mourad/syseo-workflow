@@ -1,18 +1,23 @@
 //%attributes = {}
-var $descriptions; $tagLabels; $availableIndexes : Collection
+var $descriptions; $tagLabels; $availableIndexes; $conversationDefinitions; $conversationUsers; $messageBodies : Collection
 var $users : cs.UtilisateurSelection
+var $otherUsers : cs.UtilisateurSelection
 var $patients : cs.PatientSelection
 var $tags : cs.TagSelection
+var $conversation : cs.ConversationEntity
+var $conversationMember : cs.ConversationMemberEntity
+var $message : cs.MessageEntity
 var $task : cs.TaskEntity
 var $patient : cs.PatientEntity
 var $tag : cs.TagEntity
 var $taskTag : cs.TaskTagEntity
 var $assignee : cs.TaskAssigneeEntity
-var $creator; $assignedUser : cs.UtilisateurEntity
-var $taskNumber; $tagNumber; $assigneeNumber; $randomPosition; $randomIndex; $tagCount; $maxTagCount; $assigneeCount; $maxAssigneeCount : Integer
-var $completionRoll; $urgentRoll; $patientRoll; $createdDaysAgo; $daysSinceCreation; $updatedDaysAfterCreation; $createdTimeSeconds; $updatedTimeSeconds : Integer
-var $description; $updatedAt : Text
-var $today; $dueDate; $createdDate; $updatedDate : Date
+var $creator; $assignedUser; $currentUser; $conversationUser; $messageSender : cs.UtilisateurEntity
+var $conversationDefinition : Object
+var $taskNumber; $tagNumber; $assigneeNumber; $conversationNumber; $memberNumber; $messageNumber; $randomPosition; $randomIndex; $tagCount; $maxTagCount; $assigneeCount; $maxAssigneeCount; $memberCount; $messageCount : Integer
+var $completionRoll; $urgentRoll; $patientRoll; $createdDaysAgo; $daysSinceCreation; $updatedDaysAfterCreation; $createdTimeSeconds; $updatedTimeSeconds; $conversationDaysAgo; $messageDaysAgo; $messageTimeSeconds : Integer
+var $description; $updatedAt; $conversationCreatedAt; $messageCreatedAt : Text
+var $today; $dueDate; $createdDate; $updatedDate; $messageDate : Date
 var $isUrgent : Boolean
 
 // Delete dependent entities first so that all relations remain valid during cleanup.
@@ -22,7 +27,6 @@ ds.TaskTag.all().drop()
 ds.TaskAssignee.all().drop()
 ds.Task.all().drop()
 ds.Tag.all().drop()
-ds.MessageReceipt.all().drop()
 ds.MessageRevision.all().drop()
 ds.Message.all().drop()
 ds.ConversationMember.all().drop()
@@ -70,6 +74,27 @@ $tagLabels:=New collection(\
 "Contact patient"; \
 "Documentation")
 
+$conversationDefinitions:=New collection(\
+New object("kind"; "dm"; "name"; ""; "memberCount"; 2); \
+New object("kind"; "dm"; "name"; ""; "memberCount"; 2); \
+New object("kind"; "dm"; "name"; ""; "memberCount"; 2); \
+New object("kind"; "group"; "name"; "Équipe clinique"; "memberCount"; 4); \
+New object("kind"; "group"; "name"; "Coordination patients"; "memberCount"; 5))
+
+$messageBodies:=New collection(\
+"Bonjour, avez-vous vu la dernière mise à jour ?"; \
+"Oui, je viens de consulter le dossier."; \
+"Je m'en occupe dans la matinée."; \
+"Merci, tenez-moi au courant dès que c'est fait."; \
+"Le patient a confirmé son prochain rendez-vous."; \
+"Parfait, je mets à jour les informations."; \
+"Est-ce que quelqu'un peut vérifier les résultats ?"; \
+"Je les regarde et je vous fais un retour."; \
+"La demande a bien été transmise."; \
+"Très bien, merci pour le suivi."; \
+"Il reste un point à confirmer avec l'équipe."; \
+"D'accord, on en reparle cet après-midi.")
+
 $tags:=ds.Tag.newSelection()
 For ($tagNumber; 0; $tagLabels.length-1)
 	$tag:=ds.Tag.new()
@@ -78,6 +103,80 @@ For ($tagNumber; 0; $tagLabels.length-1)
 	$tag.save()
 	$tags.add($tag)
 End for 
+
+// Create direct and group conversations containing user 17.
+$currentUser:=$users.query("xNumUser = :1"; 17).first()
+If ($currentUser#Null)
+	$otherUsers:=$users.query("xNumUser # :1"; 17)
+	$conversationNumber:=0
+	For each ($conversationDefinition; $conversationDefinitions)
+		$memberCount:=$conversationDefinition.memberCount
+		If ($memberCount>($otherUsers.length+1))
+			$memberCount:=$otherUsers.length+1
+		End if 
+		
+		If ($memberCount>=2)
+			$conversationNumber:=$conversationNumber+1
+			$conversationUsers:=New collection
+			$conversationUsers.push($currentUser)
+			$availableIndexes:=New collection
+			For ($memberNumber; 0; $otherUsers.length-1)
+				$availableIndexes.push($memberNumber)
+			End for 
+			For ($memberNumber; 2; $memberCount)
+				$randomPosition:=Random%$availableIndexes.length
+				$randomIndex:=$availableIndexes[$randomPosition]
+				$availableIndexes.remove($randomPosition)
+				$conversationUser:=$otherUsers[$randomIndex]
+				$conversationUsers.push($conversationUser)
+			End for 
+			
+			$conversationDaysAgo:=(Random%8)+7
+			$createdDate:=$today-$conversationDaysAgo
+			$createdTimeSeconds:=(Random%14401)+28800
+			$conversationCreatedAt:=String($createdDate; ISO date; Time($createdTimeSeconds))
+			$conversation:=ds.Conversation.new()
+			$conversation.kind:=$conversationDefinition.kind
+			If (Length($conversationDefinition.name)>0)
+				$conversation.name:=$conversationDefinition.name
+			End if 
+			$conversation.creator:=$currentUser
+			$conversation.created_at:=$conversationCreatedAt
+			$conversation.updated_at:=$conversationCreatedAt
+			$conversation.save()
+			
+			For each ($conversationUser; $conversationUsers)
+				$conversationMember:=ds.ConversationMember.new()
+				$conversationMember.conversation:=$conversation
+				$conversationMember.utilisateur:=$conversationUser
+				$conversationMember.joined_at:=$conversationCreatedAt
+				$conversationMember.notifications_enabled:=True
+				$conversationMember.save()
+			End for each 
+			
+			$messageCount:=(Random%7)+6
+			For ($messageNumber; 1; $messageCount)
+				$messageDaysAgo:=($messageCount-$messageNumber)\3
+				$messageDate:=$today-$messageDaysAgo
+				$messageTimeSeconds:=28800+(($messageNumber-1)*1800)
+				$messageCreatedAt:=String($messageDate; ISO date; Time($messageTimeSeconds))
+				If (($messageNumber%3)=0)
+					$messageSender:=$currentUser
+				Else 
+					$messageSender:=$conversationUsers[Random%$conversationUsers.length]
+				End if 
+				$message:=ds.Message.new()
+				$message.conversation:=$conversation
+				$message.sender:=$messageSender
+				$message.body:=$messageBodies[($conversationNumber+$messageNumber-2)%$messageBodies.length]
+				$message.created_at:=$messageCreatedAt
+				$message.save()
+			End for 
+			$conversation.updated_at:=$messageCreatedAt
+			$conversation.save()
+		End if 
+	End for each 
+End if 
 
 For ($taskNumber; 1; 500)
 	$task:=ds.Task.new()

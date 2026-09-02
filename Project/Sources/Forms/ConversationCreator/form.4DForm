@@ -1,0 +1,182 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowTitle": "Nouvelle conversation",
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 500,
+	"windowMinHeight": 420,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onDataChange",
+		"onClick"
+	],
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"txtCreatorTitle": {
+					"type": "text",
+					"text": "Nouvelle conversation",
+					"left": 20,
+					"top": 20,
+					"width": 300,
+					"height": 24,
+					"fontSize": 18,
+					"fontWeight": "bold"
+				},
+				"txtGroupTitleLabel": {
+					"type": "text",
+					"text": "Titre du groupe (requis pour plusieurs destinataires)",
+					"left": 20,
+					"top": 58,
+					"width": 460,
+					"height": 18
+				},
+				"bgGroupTitle": {
+					"type": "rectangle",
+					"left": 20,
+					"top": 80,
+					"width": 460,
+					"height": 34,
+					"stroke": "#c0c0c0",
+					"sizingX": "grow"
+				},
+				"inputGroupTitle": {
+					"type": "input",
+					"left": 30,
+					"top": 88,
+					"width": 440,
+					"height": 18,
+					"dataSource": "Form:C1466.handler.groupTitle",
+					"events": [
+						"onDataChange"
+					],
+					"placeholder": "Titre de la conversation",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"sizingX": "grow"
+				},
+				"lbRecipients": {
+					"type": "listbox",
+					"left": 20,
+					"top": 130,
+					"width": 460,
+					"height": 230,
+					"events": [
+						"onClick"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.handler.recipients",
+					"selectionMode": "single",
+					"hideSystemHighlight": true,
+					"singleClickEdit": true,
+					"sortable": false,
+					"rowHeight": "28px",
+					"verticalLineStroke": "transparent",
+					"scrollbarHorizontal": "automatic",
+					"scrollbarVertical": "automatic",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"showHeaders": false,
+					"columns": [
+						{
+							"header": {
+								"text": "",
+								"name": "headerRecipientSelected"
+							},
+							"name": "columnRecipientSelected",
+							"width": 44,
+							"dataSource": "This:C1470.selected",
+							"dataSourceTypeHint": "boolean",
+							"controlType": "checkbox",
+							"events": [
+								"onDataChange"
+							],
+							"textAlign": "center",
+							"verticalAlign": "middle",
+							"enterable": true,
+							"footer": {
+								"name": "Footer1"
+							},
+							"horizontalPadding": 5,
+							"verticalPadding": 5
+						},
+						{
+							"header": {
+								"text": "Destinataire",
+								"name": "headerRecipientName"
+							},
+							"name": "columnRecipientName",
+							"dataSource": "This:C1470.name",
+							"horizontalPadding": 5,
+							"verticalAlign": "middle",
+							"enterable": false,
+							"footer": {
+								"name": "Footer2"
+							},
+							"verticalPadding": 5
+						}
+					]
+				},
+				"bgCancelConversation": {
+					"type": "rectangle",
+					"left": 160,
+					"top": 380,
+					"width": 150,
+					"height": 32,
+					"stroke": "#c0c0c0",
+					"fill": "#E5E5E5",
+					"sizingX": "move",
+					"sizingY": "move"
+				},
+				"btnCancelConversation": {
+					"type": "button",
+					"style": "custom",
+					"borderStyle": "none",
+					"text": "Annuler",
+					"action": "cancel",
+					"left": 160,
+					"top": 380,
+					"width": 150,
+					"height": 32,
+					"sizingX": "move",
+					"sizingY": "move"
+				},
+				"bgCreateConversation": {
+					"type": "rectangle",
+					"left": 330,
+					"top": 380,
+					"width": 150,
+					"height": 32,
+					"stroke": "#c0c0c0",
+					"fill": "#C1F3A0",
+					"sizingX": "move",
+					"sizingY": "move"
+				},
+				"btnCreateConversation": {
+					"type": "button",
+					"style": "custom",
+					"borderStyle": "none",
+					"text": "Créer",
+					"action": "accept",
+					"enabled": false,
+					"left": 330,
+					"top": 380,
+					"width": 150,
+					"height": 32,
+					"sizingX": "move",
+					"sizingY": "move"
+				}
+			}
+		}
+	],
+	"method": "method.4dm"
+}

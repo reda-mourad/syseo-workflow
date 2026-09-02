@@ -7,9 +7,11 @@ property showCompleted : Integer
 property searchText : Text
 property taskCounter : Text
 property tasks : cs.TaskSelection
+property selectedTask : cs.TaskEntity
 property currentTask : cs.TaskEntity
 property selectedAssignees : cs.UtilisateurSelection
 property selectedCategories : cs.TagSelection
+property discussionContext : Object
 
 Class constructor($userId : Integer)
 	This.userId:=$userId
@@ -19,6 +21,7 @@ Class constructor($userId : Integer)
 	This.showCompleted:=0
 	This.searchText:=""
 	This.taskCounter:=""
+	This.discussionContext:=New object("userId"; $userId; "conversationId"; 0; "messageBody"; ""; "lastNotificationId"; 0)
 	This.load()
 	
 	
@@ -113,6 +116,20 @@ Function taskPatientFullName($patient : cs.PatientEntity)->$fullName : Text
 	End if 
 	
 	
+Function taskDueDate($dueAt : Text)->$display : Text
+	var $dueDate : Date
+	var $remainingDays : Integer
+	
+	$display:=""
+	If (Length($dueAt)>0)
+		$dueDate:=Date($dueAt)
+		If ($dueDate#!00-00-00!)
+			$remainingDays:=$dueDate-Current date
+			$display:=String($dueDate; System date short)+" ("+String($remainingDays)+")"
+		End if 
+	End if 
+	
+	
 Function assigneeNames()->$names : Text
 	If (This.currentTask=Null)
 		$names:=""
@@ -138,16 +155,18 @@ Function categoryLabels()->$labels : Text
 	
 	
 Function canEditTask()->$canEdit : Boolean
-	$canEdit:=(This.currentTask#Null) && (This.currentTask.ID_creator=This.userId)
+	$canEdit:=(This.currentTask#Null) && (This.currentTask.completed_at=Null) && (This.currentTask.ID_creator=This.userId)
 	
 	
 Function canCloseTask()->$canClose : Boolean
 	var $assignments : cs.TaskAssigneeSelection
 	
-	$canClose:=This.canEditTask()
-	If ((This.currentTask#Null) && Not($canClose))
-		$assignments:=ds.TaskAssignee.query("ID_Task = :1 AND ID_Utilisateur = :2"; This.currentTask.ID; This.userId)
-		$canClose:=($assignments.length>0)
+	$canClose:=This.canEditTask() && Not(This.currentTask.isNew())
+	If ((This.currentTask#Null) && (This.currentTask.completed_at=Null) && Not($canClose))
+		If (Not(This.currentTask.isNew()))
+			$assignments:=ds.TaskAssignee.query("ID_Task = :1 AND ID_Utilisateur = :2"; This.currentTask.ID; This.userId)
+			$canClose:=($assignments.length>0)
+		End if 
 	End if 
 	
 	
@@ -295,6 +314,96 @@ Function saveCategories()->$success : Boolean
 	End if 
 	
 	
+Function syncTaskConversation()->$success : Boolean
+	var $conversation : cs.ConversationEntity
+	var $members : cs.ConversationMemberSelection
+	var $member : cs.ConversationMemberEntity
+	var $assignee : cs.UtilisateurEntity
+	var $user : cs.UtilisateurEntity
+	var $saveStatus : Object
+	var $participantIds : Collection
+	var $participantId : Integer
+	var $timestamp; $title : Text
+	var $isParticipant : Boolean
+
+	$success:=True
+	$timestamp:=String(Current date; ISO date; Current time)
+	$conversation:=This.currentTask.conversation
+	If ($conversation=Null)
+		$conversation:=ds.Conversation.new()
+		$conversation.kind:="task"
+		$conversation.creator:=This.currentTask.creator
+		$conversation.created_at:=$timestamp
+		$conversation.updated_at:=$timestamp
+	End if 
+
+	$title:="Tâche #"+String(This.currentTask.ID)
+	If (Length(This.currentTask.description)>0)
+		$title:=$title+" — "+This.currentTask.description
+	End if 
+	$conversation.name:=Substring($title; 1; 255)
+	$saveStatus:=$conversation.save()
+	$success:=$saveStatus.success
+
+	If ($success && (This.currentTask.ID_Conversation=Null))
+		This.currentTask.conversation:=$conversation
+		$saveStatus:=This.currentTask.save()
+		$success:=$saveStatus.success
+	End if 
+
+	$participantIds:=New collection
+	If ($success && (This.currentTask.ID_creator#Null))
+		$participantIds.push(This.currentTask.ID_creator)
+	End if 
+	If ($success)
+		If (This.selectedAssignees#Null)
+			For each ($assignee; This.selectedAssignees)
+				If ($participantIds.indexOf($assignee.xNumUser)<0)
+					$participantIds.push($assignee.xNumUser)
+				End if 
+			End for each 
+		Else 
+			For each ($assignee; This.currentTask.assignees.utilisateur)
+				If ($participantIds.indexOf($assignee.xNumUser)<0)
+					$participantIds.push($assignee.xNumUser)
+				End if 
+			End for each 
+		End if 
+	End if 
+
+	If ($success)
+		$members:=ds.ConversationMember.query("ID_Conversation = :1"; $conversation.ID)
+		For each ($member; $members) while ($success)
+			$isParticipant:=($participantIds.indexOf($member.ID_Utilisateur)>=0)
+			If ($isParticipant)
+				$member.left_at:=Null
+				$member.notifications_enabled:=True
+			Else 
+				$member.left_at:=$timestamp
+			End if 
+			$saveStatus:=$member.save()
+			$success:=$saveStatus.success
+		End for each 
+	End if 
+
+	For each ($participantId; $participantIds) while ($success)
+		If ($members.query("ID_Utilisateur = :1"; $participantId).length=0)
+			$user:=ds.Utilisateur.get($participantId)
+			If ($user=Null)
+				$success:=False
+			Else 
+				$member:=ds.ConversationMember.new()
+				$member.conversation:=$conversation
+				$member.utilisateur:=$user
+				$member.joined_at:=$timestamp
+				$member.notifications_enabled:=True
+				$saveStatus:=$member.save()
+				$success:=$saveStatus.success
+			End if 
+		End if 
+	End for each 
+
+
 Function saveTask()->$success : Boolean
 	var $result : Object
 	
@@ -310,12 +419,16 @@ Function saveTask()->$success : Boolean
 		If ($success)
 			$success:=This.saveCategories()
 		End if 
+		If ($success)
+			$success:=This.syncTaskConversation()
+		End if 
 		
 		If ($success)
 			ds.validateTransaction()
 			This.selectedAssignees:=Null
 			This.selectedCategories:=Null
 			This.load()
+			Launcher_Client_Refresh
 			FORM GOTO PAGE(1)
 		Else 
 			ds.cancelTransaction()
@@ -337,6 +450,7 @@ Function closeTask()->$success : Boolean
 		$success:=$result.success
 		If ($success)
 			This.load()
+			Launcher_Client_Refresh
 			FORM GOTO PAGE(1)
 		Else 
 			This.currentTask.reload()
@@ -367,27 +481,91 @@ Function toggleUrgent()
 	End if 
 	
 	
+Function addTask()
+	var $creator : cs.UtilisateurEntity
+	var $createdAt : Text
+	
+	$creator:=ds.Utilisateur.get(This.userId)
+	If ($creator=Null)
+		ALERT("La tâche ne peut pas être créée car l'utilisateur courant est introuvable.")
+	Else 
+		$createdAt:=String(Current date; ISO date; Current time)
+		This.currentTask:=ds.Task.new()
+		This.currentTask.creator:=$creator
+		This.currentTask.description:=""
+		This.currentTask.due_at:=String(Current date; ISO date)
+		This.currentTask.created_at:=$createdAt
+		This.currentTask.updated_at:=$createdAt
+		This.currentTask.is_urgent:=False
+		This.selectedAssignees:=ds.Utilisateur.query("xNumUser = :1"; This.userId)
+		This.selectedCategories:=Null
+		FORM GOTO PAGE(2)
+	End if 
+	
+	
 Function resetTaskChanges()->$success : Boolean
 	var $result : Object
 	
 	$success:=True
 	If (This.currentTask#Null)
-		$result:=This.currentTask.reload()
-		$success:=$result.success
+		If (Not(This.currentTask.isNew()))
+			$result:=This.currentTask.reload()
+			$success:=$result.success
+		End if 
 	End if 
 	
 	If ($success)
 		This.selectedAssignees:=Null
 		This.selectedCategories:=Null
 		This.load()
+		This.currentTask:=Null
 		FORM GOTO PAGE(1)
 	Else 
 		ALERT("Les modifications n'ont pas pu être annulées. Veuillez réessayer.")
 	End if 
 	
 	
+Function loadDiscussionPanel()
+	var $panelForm : Object
+	var $left; $top; $right; $bottom; $panelHeight; $panelWidth; $conversationId : Integer
+
+	$conversationId:=0
+	If ((This.currentTask#Null) && (This.currentTask.ID_Conversation#Null))
+		$conversationId:=This.currentTask.ID_Conversation
+	End if 
+	This.discussionContext:=New object("userId"; This.userId; "conversationId"; $conversationId; "messageBody"; ""; "lastNotificationId"; 0)
+	OBJECT SET VISIBLE(*; "subformDiscussion"; $conversationId>0)
+	If ($conversationId>0)
+		Messaging_Server_Mark_latest(This.userId; $conversationId; "read")
+		OBJECT GET COORDINATES(*; "subformDiscussion"; $left; $top; $right; $bottom)
+		$panelHeight:=$bottom-$top
+		$panelWidth:=$right-$left
+		$panelForm:=Build_conversation_panel_form(This.userId; $conversationId; $panelHeight; $panelWidth)
+		OBJECT SET SUBFORM(*; "subformDiscussion"; $panelForm)
+	End if 
+
+
+Function processNotification($kind : Text; $conversationId : Integer)
+	If ((This.currentTask#Null) && (This.currentTask.ID_Conversation#Null) && (This.currentTask.ID_Conversation=$conversationId))
+		If ($kind="message")
+			Messaging_Server_Mark_latest(This.userId; $conversationId; "read")
+		End if 
+		This.loadDiscussionPanel()
+	End if 
+
+
 Function handleEvents()
 	Case of 
+		: (FORM Event.code=On Load)
+			Messaging_Client_Set_window(Current form window; True)
+			Launcher_Client_Refresh
+
+		: (FORM Event.code=On Unload)
+			Messaging_Client_Set_window(Current form window; False)
+
+		: (FORM Event.code=On Clicked) && (FORM Event.objectName="btnAddTask")
+			This.addTask()
+			
 		: (FORM Event.code=On Clicked) && ((FORM Event.objectName="chk@") || (FORM Event.objectName="rdb@"))
 			This.load()
 			
@@ -396,9 +574,12 @@ Function handleEvents()
 			
 			
 		: (FORM Event.code=On Clicked) && (FORM Event.objectName="lbTasks") && (FORM Event.row>0)
-			This.selectedAssignees:=Null
-			This.selectedCategories:=Null
-			FORM GOTO PAGE(2)
+			If (This.selectedTask#Null)
+				This.currentTask:=This.selectedTask
+				This.selectedAssignees:=Null
+				This.selectedCategories:=Null
+				FORM GOTO PAGE(2)
+			End if 
 			
 		: (FORM Event.code=On Clicked) && (FORM Event.objectName="btnFindPatient")
 			This.findPatient()
@@ -424,6 +605,7 @@ Function handleEvents()
 			
 		: (FORM Event.code=On Page Change) && (FORM Get current page()=2)
 			This.updateTaskEditState()
+			This.loadDiscussionPanel()
 			If (Form.users=Null)
 				Form.users:=ds.Utilisateur.all().toCollection("xNumUser, Nom").orderBy("Nom")
 			End if 

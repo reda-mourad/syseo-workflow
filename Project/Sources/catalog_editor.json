@@ -8,9 +8,9 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 640,
-				"top": 287,
-				"width": 120,
+				"left": 685,
+				"top": 257,
+				"width": 113.70703125,
 				"height": 167.33203125
 			},
 			"displayable_fields_count": 6,
@@ -24,12 +24,12 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 440,
-				"top": 287,
-				"width": 120,
-				"height": 167.33203125
+				"left": 854,
+				"top": 387,
+				"width": 113.70703125,
+				"height": 188.33203125
 			},
-			"displayable_fields_count": 6,
+			"displayable_fields_count": 7,
 			"fields_ordering": 1
 		},
 		"TaskTag": {
@@ -40,12 +40,12 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 240,
-				"top": 287,
-				"width": 120,
-				"height": 167.33203125
+				"left": 1306,
+				"top": 324,
+				"width": 100.34765625,
+				"height": 104.33203125
 			},
-			"displayable_fields_count": 6,
+			"displayable_fields_count": 3,
 			"fields_ordering": 1
 		},
 		"Tag": {
@@ -56,12 +56,12 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 40,
-				"top": 287,
-				"width": 120,
-				"height": 167.33203125
+				"left": 1060,
+				"top": 464,
+				"width": 113.70703125,
+				"height": 146.33203125
 			},
-			"displayable_fields_count": 6,
+			"displayable_fields_count": 5,
 			"fields_ordering": 1
 		},
 		"TaskAssignee": {
@@ -72,12 +72,12 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 1640,
-				"top": 40,
-				"width": 120,
-				"height": 167.33203125
+				"left": 1031,
+				"top": 174,
+				"width": 134.35546875,
+				"height": 125.33203125
 			},
-			"displayable_fields_count": 6,
+			"displayable_fields_count": 4,
 			"fields_ordering": 1
 		},
 		"Task": {
@@ -88,28 +88,12 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 1440,
-				"top": 40,
+				"left": 1330,
+				"top": 0,
 				"width": 129.046875,
 				"height": 272.33203125
 			},
 			"displayable_fields_count": 11,
-			"fields_ordering": 1
-		},
-		"MessageReceipt": {
-			"color": {
-				"red": 255,
-				"green": 255,
-				"blue": 255,
-				"alpha": 0
-			},
-			"coordinates": {
-				"left": 1240,
-				"top": 40,
-				"width": 120,
-				"height": 167.33203125
-			},
-			"displayable_fields_count": 6,
 			"fields_ordering": 1
 		},
 		"MessageRevision": {
@@ -120,12 +104,12 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 1040,
-				"top": 40,
-				"width": 120,
-				"height": 167.33203125
+				"left": 1081,
+				"top": 0,
+				"width": 129.234375,
+				"height": 146.33203125
 			},
-			"displayable_fields_count": 6,
+			"displayable_fields_count": 5,
 			"fields_ordering": 1
 		},
 		"Message": {
@@ -136,12 +120,12 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 840,
-				"top": 40,
-				"width": 120,
-				"height": 167.33203125
+				"left": 793,
+				"top": 0,
+				"width": 146.37890625,
+				"height": 188.33203125
 			},
-			"displayable_fields_count": 6,
+			"displayable_fields_count": 7,
 			"fields_ordering": 1
 		},
 		"ConversationMember": {
@@ -152,12 +136,12 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 640,
-				"top": 40,
-				"width": 120,
-				"height": 167.33203125
+				"left": 516,
+				"top": 0,
+				"width": 169.751953125,
+				"height": 251.33203125
 			},
-			"displayable_fields_count": 6,
+			"displayable_fields_count": 10,
 			"fields_ordering": 1
 		},
 		"Conversation": {
@@ -168,8 +152,8 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 440,
-				"top": 40,
+				"left": 273,
+				"top": 0,
 				"width": 120,
 				"height": 167.33203125
 			},
@@ -184,12 +168,12 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 240,
-				"top": 40,
-				"width": 120,
-				"height": 167.33203125
+				"left": 1597,
+				"top": 0,
+				"width": 229.060546875,
+				"height": 3737.33203125
 			},
-			"displayable_fields_count": 6,
+			"displayable_fields_count": 176,
 			"fields_ordering": 1
 		},
 		"Utilisateur": {
@@ -200,12 +184,12 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 40,
-				"top": 40,
-				"width": 120,
-				"height": 167.33203125
+				"left": 0,
+				"top": 0,
+				"width": 177.720703125,
+				"height": 1784.33203125
 			},
-			"displayable_fields_count": 6,
+			"displayable_fields_count": 83,
 			"fields_ordering": 1
 		}
 	}

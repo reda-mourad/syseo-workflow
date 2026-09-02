@@ -1,0 +1,160 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"events": [
+		"onLoad",
+		"onUnload",
+		"onClick",
+		"onSelectionChange"
+	],
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"subformConversation": {
+					"type": "subform",
+					"left": 341,
+					"top": 63,
+					"width": 629,
+					"height": 409,
+					"right": 970,
+					"bottom": 472,
+					"dataSource": "Form:C1466.handler.conversationContext",
+					"sizingX": "grow",
+					"sizingY": "grow"
+				},
+				"txtConversationListTitle": {
+					"type": "text",
+					"text": "Mes conversations",
+					"left": 20,
+					"top": 20,
+					"width": 152,
+					"height": 22,
+					"fontWeight": "bold",
+					"fontSize": 18
+				},
+				"lbConversations": {
+					"type": "listbox",
+					"left": 20,
+					"top": 63,
+					"width": 280,
+					"height": 355,
+					"bottom": 418,
+					"events": [
+						"onSelectionChange"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.handler.conversations",
+					"rowStrokeSource": "Form:C1466.handler.conversationColor(This:C1470)",
+					"currentItemSource": "Form:C1466.handler.selectedConversation",
+					"currentItemPositionSource": "Form:C1466.handler.selectedConversationPosition",
+					"selectionMode": "single",
+					"showHeaders": false,
+					"rowHeight": "44px",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "automatic",
+					"sizingY": "grow",
+					"sizingX": "grow",
+					"hideExtraBlankRows": true,
+					"columns": [
+						{
+							"header": {
+								"text": "Conversation",
+								"name": "headerConversationTitle"
+							},
+							"footer": {
+								"name": "footerConversationTitle"
+							},
+							"name": "columnConversationTitle",
+							"width": 320,
+							"dataSource": "Form:C1466.handler.conversationTitle(This:C1470)",
+							"rowStyleSource": "Form:C1466.handler.conversationStyle(This:C1470)",
+							"horizontalPadding": 5,
+							"verticalPadding": 5,
+							"verticalAlign": "middle",
+							"wordwrap": "normal",
+							"enterable": false
+						}
+					]
+				},
+				"bgNewConversation": {
+					"type": "rectangle",
+					"left": 20,
+					"top": 438,
+					"width": 280,
+					"height": 34,
+					"stroke": "#c0c0c0",
+					"fill": "#C1F3A0",
+					"sizingX": "grow",
+					"sizingY": "move"
+				},
+				"btnNewConversation": {
+					"type": "button",
+					"style": "custom",
+					"borderStyle": "none",
+					"text": "Nouvelle conversation",
+					"left": 20,
+					"top": 438,
+					"width": 280,
+					"height": 34,
+					"events": [
+						"onClick"
+					],
+					"sizingX": "grow",
+					"sizingY": "move"
+				},
+				"splitterConversationList": {
+					"type": "splitter",
+					"left": 320,
+					"top": 20,
+					"width": 1,
+					"height": 452,
+					"bottom": 472,
+					"stroke": "#c0c0c0",
+					"sizingY": "grow",
+					"borderStyle": "solid"
+				},
+				"Input": {
+					"type": "input",
+					"left": 341,
+					"top": 20,
+					"width": 629,
+					"height": 23,
+					"fontSize": 18,
+					"fontWeight": "bold",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.handler.conversationTitle(Form:C1466.handler.selectedConversation)",
+					"sizingX": "grow"
+				},
+				"Line": {
+					"type": "line",
+					"top": 51,
+					"left": 20,
+					"width": 950,
+					"height": 0,
+					"stroke": "#c0c0c0",
+					"startPoint": "bottomLeft",
+					"sizingX": "grow"
+				}
+			}
+		}
+	],
+	"method": "method.4dm",
+	"geometryStamp": 78,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

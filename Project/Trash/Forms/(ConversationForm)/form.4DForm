@@ -3,54 +3,58 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"events": [],
+	"events": [
+		"onLoad",
+		"onBoundVariableChange",
+		"onResize"
+	],
 	"pages": [
 		{
 			"objects": {}
 		},
 		{
 			"objects": {
-				"Rectangle": {
+				"bgMessageComposer": {
 					"type": "rectangle",
 					"top": 348,
 					"left": 0,
-					"width": 612,
+					"width": 629,
 					"height": 60,
 					"stroke": "#c0c0c0",
 					"sizingY": "move",
 					"sizingX": "grow"
 				},
-				"Input": {
+				"inputMessage": {
 					"type": "input",
-					"left": 9,
-					"top": 361,
-					"width": 594,
-					"height": 35,
+					"left": 10,
+					"top": 358,
+					"width": 609,
+					"height": 40,
 					"fill": "transparent",
 					"borderStyle": "none",
 					"placeholder": "Votre message",
 					"sizingY": "move",
 					"sizingX": "grow"
 				},
-				"Rectangle1": {
-					"type": "rectangle",
-					"top": 0,
+				"subformMessages": {
+					"type": "subform",
 					"left": 0,
-					"width": 612,
+					"top": 0,
+					"width": 609,
 					"height": 328,
-					"stroke": "#c0c0c0",
+					"sizingX": "grow",
 					"sizingY": "grow",
-					"sizingX": "grow"
+					"scrollbarVertical": "visible"
 				}
 			}
 		}
 	],
-	"geometryStamp": 109,
+	"geometryStamp": 132,
 	"editor": {
 		"groups": {
 			"Group": [
-				"Rectangle",
-				"Input"
+				"bgMessageComposer",
+				"inputMessage"
 			]
 		},
 		"activeView": "View 1",
@@ -60,5 +64,6 @@
 		}
 	},
 	"rightMargin": 0,
-	"bottomMargin": 0
+	"bottomMargin": 0,
+	"method": "method.4dm"
 }

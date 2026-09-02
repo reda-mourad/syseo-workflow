@@ -292,6 +292,10 @@
 		<field name="joined_at" uuid="EA2A3FB3F8324C0285F732CABBD267AA" type="10" limiting_length="24" id="4"/>
 		<field name="left_at" uuid="0966D0E1487344A282B1214E76187041" type="10" limiting_length="24" id="5"/>
 		<field name="notifications_enabled" uuid="A71ECBA56A76418C8F13674AF1E4EACD" type="1" not_null="true" id="6"/>
+		<field name="ID_last_received_message" uuid="7693C4FB90F54F66AA006FE04825804B" type="4" id="7"/>
+		<field name="ID_last_read_message" uuid="F85F1EE441D94EDA8D9B019C056C10DE" type="4" id="8"/>
+		<field name="last_received_at" uuid="24AF71E134994D5E97679CC2FB512EC2" type="10" limiting_length="24" id="9"/>
+		<field name="last_read_at" uuid="96D2459C6372403BB39D87BC2AB48F9D" type="10" limiting_length="24" id="10"/>
 		<primary_key field_name="ID" field_uuid="1E2E0361739E436D82FD181EBFF366C1"/>
 	</table>
 	<table name="Message" uuid="E03EE0C4A9A641828381162EDDF670ED" id="5">
@@ -312,16 +316,6 @@
 		<field name="created_at" uuid="B7FE3676D2DE483F88B8D0C324EA7E04" type="10" limiting_length="24" id="5"/>
 		<primary_key field_name="ID" field_uuid="610D30C3BAEC4F0589376DD319463D10"/>
 	</table>
-	<table name="MessageReceipt" uuid="F85C619A1F354E3C8F43CDEA61312807" id="7">
-		<field name="ID" uuid="ADCFC8448C87465E86B89158E3CCE3D4" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
-		<field name="ID_Message" uuid="C426773D012A4D5E8D98D8FDB74E0B42" type="4" not_null="true" id="2"/>
-		<field name="ID_recipient" uuid="460A9C6688AC46898817EE8D71F53A29" type="4" not_null="true" id="3"/>
-		<field name="received_at" uuid="8B94BF6C60ED4DC98837E51EAC69C256" type="10" limiting_length="24" id="4"/>
-		<field name="read_at" uuid="6FD70A3D0740455E8A4A2B8F562F2542" type="10" limiting_length="24" id="5"/>
-		<field name="notification_state" uuid="90BD7C4C09B643DC8BF71FD8D1B6EE65" type="10" limiting_length="20" not_null="true" id="6"/>
-		<field name="notified_at" uuid="25417E95A67D42E08C6A3B0E3B852103" type="10" limiting_length="24" id="7"/>
-		<primary_key field_name="ID" field_uuid="ADCFC8448C87465E86B89158E3CCE3D4"/>
-	</table>
 	<table name="Task" uuid="569CBDEDA5C648D387A5CBF3AEB7577C" id="8">
 		<field name="ID" uuid="78A1B519A55149AE87370F63642DE29C" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
 		<field name="description" uuid="EC7BB31066EE466685902E546DB8A412" type="10" id="3"/>
@@ -334,6 +328,7 @@
 		<field name="cancelled_at" uuid="416C9DD50201465D8C57E97DD4B40689" type="10" limiting_length="24" id="11"/>
 		<field name="deleted_at" uuid="42CBD303B2F74F50893AEEBDE1574EF6" type="10" limiting_length="24" id="12"/>
 		<field name="is_urgent" uuid="6864FDE29E704C2084E20C09631BF7DD" type="1" not_null="true" id="13"/>
+		<field name="ID_Conversation" uuid="30795CBBB9494F64A1A033600BAF17B2" type="4" id="14"/>
 		<primary_key field_name="ID" field_uuid="78A1B519A55149AE87370F63642DE29C"/>
 	</table>
 	<table name="TaskAssignee" uuid="14DB888A59254A328B1F95738F0F4CFA" id="9">
@@ -460,10 +455,10 @@
 			</field_ref>
 		</related_field>
 	</relation>
-	<relation uuid="A8518E457F67476A882B4EA63023018C" name_Nto1="message" name_1toN="receipts" state="1">
+	<relation uuid="90D9CDE9454D48C990D92D1222813E63" name_Nto1="lastReceivedMessage" name_1toN="lastReceivedByMembers" state="1">
 		<related_field kind="source">
-			<field_ref uuid="C426773D012A4D5E8D98D8FDB74E0B42" name="ID_Message">
-				<table_ref uuid="F85C619A1F354E3C8F43CDEA61312807" name="MessageReceipt"/>
+			<field_ref uuid="7693C4FB90F54F66AA006FE04825804B" name="ID_last_received_message">
+				<table_ref uuid="A4807F8119CB4A71818EC040767301EA" name="ConversationMember"/>
 			</field_ref>
 		</related_field>
 		<related_field kind="destination">
@@ -472,15 +467,15 @@
 			</field_ref>
 		</related_field>
 	</relation>
-	<relation uuid="06B7B63D7F4B4AEF89E9CCAADBD30A96" name_Nto1="recipient" name_1toN="messageReceipts" state="1">
+	<relation uuid="D000056DA96D4390B4CA94D813AF6567" name_Nto1="lastReadMessage" name_1toN="lastReadByMembers" state="1">
 		<related_field kind="source">
-			<field_ref uuid="460A9C6688AC46898817EE8D71F53A29" name="ID_recipient">
-				<table_ref uuid="F85C619A1F354E3C8F43CDEA61312807" name="MessageReceipt"/>
+			<field_ref uuid="F85F1EE441D94EDA8D9B019C056C10DE" name="ID_last_read_message">
+				<table_ref uuid="A4807F8119CB4A71818EC040767301EA" name="ConversationMember"/>
 			</field_ref>
 		</related_field>
 		<related_field kind="destination">
-			<field_ref uuid="42B89A41E4789A49BCDE67BF5434DE6F" name="xNumUser">
-				<table_ref uuid="5E35284DDAEBFA4D8356C24B552461AD" name="Utilisateur"/>
+			<field_ref uuid="C4D6A1FE6B7044FB807CDEDC095DBEB0" name="ID">
+				<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message"/>
 			</field_ref>
 		</related_field>
 	</relation>
@@ -505,6 +500,18 @@
 		<related_field kind="destination">
 			<field_ref uuid="BC9A30FB27D29F44A25487E5829405F6" name="NoDossier">
 				<table_ref uuid="FA881584FA334247A62D2AAFCC421EB7" name="Patient"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="DA8DBE1E92C04D82809830C3A280508E" name_Nto1="conversation" name_1toN="tasks" state="1">
+		<related_field kind="source">
+			<field_ref uuid="30795CBBB9494F64A1A033600BAF17B2" name="ID_Conversation">
+				<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="8898B8DAE74F49E88924A53D5FEC34A4" name="ID">
+				<table_ref uuid="230B9D5257B74A898F0618C40C26CF86" name="Conversation"/>
 			</field_ref>
 		</related_field>
 	</relation>
@@ -604,6 +611,11 @@
 			</field_ref>
 		</related_field>
 	</relation>
+	<index kind="regular" name="Task_conversation" uuid="0D8D833C76DE463194CEABF0EB6BE020" type="3">
+		<field_ref uuid="30795CBBB9494F64A1A033600BAF17B2" name="ID_Conversation">
+			<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task"/>
+		</field_ref>
+	</index>
 	<index kind="regular" name="TaskComment_task_created" uuid="0E84FA9A2BE84BEF8AC51E4260C800A0" type="1">
 		<field_ref uuid="DC69D3C9B324423F8F9A6AF0E3F1AE7B" name="ID_Task">
 			<table_ref uuid="763BC09F6FDF461885614FFFEC48F7CB" name="TaskComment"/>
@@ -628,11 +640,6 @@
 	<index kind="regular" name="Message_sender" uuid="3E4C1F8C5B2D4F0787749B562845B3E9" type="3">
 		<field_ref uuid="61ADE331EF7740DA85637AE954955EE1" name="ID_sender">
 			<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message"/>
-		</field_ref>
-	</index>
-	<index kind="regular" unique_keys="true" name="MessageReceipt_ID" uuid="4AD3BF2A768F4FF68236D02D812E9F2A" type="7">
-		<field_ref uuid="ADCFC8448C87465E86B89158E3CCE3D4" name="ID">
-			<table_ref uuid="F85C619A1F354E3C8F43CDEA61312807" name="MessageReceipt"/>
 		</field_ref>
 	</index>
 	<index kind="regular" name="Task_patient" uuid="4BD1E5CBF64449B482B5D2ACB8977CF6" type="3">
@@ -661,17 +668,6 @@
 	<index kind="regular" unique_keys="true" name="MessageRevision_ID" uuid="60A1B578F6A3413B8C7988EEE1BCC7C7" type="7">
 		<field_ref uuid="610D30C3BAEC4F0589376DD319463D10" name="ID">
 			<table_ref uuid="9C2DB23A83734D7F89D72B1D9CCE6C27" name="MessageRevision"/>
-		</field_ref>
-	</index>
-	<index kind="regular" name="MessageReceipt_inbox" uuid="66F03A1B8BD14BAC827CAC13F46522D6" type="1">
-		<field_ref uuid="460A9C6688AC46898817EE8D71F53A29" name="ID_recipient">
-			<table_ref uuid="F85C619A1F354E3C8F43CDEA61312807" name="MessageReceipt"/>
-		</field_ref>
-		<field_ref uuid="6FD70A3D0740455E8A4A2B8F562F2542" name="read_at">
-			<table_ref uuid="F85C619A1F354E3C8F43CDEA61312807" name="MessageReceipt"/>
-		</field_ref>
-		<field_ref uuid="90BD7C4C09B643DC8BF71FD8D1B6EE65" name="notification_state">
-			<table_ref uuid="F85C619A1F354E3C8F43CDEA61312807" name="MessageReceipt"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="6A97F5DCCF1A0243B6417B0FCB3FC488" type="1">
@@ -792,14 +788,6 @@
 	<index kind="regular" name="TaskTag_tag" uuid="E10F9512B10E4728814358A38AE9D02C" type="3">
 		<field_ref uuid="198D34C3A25F4B9F8A98B5285DB04D18" name="ID_Tag">
 			<table_ref uuid="6A83019E0B924E5A8A6D98B245315F47" name="TaskTag"/>
-		</field_ref>
-	</index>
-	<index kind="regular" unique_keys="true" name="MessageReceipt_recipient" uuid="F14D283F7958472D84B822E246225357" type="1">
-		<field_ref uuid="C426773D012A4D5E8D98D8FDB74E0B42" name="ID_Message">
-			<table_ref uuid="F85C619A1F354E3C8F43CDEA61312807" name="MessageReceipt"/>
-		</field_ref>
-		<field_ref uuid="460A9C6688AC46898817EE8D71F53A29" name="ID_recipient">
-			<table_ref uuid="F85C619A1F354E3C8F43CDEA61312807" name="MessageReceipt"/>
 		</field_ref>
 	</index>
 	<index kind="regular" name="ConversationMember_user" uuid="FFD566CD7B064308873728A0F9025691" type="3">

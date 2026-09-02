@@ -1,0 +1,134 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowTitle": "Accueil",
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"rightMargin": 30,
+	"bottomMargin": 30,
+	"events": [
+		"onLoad",
+		"onUnload",
+		"onClick"
+	],
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"txtLauncherTitle": {
+					"type": "text",
+					"text": "Accueil",
+					"left": 40,
+					"top": 24,
+					"width": 300,
+					"height": 28,
+					"fontSize": 20,
+					"fontWeight": "bold"
+				},
+				"bgMessagesButton": {
+					"type": "rectangle",
+					"left": 40,
+					"top": 72,
+					"width": 280,
+					"height": 64,
+					"stroke": "#c0c0c0",
+					"fill": "#C1F3A0"
+				},
+				"btnMessages": {
+					"type": "button",
+					"style": "custom",
+					"borderStyle": "none",
+					"text": "Messages",
+					"left": 40,
+					"top": 72,
+					"width": 280,
+					"height": 64,
+					"fontSize": 18,
+					"events": ["onClick"]
+				},
+				"bgMessagesBadge": {
+					"type": "oval",
+					"left": 306,
+					"top": 64,
+					"width": 24,
+					"height": 24,
+					"stroke": "#B71C1C",
+					"fill": "#E53935"
+				},
+				"txtMessagesBadge": {
+					"type": "input",
+					"left": 306,
+					"top": 68,
+					"width": 24,
+					"height": 20,
+					"dataSource": "Form:C1466.handler.messageBadge",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#FFFFFF",
+					"fontSize": 12,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"verticalAlign": "middle",
+					"horizontalPadding": 0,
+					"verticalPadding": 0
+				},
+				"bgTasksButton": {
+					"type": "rectangle",
+					"left": 40,
+					"top": 164,
+					"width": 280,
+					"height": 64,
+					"stroke": "#c0c0c0",
+					"fill": "#DCEBFA"
+				},
+				"btnTasks": {
+					"type": "button",
+					"style": "custom",
+					"borderStyle": "none",
+					"text": "Tâches",
+					"left": 40,
+					"top": 164,
+					"width": 280,
+					"height": 64,
+					"fontSize": 18,
+					"events": ["onClick"]
+				},
+				"bgTasksBadge": {
+					"type": "oval",
+					"left": 306,
+					"top": 156,
+					"width": 24,
+					"height": 24,
+					"stroke": "#0D47A1",
+					"fill": "#1976D2"
+				},
+				"txtTasksBadge": {
+					"type": "input",
+					"left": 306,
+					"top": 160,
+					"width": 24,
+					"height": 20,
+					"dataSource": "Form:C1466.handler.taskBadge",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#FFFFFF",
+					"fontSize": 12,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"verticalAlign": "middle",
+					"horizontalPadding": 0,
+					"verticalPadding": 0
+				}
+			}
+		}
+	],
+	"method": "method.4dm"
+}
