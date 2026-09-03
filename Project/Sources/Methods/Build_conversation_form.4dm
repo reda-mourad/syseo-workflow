@@ -3,7 +3,7 @@
 
 var $messages : Collection
 var $message; $response; $pageObjects; $page; $measurementForm; $measurementPageObjects; $pageObject : Object
-var $avatar; $avatarText; $bubble; $messageInfoText; $messageStatusText; $messageText; $measurementInfo; $measurementText : Object
+var $avatar; $avatarText; $bubble; $messageInfoText; $messageStatusText; $messageText; $messageButton; $measurementInfo; $measurementText : Object
 var $objectSuffix; $objectName; $initials; $body; $messageInfo; $messageInfoAlign; $messageStatusIcon; $messageStatusColor; $messageStatusLabel; $avatarColor; $bubbleColor : Text
 var $messageDate : Date
 var $messageTime : Time
@@ -226,6 +226,21 @@ For each ($message; $messages)
 	"wordwrap"; "normal"; \
 	"textAlign"; $messageInfoAlign)
 	$pageObjects["txtMessage"+$objectSuffix]:=$messageText
+
+	$messageButton:=New object(\
+	"type"; "button"; \
+	"style"; "custom"; \
+	"borderStyle"; "none"; \
+	"text"; ""; \
+	"left"; $bubbleLeft; \
+	"top"; $top; \
+	"width"; $bubbleWidth; \
+	"height"; $bubbleHeight; \
+	"fill"; "transparent"; \
+	"focusable"; False; \
+	"helpTip"; "Clic droit pour convertir ce message en tâche"; \
+	"events"; New collection("onClick"))
+	$pageObjects["btnMessage"+String($message.ID)]:=$messageButton
 	
 	$top:=$top+$bubbleHeight
 End for each 
@@ -261,4 +276,6 @@ $form.width:=$effectiveWidth
 $form.height:=$top
 $form.rightMargin:=0
 $form.bottomMargin:=0
+$form.events:=New collection("onClick")
+$form.method:="Conversation_message_events"
 $form.pages:=New collection(New object("objects"; New object); $page)

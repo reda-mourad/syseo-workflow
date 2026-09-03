@@ -126,9 +126,7 @@
 					"width": 1280,
 					"height": 400,
 					"events": [
-						"onClick",
-						"onHeaderClick",
-						"onDataChange"
+						"onClick"
 					],
 					"listboxType": "collection",
 					"dataSource": "Form:C1466.handler.tasks",
@@ -145,7 +143,7 @@
 					"rowHeightAutoMin": "1em",
 					"rowHeightAutoMax": "1600em",
 					"sortable": false,
-					"showHeaders": false,
+					"showHeaders": true,
 					"selectionMode": "single",
 					"hideSystemHighlight": true,
 					"currentItemSource": "Form:C1466.handler.selectedTask",
@@ -184,7 +182,7 @@
 							"dataSource": "This:C1470.description",
 							"horizontalPadding": 5,
 							"verticalPadding": 5,
-							"width": 512,
+							"width": 485,
 							"rowHeightAuto": true,
 							"wordwrap": "normal",
 							"verticalAlign": "middle",
@@ -214,7 +212,7 @@
 								"name": "headerCategories"
 							},
 							"name": "columnCategories",
-							"width": 308,
+							"width": 280,
 							"footer": {
 								"name": "footerCategories"
 							},
@@ -224,6 +222,24 @@
 							"rowHeightAuto": true,
 							"wordwrap": "normal",
 							"verticalAlign": "middle",
+							"enterable": false
+						},
+						{
+							"header": {
+								"text": "Messages non lus",
+								"name": "headerUnreadMessages"
+							},
+							"name": "columnUnreadMessages",
+							"width": 110,
+							"footer": {
+								"name": "footerUnreadMessages"
+							},
+							"dataSource": "Form:C1466.handler.taskUnreadMessageCount(This:C1470.ID)",
+							"dataSourceTypeHint": "number",
+							"horizontalPadding": 5,
+							"verticalPadding": 5,
+							"verticalAlign": "middle",
+							"textAlign": "center",
 							"enterable": false
 						},
 						{
@@ -290,7 +306,7 @@
 					"text": "Button",
 					"top": 20,
 					"left": 671,
-					"width": 400,
+					"width": 420,
 					"height": 30,
 					"events": [
 						"onClick"
@@ -442,6 +458,31 @@
 					],
 					"style": "custom",
 					"sizingX": "move",
+					"sizingY": "move"
+				},
+				"bgDelete": {
+					"type": "rectangle",
+					"top": 475,
+					"left": 671,
+					"width": 200,
+					"height": 30,
+					"stroke": "#c0c0c0",
+					"fill": "#F5B7B1",
+					"visible": false,
+					"sizingY": "move"
+				},
+				"btnDelete": {
+					"type": "button",
+					"text": "Supprimer",
+					"top": 475,
+					"left": 671,
+					"width": 200,
+					"height": 30,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"visible": false,
 					"sizingY": "move"
 				},
 				"bgBack": {
@@ -659,7 +700,7 @@
 			}
 		}
 	],
-	"geometryStamp": 566,
+	"geometryStamp": 573,
 	"method": "method.4dm",
 	"editor": {
 		"groups": {
@@ -670,6 +711,10 @@
 			"Group1": [
 				"chkTodayTasks",
 				"chkCompletedTasks"
+			],
+			"Group10": [
+				"bgDelete",
+				"btnDelete"
 			],
 			"Group2": [
 				"rdbAllTasks",

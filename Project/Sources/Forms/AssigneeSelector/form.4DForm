@@ -3,10 +3,6 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"windowSizingX": "variable",
-	"windowSizingY": "variable",
-	"windowMinWidth": 500,
-	"windowMinHeight": 350,
 	"rightMargin": 20,
 	"bottomMargin": 20,
 	"windowTitle": "Sélection des assignés",
@@ -14,7 +10,7 @@
 	"events": [
 		"onLoad",
 		"onDataChange",
-		"onSelectionChange"
+		"onClick"
 	],
 	"pages": [
 		{
@@ -22,20 +18,10 @@
 		},
 		{
 			"objects": {
-				"txtTitle": {
-					"type": "text",
-					"text": "Sélection des assignés",
-					"left": 20,
-					"top": 20,
-					"width": 250,
-					"height": 24,
-					"fontSize": 18,
-					"fontWeight": "bold"
-				},
 				"bgSearch": {
 					"type": "rectangle",
 					"left": 20,
-					"top": 60,
+					"top": 25,
 					"width": 760,
 					"height": 34,
 					"stroke": "#c0c0c0",
@@ -44,7 +30,7 @@
 				"inputSearch": {
 					"type": "input",
 					"left": 30,
-					"top": 68,
+					"top": 33,
 					"width": 740,
 					"height": 18,
 					"placeholder": "Rechercher par nom ou initiales",
@@ -59,16 +45,17 @@
 				"lbAssignees": {
 					"type": "listbox",
 					"left": 20,
-					"top": 110,
+					"top": 75,
 					"width": 760,
 					"height": 320,
 					"events": [
-						"onSelectionChange"
+						"onClick"
 					],
 					"listboxType": "collection",
 					"dataSource": "Form:C1466.handler.assignees",
-					"selectedItemsSource": "Form:C1466.handler.selectedAssignees",
-					"selectionMode": "multiple",
+					"selectionMode": "single",
+					"hideSystemHighlight": true,
+					"singleClickEdit": true,
 					"sortable": false,
 					"showHeaders": true,
 					"headerHeight": "30px",
@@ -77,49 +64,80 @@
 					"scrollbarVertical": "automatic",
 					"sizingX": "grow",
 					"sizingY": "grow",
+					"resizingMode": "legacy",
 					"columns": [
 						{
 							"header": {
-								"text": "Nom",
-								"name": "headerName"
+								"text": "",
+								"name": "headerAssigneeSelected"
 							},
-							"name": "columnName",
-							"width": 360,
-							"dataSource": "This:C1470.Nom",
-							"enterable": false,
-							"horizontalPadding": 6,
-							"verticalAlign": "middle"
+							"name": "columnAssigneeSelected",
+							"width": 44,
+							"dataSource": "This:C1470.selected",
+							"dataSourceTypeHint": "boolean",
+							"controlType": "checkbox",
+							"events": [
+								"onDataChange"
+							],
+							"enterable": true,
+							"textAlign": "center",
+							"horizontalPadding": 5,
+							"verticalAlign": "middle",
+							"footer": {
+								"name": "Footer1"
+							}
 						},
 						{
 							"header": {
 								"text": "Initiales",
-								"name": "headerInitials"
+								"name": "headerAssigneeInitials"
 							},
-							"name": "columnInitials",
-							"width": 120,
-							"dataSource": "This:C1470.Initiales",
+							"name": "columnAssigneeInitials",
+							"width": 78,
+							"dataSource": "This:C1470.initials",
 							"enterable": false,
 							"horizontalPadding": 6,
-							"verticalAlign": "middle"
+							"verticalAlign": "middle",
+							"footer": {
+								"name": "Footer2"
+							}
 						},
 						{
 							"header": {
-								"text": "Spécialité",
-								"name": "headerSpecialty"
+								"text": "Profil",
+								"name": "headerAssigneeProfile"
 							},
-							"name": "columnSpecialty",
-							"width": 260,
-							"dataSource": "This:C1470.Spécialité",
+							"name": "columnAssigneeProfile",
+							"width": 150,
+							"dataSource": "This:C1470.profile",
 							"enterable": false,
 							"horizontalPadding": 6,
-							"verticalAlign": "middle"
+							"verticalAlign": "middle",
+							"footer": {
+								"name": "Footer3"
+							}
+						},
+						{
+							"header": {
+								"text": "Nom",
+								"name": "headerAssigneeName"
+							},
+							"name": "columnAssigneeName",
+							"width": 433,
+							"dataSource": "This:C1470.name",
+							"enterable": false,
+							"horizontalPadding": 6,
+							"verticalAlign": "middle",
+							"footer": {
+								"name": "Footer4"
+							}
 						}
 					]
 				},
 				"bgCancel": {
 					"type": "rectangle",
 					"left": 360,
-					"top": 450,
+					"top": 415,
 					"width": 200,
 					"height": 30,
 					"stroke": "#c0c0c0",
@@ -134,7 +152,7 @@
 					"text": "Annuler",
 					"action": "cancel",
 					"left": 360,
-					"top": 450,
+					"top": 415,
 					"width": 200,
 					"height": 30,
 					"sizingX": "move",
@@ -143,7 +161,7 @@
 				"bgSelect": {
 					"type": "rectangle",
 					"left": 580,
-					"top": 450,
+					"top": 415,
 					"width": 200,
 					"height": 30,
 					"stroke": "#c0c0c0",
@@ -158,7 +176,7 @@
 					"text": "Sélectionner",
 					"action": "accept",
 					"left": 580,
-					"top": 450,
+					"top": 415,
 					"width": 200,
 					"height": 30,
 					"sizingX": "move",
@@ -167,7 +185,7 @@
 			}
 		}
 	],
-	"geometryStamp": 1,
+	"geometryStamp": 9,
 	"method": "method.4dm",
 	"editor": {
 		"groups": {
@@ -185,5 +203,7 @@
 		"views": {
 			"View 1": {}
 		}
-	}
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed"
 }

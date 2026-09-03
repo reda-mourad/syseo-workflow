@@ -21,21 +21,18 @@ var $today; $dueDate; $createdDate; $updatedDate; $messageDate : Date
 var $isUrgent : Boolean
 
 // Delete dependent entities first so that all relations remain valid during cleanup.
-ds.TaskActivity.all().drop()
-ds.TaskComment.all().drop()
 ds.TaskTag.all().drop()
 ds.TaskAssignee.all().drop()
 ds.Task.all().drop()
 ds.Tag.all().drop()
-ds.MessageRevision.all().drop()
 ds.Message.all().drop()
 ds.ConversationMember.all().drop()
 ds.Conversation.all().drop()
-//ds.Patient.all().drop()
-//ds.Utilisateur.all().drop()
+ds.Patient.all().drop()
+ds.Utilisateur.all().drop()
 
-//$users:=ds.Utilisateur.fromCollection(JSON Parse(Folder(fk desktop folder).file("users.json").getText()))
-//ds.Patient.fromCollection(JSON Parse(Folder(fk desktop folder).file("patients.json").getText()))
+$users:=ds.Utilisateur.fromCollection(JSON Parse(Folder(fk desktop folder).file("users.json").getText()))
+ds.Patient.fromCollection(JSON Parse(Folder(fk desktop folder).file("patients.json").getText()))
 $users:=ds.Utilisateur.all()
 $patients:=ds.Patient.all()
 

@@ -91,7 +91,7 @@
 					"type": "button",
 					"style": "custom",
 					"borderStyle": "none",
-					"text": "Tâches",
+					"text": "Tâches urgentes",
 					"left": 40,
 					"top": 164,
 					"width": 280,

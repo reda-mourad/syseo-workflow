@@ -96,9 +96,22 @@ Function conversationColor($conversation : Object)->$color : Integer
 	End if 
 
 
+Function setWindowTitle()
+	var $user : cs.UtilisateurEntity
+	var $userLabel : Text
+
+	$userLabel:="Utilisateur #"+String(This.userId)
+	$user:=ds.Utilisateur.get(This.userId)
+	If ($user#Null)
+		$userLabel:=$user.Nom
+	End if 
+	SET WINDOW TITLE("Messagerie — "+$userLabel; Current form window)
+
+
 Function handleEvents()
 	Case of 
 		: (FORM Event.code=On Load)
+			This.setWindowTitle()
 			Messaging_Client_Set_window(Current form window; True)
 			This.loadConversationPanel()
 

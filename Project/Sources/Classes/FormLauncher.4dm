@@ -1,13 +1,13 @@
 property userId : Integer
 property unreadConversationCount : Integer
-property remainingTaskCount : Integer
+property urgentTaskCount : Integer
 property messageBadge : Text
 property taskBadge : Text
 
 Class constructor($userId : Integer)
 	This.userId:=$userId
 	This.unreadConversationCount:=0
-	This.remainingTaskCount:=0
+	This.urgentTaskCount:=0
 	This.messageBadge:="0"
 	This.taskBadge:="0"
 	This.refreshBadges()
@@ -19,9 +19,9 @@ Function refreshBadges()
 	$response:=Launcher_Server_Counts(This.userId)
 	If ($response.success)
 		This.unreadConversationCount:=$response.unreadConversations
-		This.remainingTaskCount:=$response.remainingTasks
+		This.urgentTaskCount:=$response.urgentTasks
 		This.messageBadge:=String(This.unreadConversationCount)
-		This.taskBadge:=String(This.remainingTaskCount)
+		This.taskBadge:=String(This.urgentTaskCount)
 	End if 
 
 

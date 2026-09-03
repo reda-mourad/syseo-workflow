@@ -3,10 +3,6 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"windowSizingX": "variable",
-	"windowSizingY": "variable",
-	"windowMinWidth": 500,
-	"windowMinHeight": 350,
 	"rightMargin": 20,
 	"bottomMargin": 20,
 	"windowTitle": "Sélection des catégories",
@@ -14,7 +10,7 @@
 	"events": [
 		"onLoad",
 		"onDataChange",
-		"onSelectionChange"
+		"onClick"
 	],
 	"pages": [
 		{
@@ -22,30 +18,20 @@
 		},
 		{
 			"objects": {
-				"txtTitle": {
-					"type": "text",
-					"text": "Sélection des catégories",
-					"left": 20,
-					"top": 20,
-					"width": 250,
-					"height": 24,
-					"fontSize": 18,
-					"fontWeight": "bold"
-				},
 				"bgSearch": {
 					"type": "rectangle",
-					"left": 20,
-					"top": 60,
-					"width": 760,
+					"left": 18,
+					"top": 20,
+					"width": 420,
 					"height": 34,
 					"stroke": "#c0c0c0",
 					"sizingX": "grow"
 				},
 				"inputSearch": {
 					"type": "input",
-					"left": 30,
-					"top": 68,
-					"width": 740,
+					"left": 28,
+					"top": 28,
+					"width": 400,
 					"height": 18,
 					"placeholder": "Rechercher une catégorie",
 					"dataSource": "Form:C1466.handler.searchText",
@@ -58,18 +44,20 @@
 				},
 				"lbCategories": {
 					"type": "listbox",
-					"left": 20,
-					"top": 110,
-					"width": 760,
+					"left": 18,
+					"top": 70,
+					"width": 420,
 					"height": 320,
 					"events": [
-						"onSelectionChange"
+						"onClick"
 					],
 					"listboxType": "collection",
 					"dataSource": "Form:C1466.handler.categories",
-					"selectedItemsSource": "Form:C1466.handler.selectedCategories",
-					"selectionMode": "multiple",
+					"selectionMode": "single",
+					"hideSystemHighlight": true,
+					"singleClickEdit": true,
 					"sortable": false,
+					"metaSource": "Form:C1466.handler.categoryMeta(This:C1470)",
 					"showHeaders": true,
 					"headerHeight": "30px",
 					"rowHeight": "26px",
@@ -77,51 +65,49 @@
 					"scrollbarVertical": "automatic",
 					"sizingX": "grow",
 					"sizingY": "grow",
+					"resizingMode": "legacy",
 					"columns": [
 						{
 							"header": {
-								"text": "Catégorie",
-								"name": "headerLabel"
+								"text": "",
+								"name": "headerCategorySelected"
 							},
-							"name": "columnLabel",
-							"width": 400,
+							"name": "columnCategorySelected",
+							"width": 44,
+							"dataSource": "This:C1470.selected",
+							"dataSourceTypeHint": "boolean",
+							"controlType": "checkbox",
+							"events": [
+								"onDataChange"
+							],
+							"enterable": true,
+							"textAlign": "center",
+							"horizontalPadding": 5,
+							"verticalAlign": "middle",
+							"footer": {
+								"name": "Footer1"
+							}
+						},
+						{
+							"header": {
+								"text": "Catégorie",
+								"name": "headerCategoryName"
+							},
+							"name": "columnCategoryName",
 							"dataSource": "This:C1470.label",
 							"enterable": false,
 							"horizontalPadding": 6,
-							"verticalAlign": "middle"
-						},
-						{
-							"header": {
-								"text": "Couleur",
-								"name": "headerColor"
-							},
-							"name": "columnColor",
-							"width": 200,
-							"dataSource": "This:C1470.color",
-							"enterable": false,
-							"horizontalPadding": 6,
-							"verticalAlign": "middle"
-						},
-						{
-							"header": {
-								"text": "Active",
-								"name": "headerActive"
-							},
-							"name": "columnActive",
-							"width": 140,
-							"dataSource": "This:C1470.is_active",
-							"controlType": "checkbox",
-							"enterable": false,
-							"horizontalPadding": 6,
-							"textAlign": "center",
-							"verticalAlign": "middle"
+							"verticalAlign": "middle",
+							"footer": {
+								"name": "Footer2"
+							}
 						}
 					]
 				},
 				"bgCancel": {
 					"type": "rectangle",
-					"left": 360,
-					"top": 450,
+					"left": 18,
+					"top": 410,
 					"width": 200,
 					"height": 30,
 					"stroke": "#c0c0c0",
@@ -135,8 +121,8 @@
 					"borderStyle": "none",
 					"text": "Annuler",
 					"action": "cancel",
-					"left": 360,
-					"top": 450,
+					"left": 18,
+					"top": 410,
 					"width": 200,
 					"height": 30,
 					"sizingX": "move",
@@ -144,8 +130,8 @@
 				},
 				"bgSelect": {
 					"type": "rectangle",
-					"left": 580,
-					"top": 450,
+					"left": 238,
+					"top": 410,
 					"width": 200,
 					"height": 30,
 					"stroke": "#c0c0c0",
@@ -159,8 +145,8 @@
 					"borderStyle": "none",
 					"text": "Sélectionner",
 					"action": "accept",
-					"left": 580,
-					"top": 450,
+					"left": 238,
+					"top": 410,
 					"width": 200,
 					"height": 30,
 					"sizingX": "move",
@@ -169,7 +155,7 @@
 			}
 		}
 	],
-	"geometryStamp": 1,
+	"geometryStamp": 14,
 	"method": "method.4dm",
 	"editor": {
 		"groups": {
@@ -187,5 +173,7 @@
 		"views": {
 			"View 1": {}
 		}
-	}
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed"
 }

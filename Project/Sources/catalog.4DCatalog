@@ -308,14 +308,6 @@
 		<field name="deleted_at" uuid="5D74B050274D48FE8D8C918E3D7BAAA0" type="10" limiting_length="24" id="7"/>
 		<primary_key field_name="ID" field_uuid="C4D6A1FE6B7044FB807CDEDC095DBEB0"/>
 	</table>
-	<table name="MessageRevision" uuid="9C2DB23A83734D7F89D72B1D9CCE6C27" id="6">
-		<field name="ID" uuid="610D30C3BAEC4F0589376DD319463D10" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
-		<field name="ID_Message" uuid="DDD459F643F342448BB81C38AAD29120" type="4" not_null="true" id="2"/>
-		<field name="ID_editor" uuid="97BFA2E16B874EB68D770A68C7DC53A0" type="4" not_null="true" id="3"/>
-		<field name="body" uuid="E74A9EBBD11D4874817895FA5562085A" type="10" not_null="true" id="4"/>
-		<field name="created_at" uuid="B7FE3676D2DE483F88B8D0C324EA7E04" type="10" limiting_length="24" id="5"/>
-		<primary_key field_name="ID" field_uuid="610D30C3BAEC4F0589376DD319463D10"/>
-	</table>
 	<table name="Task" uuid="569CBDEDA5C648D387A5CBF3AEB7577C" id="8">
 		<field name="ID" uuid="78A1B519A55149AE87370F63642DE29C" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
 		<field name="description" uuid="EC7BB31066EE466685902E546DB8A412" type="10" id="3"/>
@@ -325,8 +317,6 @@
 		<field name="created_at" uuid="403BE8C691444CED84AFDC0C6663783B" type="10" limiting_length="24" id="8"/>
 		<field name="updated_at" uuid="502F3652B2B84E3B8A9A81D1A81208FA" type="10" limiting_length="24" id="9"/>
 		<field name="completed_at" uuid="7D0E9C74448E490B869F544C93359E42" type="10" limiting_length="24" id="10"/>
-		<field name="cancelled_at" uuid="416C9DD50201465D8C57E97DD4B40689" type="10" limiting_length="24" id="11"/>
-		<field name="deleted_at" uuid="42CBD303B2F74F50893AEEBDE1574EF6" type="10" limiting_length="24" id="12"/>
 		<field name="is_urgent" uuid="6864FDE29E704C2084E20C09631BF7DD" type="1" not_null="true" id="13"/>
 		<field name="ID_Conversation" uuid="30795CBBB9494F64A1A033600BAF17B2" type="4" id="14"/>
 		<primary_key field_name="ID" field_uuid="78A1B519A55149AE87370F63642DE29C"/>
@@ -343,7 +333,6 @@
 		<field name="label" uuid="9BBCEA3D7CD145558C2061F86C6C380D" type="10" limiting_length="255" not_null="true" id="2"/>
 		<field name="color" uuid="8AFB034EEE5843688FC7BDAABBEC62D5" type="10" limiting_length="32" id="3"/>
 		<field name="is_active" uuid="115B1FFF6932497988BBBBE1C34B8959" type="1" not_null="true" id="4"/>
-		<field name="created_at" uuid="5BFAC4418CBE49728F2C0F14132284F7" type="10" limiting_length="24" id="5"/>
 		<primary_key field_name="ID" field_uuid="284F1E32005E4AB28EC335B04A091482"/>
 	</table>
 	<table name="TaskTag" uuid="6A83019E0B924E5A8A6D98B245315F47" id="11">
@@ -351,25 +340,6 @@
 		<field name="ID_Task" uuid="58759BD1076749158F810E609CD6DB25" type="4" not_null="true" id="2"/>
 		<field name="ID_Tag" uuid="198D34C3A25F4B9F8A98B5285DB04D18" type="4" not_null="true" id="3"/>
 		<primary_key field_name="ID" field_uuid="1F60749B5C30433F8E3F0259FCA6D2E5"/>
-	</table>
-	<table name="TaskComment" uuid="763BC09F6FDF461885614FFFEC48F7CB" id="12">
-		<field name="ID" uuid="F68A46BBDFE542EA8A0AB213370182A6" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
-		<field name="ID_Task" uuid="DC69D3C9B324423F8F9A6AF0E3F1AE7B" type="4" not_null="true" id="2"/>
-		<field name="ID_author" uuid="E8A00EB92AFC43208E12372A245C828B" type="4" not_null="true" id="3"/>
-		<field name="kind" uuid="367A580ED47D46828CB767229A8A28B4" type="10" limiting_length="20" not_null="true" id="4"/>
-		<field name="body" uuid="9CF9CB271B3045258C56CF0721E8472F" type="10" not_null="true" id="5"/>
-		<field name="created_at" uuid="0F7C493B12134BF288F4CEBAC9C89BC5" type="10" limiting_length="24" id="6"/>
-		<field name="deleted_at" uuid="CF3998144BDA4CB78C64ECC0745552E0" type="10" limiting_length="24" id="7"/>
-		<primary_key field_name="ID" field_uuid="F68A46BBDFE542EA8A0AB213370182A6"/>
-	</table>
-	<table name="TaskActivity" uuid="850F9162FC7E44E68D179C20955CC8AE" id="13">
-		<field name="ID" uuid="F6F8122B9D364E2185A97DF99D59ADE3" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
-		<field name="ID_Task" uuid="99E5999B05A241C589737B4007097E35" type="4" not_null="true" id="2"/>
-		<field name="ID_actor" uuid="C925091534AE49518EA214F23D294383" type="4" not_null="true" id="3"/>
-		<field name="action" uuid="7A873099AEC54E2780C99B9181DCFCA6" type="10" limiting_length="100" not_null="true" id="4"/>
-		<field name="details" uuid="EF0A398A16AE485A898E7B0B4C46EF36" type="21" blob_switch_size="2147483647" id="5"/>
-		<field name="created_at" uuid="486EC736B43B437E8BC32129505168E9" type="10" limiting_length="24" id="6"/>
-		<primary_key field_name="ID" field_uuid="F6F8122B9D364E2185A97DF99D59ADE3"/>
 	</table>
 	<relation uuid="FCEEA07B03F4426A811603FBA09CD54A" name_Nto1="creator" name_1toN="createdConversations" state="1">
 		<related_field kind="source">
@@ -423,30 +393,6 @@
 		<related_field kind="source">
 			<field_ref uuid="61ADE331EF7740DA85637AE954955EE1" name="ID_sender">
 				<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message"/>
-			</field_ref>
-		</related_field>
-		<related_field kind="destination">
-			<field_ref uuid="42B89A41E4789A49BCDE67BF5434DE6F" name="xNumUser">
-				<table_ref uuid="5E35284DDAEBFA4D8356C24B552461AD" name="Utilisateur"/>
-			</field_ref>
-		</related_field>
-	</relation>
-	<relation uuid="CD804FFE537F4C2F82718A3C66A455F3" name_Nto1="message" name_1toN="revisions" state="1">
-		<related_field kind="source">
-			<field_ref uuid="DDD459F643F342448BB81C38AAD29120" name="ID_Message">
-				<table_ref uuid="9C2DB23A83734D7F89D72B1D9CCE6C27" name="MessageRevision"/>
-			</field_ref>
-		</related_field>
-		<related_field kind="destination">
-			<field_ref uuid="C4D6A1FE6B7044FB807CDEDC095DBEB0" name="ID">
-				<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message"/>
-			</field_ref>
-		</related_field>
-	</relation>
-	<relation uuid="8D5119076A48477288CD6AEF408B8A11" name_Nto1="editor" name_1toN="editedMessageRevisions" state="1">
-		<related_field kind="source">
-			<field_ref uuid="97BFA2E16B874EB68D770A68C7DC53A0" name="ID_editor">
-				<table_ref uuid="9C2DB23A83734D7F89D72B1D9CCE6C27" name="MessageRevision"/>
 			</field_ref>
 		</related_field>
 		<related_field kind="destination">
@@ -563,65 +509,9 @@
 			</field_ref>
 		</related_field>
 	</relation>
-	<relation uuid="4198D8C5EC9648C589E9F5CB8C7D3890" name_Nto1="task" name_1toN="comments" state="1">
-		<related_field kind="source">
-			<field_ref uuid="DC69D3C9B324423F8F9A6AF0E3F1AE7B" name="ID_Task">
-				<table_ref uuid="763BC09F6FDF461885614FFFEC48F7CB" name="TaskComment"/>
-			</field_ref>
-		</related_field>
-		<related_field kind="destination">
-			<field_ref uuid="78A1B519A55149AE87370F63642DE29C" name="ID">
-				<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task"/>
-			</field_ref>
-		</related_field>
-	</relation>
-	<relation uuid="82496516A1044C2982628E5D993A209C" name_Nto1="author" name_1toN="authoredTaskComments" state="1">
-		<related_field kind="source">
-			<field_ref uuid="E8A00EB92AFC43208E12372A245C828B" name="ID_author">
-				<table_ref uuid="763BC09F6FDF461885614FFFEC48F7CB" name="TaskComment"/>
-			</field_ref>
-		</related_field>
-		<related_field kind="destination">
-			<field_ref uuid="42B89A41E4789A49BCDE67BF5434DE6F" name="xNumUser">
-				<table_ref uuid="5E35284DDAEBFA4D8356C24B552461AD" name="Utilisateur"/>
-			</field_ref>
-		</related_field>
-	</relation>
-	<relation uuid="EEC7A47BDAAE4847873ABC76438CC689" name_Nto1="task" name_1toN="activities" state="1">
-		<related_field kind="source">
-			<field_ref uuid="99E5999B05A241C589737B4007097E35" name="ID_Task">
-				<table_ref uuid="850F9162FC7E44E68D179C20955CC8AE" name="TaskActivity"/>
-			</field_ref>
-		</related_field>
-		<related_field kind="destination">
-			<field_ref uuid="78A1B519A55149AE87370F63642DE29C" name="ID">
-				<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task"/>
-			</field_ref>
-		</related_field>
-	</relation>
-	<relation uuid="24AA547BFE4C415D8D392149543DED32" name_Nto1="actor" name_1toN="taskActivities" state="1">
-		<related_field kind="source">
-			<field_ref uuid="C925091534AE49518EA214F23D294383" name="ID_actor">
-				<table_ref uuid="850F9162FC7E44E68D179C20955CC8AE" name="TaskActivity"/>
-			</field_ref>
-		</related_field>
-		<related_field kind="destination">
-			<field_ref uuid="42B89A41E4789A49BCDE67BF5434DE6F" name="xNumUser">
-				<table_ref uuid="5E35284DDAEBFA4D8356C24B552461AD" name="Utilisateur"/>
-			</field_ref>
-		</related_field>
-	</relation>
 	<index kind="regular" name="Task_conversation" uuid="0D8D833C76DE463194CEABF0EB6BE020" type="3">
 		<field_ref uuid="30795CBBB9494F64A1A033600BAF17B2" name="ID_Conversation">
 			<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task"/>
-		</field_ref>
-	</index>
-	<index kind="regular" name="TaskComment_task_created" uuid="0E84FA9A2BE84BEF8AC51E4260C800A0" type="1">
-		<field_ref uuid="DC69D3C9B324423F8F9A6AF0E3F1AE7B" name="ID_Task">
-			<table_ref uuid="763BC09F6FDF461885614FFFEC48F7CB" name="TaskComment"/>
-		</field_ref>
-		<field_ref uuid="0F7C493B12134BF288F4CEBAC9C89BC5" name="created_at">
-			<table_ref uuid="763BC09F6FDF461885614FFFEC48F7CB" name="TaskComment"/>
 		</field_ref>
 	</index>
 	<index kind="regular" name="Task_completion_due" uuid="1D2BB5C1878B46AC80BC0B331293FEEB" type="1">
@@ -657,30 +547,9 @@
 			<table_ref uuid="6A83019E0B924E5A8A6D98B245315F47" name="TaskTag"/>
 		</field_ref>
 	</index>
-	<index kind="regular" name="MessageRevision_message_created" uuid="5CA76595B88F484284964B8DCA87242F" type="1">
-		<field_ref uuid="DDD459F643F342448BB81C38AAD29120" name="ID_Message">
-			<table_ref uuid="9C2DB23A83734D7F89D72B1D9CCE6C27" name="MessageRevision"/>
-		</field_ref>
-		<field_ref uuid="B7FE3676D2DE483F88B8D0C324EA7E04" name="created_at">
-			<table_ref uuid="9C2DB23A83734D7F89D72B1D9CCE6C27" name="MessageRevision"/>
-		</field_ref>
-	</index>
-	<index kind="regular" unique_keys="true" name="MessageRevision_ID" uuid="60A1B578F6A3413B8C7988EEE1BCC7C7" type="7">
-		<field_ref uuid="610D30C3BAEC4F0589376DD319463D10" name="ID">
-			<table_ref uuid="9C2DB23A83734D7F89D72B1D9CCE6C27" name="MessageRevision"/>
-		</field_ref>
-	</index>
 	<index kind="regular" unique_keys="true" uuid="6A97F5DCCF1A0243B6417B0FCB3FC488" type="1">
 		<field_ref uuid="42B89A41E4789A49BCDE67BF5434DE6F" name="xNumUser">
 			<table_ref uuid="5E35284DDAEBFA4D8356C24B552461AD" name="Utilisateur"/>
-		</field_ref>
-	</index>
-	<index kind="regular" name="TaskActivity_task_created" uuid="853319DC7EC94C0187344A1FF81CAE5D" type="1">
-		<field_ref uuid="99E5999B05A241C589737B4007097E35" name="ID_Task">
-			<table_ref uuid="850F9162FC7E44E68D179C20955CC8AE" name="TaskActivity"/>
-		</field_ref>
-		<field_ref uuid="486EC736B43B437E8BC32129505168E9" name="created_at">
-			<table_ref uuid="850F9162FC7E44E68D179C20955CC8AE" name="TaskActivity"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" name="TaskAssignee_assignment" uuid="880F17EDF62F4C018523A869A50E2FFF" type="1">
@@ -694,11 +563,6 @@
 	<index kind="regular" unique_keys="true" name="Task_ID" uuid="91CC0FFDB4B04B258CB4FF7596B65F45" type="7">
 		<field_ref uuid="78A1B519A55149AE87370F63642DE29C" name="ID">
 			<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task"/>
-		</field_ref>
-	</index>
-	<index kind="regular" unique_keys="true" name="TaskActivity_ID" uuid="943A4452539A4D0688DF5D0A79AB1FFE" type="7">
-		<field_ref uuid="F6F8122B9D364E2185A97DF99D59ADE3" name="ID">
-			<table_ref uuid="850F9162FC7E44E68D179C20955CC8AE" name="TaskActivity"/>
 		</field_ref>
 	</index>
 	<index kind="regular" name="Conversation_creator" uuid="9576B774AC3B4C3684F5A39C9DED92F7" type="3">
@@ -726,29 +590,9 @@
 			<table_ref uuid="FA881584FA334247A62D2AAFCC421EB7" name="Patient"/>
 		</field_ref>
 	</index>
-	<index kind="regular" name="MessageRevision_editor" uuid="B73ACFE7541A43148D82B02CDEAAB89C" type="3">
-		<field_ref uuid="97BFA2E16B874EB68D770A68C7DC53A0" name="ID_editor">
-			<table_ref uuid="9C2DB23A83734D7F89D72B1D9CCE6C27" name="MessageRevision"/>
-		</field_ref>
-	</index>
-	<index kind="regular" name="TaskComment_author" uuid="BAB6A82C1535406787CEC77EC857B95A" type="3">
-		<field_ref uuid="E8A00EB92AFC43208E12372A245C828B" name="ID_author">
-			<table_ref uuid="763BC09F6FDF461885614FFFEC48F7CB" name="TaskComment"/>
-		</field_ref>
-	</index>
 	<index kind="regular" name="TaskAssignee_user" uuid="C57869767AE246498EBE33D42A475C9C" type="3">
 		<field_ref uuid="79B328B8CF8845308A07D4BB789DF5BB" name="ID_Utilisateur">
 			<table_ref uuid="14DB888A59254A328B1F95738F0F4CFA" name="TaskAssignee"/>
-		</field_ref>
-	</index>
-	<index kind="regular" unique_keys="true" name="TaskComment_ID" uuid="C6DEB330A1BD45DB8ECBECF81612F818" type="7">
-		<field_ref uuid="F68A46BBDFE542EA8A0AB213370182A6" name="ID">
-			<table_ref uuid="763BC09F6FDF461885614FFFEC48F7CB" name="TaskComment"/>
-		</field_ref>
-	</index>
-	<index kind="regular" name="TaskActivity_actor" uuid="C9348DE68DB74109881FDAAD694298AE" type="3">
-		<field_ref uuid="C925091534AE49518EA214F23D294383" name="ID_actor">
-			<table_ref uuid="850F9162FC7E44E68D179C20955CC8AE" name="TaskActivity"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" name="ConversationMember_membership" uuid="C940EF31C5D74CBA8F9D746D080ACF17" type="1">

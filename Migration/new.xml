@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd"[]>
+<base name="SyseoWorkflowSchemaMigration" uuid="76B87E2EBF1F45B8BE9241ADA586A882" collation_locale="en">
+	<schema name="DEFAULT_SCHEMA" />
+	<table name="Conversation" uuid="230B9D5257B74A898F0618C40C26CF86" id="298">
+		<field name="ID" uuid="8898B8DAE74F49E88924A53D5FEC34A4" type="4" unique="true" autosequence="true" not_null="true" id="1" />
+		<field name="kind" uuid="B2424049D41E4A4B81CBF7ED69E1A161" type="10" limiting_length="20" not_null="true" id="2" />
+		<field name="name" uuid="6924F69324F04E6385A68D4385676842" type="10" limiting_length="255" id="3" />
+		<field name="ID_creator" uuid="C6763F68582C4F2687BA41224DEC7561" type="4" not_null="true" id="4" />
+		<field name="created_at" uuid="44CC424D3FF442848F1C449D33358FF8" type="10" limiting_length="24" id="5" />
+		<field name="updated_at" uuid="6B4E619B485849D887C7F31AF7C6ACA4" type="10" limiting_length="24" id="6" />
+		<field name="deleted_at" uuid="73C774526EE848E186B7C636AB74172A" type="10" limiting_length="24" id="7" />
+		<primary_key field_name="ID" field_uuid="8898B8DAE74F49E88924A53D5FEC34A4" />
+	</table>
+	<table name="ConversationMember" uuid="A4807F8119CB4A71818EC040767301EA" id="299">
+		<field name="ID" uuid="1E2E0361739E436D82FD181EBFF366C1" type="4" unique="true" autosequence="true" not_null="true" id="1" />
+		<field name="ID_Conversation" uuid="FA35F0E018D14B7D85AAE6AE4EDD44EB" type="4" not_null="true" id="2" />
+		<field name="ID_Utilisateur" uuid="E4EC6B9DB32F430486957826AEACE30B" type="4" not_null="true" id="3" />
+		<field name="joined_at" uuid="EA2A3FB3F8324C0285F732CABBD267AA" type="10" limiting_length="24" id="4" />
+		<field name="left_at" uuid="0966D0E1487344A282B1214E76187041" type="10" limiting_length="24" id="5" />
+		<field name="notifications_enabled" uuid="A71ECBA56A76418C8F13674AF1E4EACD" type="1" not_null="true" id="6" />
+		<field name="ID_last_received_message" uuid="7693C4FB90F54F66AA006FE04825804B" type="4" id="7" />
+		<field name="ID_last_read_message" uuid="F85F1EE441D94EDA8D9B019C056C10DE" type="4" id="8" />
+		<field name="last_received_at" uuid="24AF71E134994D5E97679CC2FB512EC2" type="10" limiting_length="24" id="9" />
+		<field name="last_read_at" uuid="96D2459C6372403BB39D87BC2AB48F9D" type="10" limiting_length="24" id="10" />
+		<primary_key field_name="ID" field_uuid="1E2E0361739E436D82FD181EBFF366C1" />
+	</table>
+	<table name="Message" uuid="E03EE0C4A9A641828381162EDDF670ED" id="300">
+		<field name="ID" uuid="C4D6A1FE6B7044FB807CDEDC095DBEB0" type="4" unique="true" autosequence="true" not_null="true" id="1" />
+		<field name="ID_Conversation" uuid="CE4611A9A46A41D687D6759CE84656AB" type="4" not_null="true" id="2" />
+		<field name="ID_sender" uuid="61ADE331EF7740DA85637AE954955EE1" type="4" not_null="true" id="3" />
+		<field name="body" uuid="D655D77274564BA18A8EFFC271894AE1" type="10" not_null="true" id="4" />
+		<field name="created_at" uuid="2AA4821E59DC41538A21CF7D57AA4CEC" type="10" limiting_length="24" id="5" />
+		<field name="edited_at" uuid="E4F2BD11E6864D17812A6E1D90262B4C" type="10" limiting_length="24" id="6" />
+		<field name="deleted_at" uuid="5D74B050274D48FE8D8C918E3D7BAAA0" type="10" limiting_length="24" id="7" />
+		<primary_key field_name="ID" field_uuid="C4D6A1FE6B7044FB807CDEDC095DBEB0" />
+	</table>
+	<table name="Task" uuid="569CBDEDA5C648D387A5CBF3AEB7577C" id="301">
+		<field name="ID" uuid="78A1B519A55149AE87370F63642DE29C" type="4" unique="true" autosequence="true" not_null="true" id="1" />
+		<field name="description" uuid="EC7BB31066EE466685902E546DB8A412" type="10" id="3" />
+		<field name="ID_creator" uuid="964C67A682444BF88D8D5DD8714134EF" type="4" not_null="true" id="5" />
+		<field name="ID_Patient" uuid="274A956B9BFB475B8F2987B99CDFCDA3" type="4" id="6" />
+		<field name="due_at" uuid="7FE571E56AB8487984AB675BCAB73A9C" type="10" limiting_length="24" id="7" />
+		<field name="created_at" uuid="403BE8C691444CED84AFDC0C6663783B" type="10" limiting_length="24" id="8" />
+		<field name="updated_at" uuid="502F3652B2B84E3B8A9A81D1A81208FA" type="10" limiting_length="24" id="9" />
+		<field name="completed_at" uuid="7D0E9C74448E490B869F544C93359E42" type="10" limiting_length="24" id="10" />
+		<field name="is_urgent" uuid="6864FDE29E704C2084E20C09631BF7DD" type="1" not_null="true" id="13" />
+		<field name="ID_Conversation" uuid="30795CBBB9494F64A1A033600BAF17B2" type="4" id="14" />
+		<primary_key field_name="ID" field_uuid="78A1B519A55149AE87370F63642DE29C" />
+	</table>
+	<table name="TaskAssignee" uuid="14DB888A59254A328B1F95738F0F4CFA" id="302">
+		<field name="ID" uuid="712954B0844C4462897CD949AEA3B6E2" type="4" unique="true" autosequence="true" not_null="true" id="1" />
+		<field name="ID_Task" uuid="F0E070AD917C4FD285894522573AAE68" type="4" not_null="true" id="2" />
+		<field name="ID_Utilisateur" uuid="79B328B8CF8845308A07D4BB789DF5BB" type="4" not_null="true" id="3" />
+		<field name="assigned_at" uuid="7168C35F95574A4A8144C83BA3CEC444" type="10" limiting_length="24" id="4" />
+		<primary_key field_name="ID" field_uuid="712954B0844C4462897CD949AEA3B6E2" />
+	</table>
+	<table name="Tag" uuid="A2664FE5F34D4FB68A2970E030B6A586" id="303">
+		<field name="ID" uuid="284F1E32005E4AB28EC335B04A091482" type="4" unique="true" autosequence="true" not_null="true" id="1" />
+		<field name="label" uuid="9BBCEA3D7CD145558C2061F86C6C380D" type="10" limiting_length="255" not_null="true" id="2" />
+		<field name="color" uuid="8AFB034EEE5843688FC7BDAABBEC62D5" type="10" limiting_length="32" id="3" />
+		<field name="is_active" uuid="115B1FFF6932497988BBBBE1C34B8959" type="1" not_null="true" id="4" />
+		<primary_key field_name="ID" field_uuid="284F1E32005E4AB28EC335B04A091482" />
+	</table>
+	<table name="TaskTag" uuid="6A83019E0B924E5A8A6D98B245315F47" id="304">
+		<field name="ID" uuid="1F60749B5C30433F8E3F0259FCA6D2E5" type="4" unique="true" autosequence="true" not_null="true" id="1" />
+		<field name="ID_Task" uuid="58759BD1076749158F810E609CD6DB25" type="4" not_null="true" id="2" />
+		<field name="ID_Tag" uuid="198D34C3A25F4B9F8A98B5285DB04D18" type="4" not_null="true" id="3" />
+		<primary_key field_name="ID" field_uuid="1F60749B5C30433F8E3F0259FCA6D2E5" />
+	</table>
+	<relation uuid="5512A822D4E1439880F88059E5EAF569" name_Nto1="conversation" name_1toN="members" state="1">
+		<related_field kind="source">
+			<field_ref uuid="FA35F0E018D14B7D85AAE6AE4EDD44EB" name="ID_Conversation">
+				<table_ref uuid="A4807F8119CB4A71818EC040767301EA" name="ConversationMember" />
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="8898B8DAE74F49E88924A53D5FEC34A4" name="ID">
+				<table_ref uuid="230B9D5257B74A898F0618C40C26CF86" name="Conversation" />
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="BAF53CE78AD249158CE1ADACA3CD68EB" name_Nto1="conversation" name_1toN="messages" state="1">
+		<related_field kind="source">
+			<field_ref uuid="CE4611A9A46A41D687D6759CE84656AB" name="ID_Conversation">
+				<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message" />
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="8898B8DAE74F49E88924A53D5FEC34A4" name="ID">
+				<table_ref uuid="230B9D5257B74A898F0618C40C26CF86" name="Conversation" />
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="90D9CDE9454D48C990D92D1222813E63" name_Nto1="lastReceivedMessage" name_1toN="lastReceivedByMembers" state="1">
+		<related_field kind="source">
+			<field_ref uuid="7693C4FB90F54F66AA006FE04825804B" name="ID_last_received_message">
+				<table_ref uuid="A4807F8119CB4A71818EC040767301EA" name="ConversationMember" />
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="C4D6A1FE6B7044FB807CDEDC095DBEB0" name="ID">
+				<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message" />
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="D000056DA96D4390B4CA94D813AF6567" name_Nto1="lastReadMessage" name_1toN="lastReadByMembers" state="1">
+		<related_field kind="source">
+			<field_ref uuid="F85F1EE441D94EDA8D9B019C056C10DE" name="ID_last_read_message">
+				<table_ref uuid="A4807F8119CB4A71818EC040767301EA" name="ConversationMember" />
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="C4D6A1FE6B7044FB807CDEDC095DBEB0" name="ID">
+				<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message" />
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="DA8DBE1E92C04D82809830C3A280508E" name_Nto1="conversation" name_1toN="tasks" state="1">
+		<related_field kind="source">
+			<field_ref uuid="30795CBBB9494F64A1A033600BAF17B2" name="ID_Conversation">
+				<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task" />
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="8898B8DAE74F49E88924A53D5FEC34A4" name="ID">
+				<table_ref uuid="230B9D5257B74A898F0618C40C26CF86" name="Conversation" />
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="8DD7E2B8FBA9427483085F064C1C1ADA" name_Nto1="task" name_1toN="assignees" state="1">
+		<related_field kind="source">
+			<field_ref uuid="F0E070AD917C4FD285894522573AAE68" name="ID_Task">
+				<table_ref uuid="14DB888A59254A328B1F95738F0F4CFA" name="TaskAssignee" />
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="78A1B519A55149AE87370F63642DE29C" name="ID">
+				<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task" />
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="96E4358BB9B149A983345068C92A24AE" name_Nto1="task" name_1toN="taskTags" state="1">
+		<related_field kind="source">
+			<field_ref uuid="58759BD1076749158F810E609CD6DB25" name="ID_Task">
+				<table_ref uuid="6A83019E0B924E5A8A6D98B245315F47" name="TaskTag" />
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="78A1B519A55149AE87370F63642DE29C" name="ID">
+				<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task" />
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="C23CA9975AAE4498806432C1C7D2F3CF" name_Nto1="tag" name_1toN="taskTags" state="1">
+		<related_field kind="source">
+			<field_ref uuid="198D34C3A25F4B9F8A98B5285DB04D18" name="ID_Tag">
+				<table_ref uuid="6A83019E0B924E5A8A6D98B245315F47" name="TaskTag" />
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="284F1E32005E4AB28EC335B04A091482" name="ID">
+				<table_ref uuid="A2664FE5F34D4FB68A2970E030B6A586" name="Tag" />
+			</field_ref>
+		</related_field>
+	</relation>
+	<index kind="regular" name="Task_conversation" uuid="0D8D833C76DE463194CEABF0EB6BE020" type="3">
+		<field_ref uuid="30795CBBB9494F64A1A033600BAF17B2" name="ID_Conversation">
+			<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task" />
+		</field_ref>
+	</index>
+	<index kind="regular" name="Task_completion_due" uuid="1D2BB5C1878B46AC80BC0B331293FEEB" type="1">
+		<field_ref uuid="7D0E9C74448E490B869F544C93359E42" name="completed_at">
+			<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task" />
+		</field_ref>
+		<field_ref uuid="7FE571E56AB8487984AB675BCAB73A9C" name="due_at">
+			<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task" />
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" name="Tag_label" uuid="363300AAFD4142B487080B39B49681E0" type="1">
+		<field_ref uuid="9BBCEA3D7CD145558C2061F86C6C380D" name="label">
+			<table_ref uuid="A2664FE5F34D4FB68A2970E030B6A586" name="Tag" />
+		</field_ref>
+	</index>
+	<index kind="regular" name="Message_sender" uuid="3E4C1F8C5B2D4F0787749B562845B3E9" type="3">
+		<field_ref uuid="61ADE331EF7740DA85637AE954955EE1" name="ID_sender">
+			<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message" />
+		</field_ref>
+	</index>
+	<index kind="regular" name="Task_patient" uuid="4BD1E5CBF64449B482B5D2ACB8977CF6" type="3">
+		<field_ref uuid="274A956B9BFB475B8F2987B99CDFCDA3" name="ID_Patient">
+			<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task" />
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" name="Message_ID" uuid="52AD66D61768458A8DD452FB98DD356A" type="7">
+		<field_ref uuid="C4D6A1FE6B7044FB807CDEDC095DBEB0" name="ID">
+			<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message" />
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" name="TaskTag_ID" uuid="58A2B884B5FF46CD8AD98FA7E230FDE4" type="7">
+		<field_ref uuid="1F60749B5C30433F8E3F0259FCA6D2E5" name="ID">
+			<table_ref uuid="6A83019E0B924E5A8A6D98B245315F47" name="TaskTag" />
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" name="TaskAssignee_assignment" uuid="880F17EDF62F4C018523A869A50E2FFF" type="1">
+		<field_ref uuid="F0E070AD917C4FD285894522573AAE68" name="ID_Task">
+			<table_ref uuid="14DB888A59254A328B1F95738F0F4CFA" name="TaskAssignee" />
+		</field_ref>
+		<field_ref uuid="79B328B8CF8845308A07D4BB789DF5BB" name="ID_Utilisateur">
+			<table_ref uuid="14DB888A59254A328B1F95738F0F4CFA" name="TaskAssignee" />
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" name="Task_ID" uuid="91CC0FFDB4B04B258CB4FF7596B65F45" type="7">
+		<field_ref uuid="78A1B519A55149AE87370F63642DE29C" name="ID">
+			<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task" />
+		</field_ref>
+	</index>
+	<index kind="regular" name="Conversation_creator" uuid="9576B774AC3B4C3684F5A39C9DED92F7" type="3">
+		<field_ref uuid="C6763F68582C4F2687BA41224DEC7561" name="ID_creator">
+			<table_ref uuid="230B9D5257B74A898F0618C40C26CF86" name="Conversation" />
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" name="ConversationMember_ID" uuid="9ECE4D5D106E45978FFE50C9198FBFC6" type="7">
+		<field_ref uuid="1E2E0361739E436D82FD181EBFF366C1" name="ID">
+			<table_ref uuid="A4807F8119CB4A71818EC040767301EA" name="ConversationMember" />
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" name="TaskAssignee_ID" uuid="9F8A248DEF9D4E688E2D342341AFDDAB" type="7">
+		<field_ref uuid="712954B0844C4462897CD949AEA3B6E2" name="ID">
+			<table_ref uuid="14DB888A59254A328B1F95738F0F4CFA" name="TaskAssignee" />
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" name="Tag_ID" uuid="A55EC7D21F5341EA8EF9AD1FF0FA2477" type="7">
+		<field_ref uuid="284F1E32005E4AB28EC335B04A091482" name="ID">
+			<table_ref uuid="A2664FE5F34D4FB68A2970E030B6A586" name="Tag" />
+		</field_ref>
+	</index>
+	<index kind="regular" name="TaskAssignee_user" uuid="C57869767AE246498EBE33D42A475C9C" type="3">
+		<field_ref uuid="79B328B8CF8845308A07D4BB789DF5BB" name="ID_Utilisateur">
+			<table_ref uuid="14DB888A59254A328B1F95738F0F4CFA" name="TaskAssignee" />
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" name="ConversationMember_membership" uuid="C940EF31C5D74CBA8F9D746D080ACF17" type="1">
+		<field_ref uuid="FA35F0E018D14B7D85AAE6AE4EDD44EB" name="ID_Conversation">
+			<table_ref uuid="A4807F8119CB4A71818EC040767301EA" name="ConversationMember" />
+		</field_ref>
+		<field_ref uuid="E4EC6B9DB32F430486957826AEACE30B" name="ID_Utilisateur">
+			<table_ref uuid="A4807F8119CB4A71818EC040767301EA" name="ConversationMember" />
+		</field_ref>
+	</index>
+	<index kind="regular" name="Task_creator" uuid="C9DC7F98B32F4D8588C4F19B67C9654A" type="3">
+		<field_ref uuid="964C67A682444BF88D8D5DD8714134EF" name="ID_creator">
+			<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task" />
+		</field_ref>
+	</index>
+	<index kind="regular" name="Message_conversation_created" uuid="DA61E1CCEEC948EE8CCBB9B2DEC4D01A" type="1">
+		<field_ref uuid="CE4611A9A46A41D687D6759CE84656AB" name="ID_Conversation">
+			<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message" />
+		</field_ref>
+		<field_ref uuid="2AA4821E59DC41538A21CF7D57AA4CEC" name="created_at">
+			<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message" />
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" name="TaskTag_pair" uuid="DB2FB55D573B4EAB84D38E48B7098A72" type="1">
+		<field_ref uuid="58759BD1076749158F810E609CD6DB25" name="ID_Task">
+			<table_ref uuid="6A83019E0B924E5A8A6D98B245315F47" name="TaskTag" />
+		</field_ref>
+		<field_ref uuid="198D34C3A25F4B9F8A98B5285DB04D18" name="ID_Tag">
+			<table_ref uuid="6A83019E0B924E5A8A6D98B245315F47" name="TaskTag" />
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" name="Conversation_ID" uuid="E034D997D23648D88DB33048FA964C63" type="7">
+		<field_ref uuid="8898B8DAE74F49E88924A53D5FEC34A4" name="ID">
+			<table_ref uuid="230B9D5257B74A898F0618C40C26CF86" name="Conversation" />
+		</field_ref>
+	</index>
+	<index kind="regular" name="TaskTag_tag" uuid="E10F9512B10E4728814358A38AE9D02C" type="3">
+		<field_ref uuid="198D34C3A25F4B9F8A98B5285DB04D18" name="ID_Tag">
+			<table_ref uuid="6A83019E0B924E5A8A6D98B245315F47" name="TaskTag" />
+		</field_ref>
+	</index>
+	<index kind="regular" name="ConversationMember_user" uuid="FFD566CD7B064308873728A0F9025691" type="3">
+		<field_ref uuid="E4EC6B9DB32F430486957826AEACE30B" name="ID_Utilisateur">
+			<table_ref uuid="A4807F8119CB4A71818EC040767301EA" name="ConversationMember" />
+		</field_ref>
+	</index>
+</base>

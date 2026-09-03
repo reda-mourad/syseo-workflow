@@ -18,6 +18,13 @@ Function load()
 	End if 
 
 
+Function patientFileNumber($fileNumber : Integer)->$display : Text
+	var $digits : Text
+
+	$digits:=String($fileNumber; "000000000")
+	$display:=Substring($digits; 1; 3)+"-"+Substring($digits; 4; 3)+"-"+Substring($digits; 7; 3)
+
+
 Function handleEvents()
 	Case of 
 		: (FORM Event.code=On Load)

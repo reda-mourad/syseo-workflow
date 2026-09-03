@@ -1,37 +1,5 @@
 {
 	"tables": {
-		"TaskActivity": {
-			"color": {
-				"red": 255,
-				"green": 255,
-				"blue": 255,
-				"alpha": 0
-			},
-			"coordinates": {
-				"left": 685,
-				"top": 257,
-				"width": 113.70703125,
-				"height": 167.33203125
-			},
-			"displayable_fields_count": 6,
-			"fields_ordering": 1
-		},
-		"TaskComment": {
-			"color": {
-				"red": 255,
-				"green": 255,
-				"blue": 255,
-				"alpha": 0
-			},
-			"coordinates": {
-				"left": 854,
-				"top": 387,
-				"width": 113.70703125,
-				"height": 188.33203125
-			},
-			"displayable_fields_count": 7,
-			"fields_ordering": 1
-		},
 		"TaskTag": {
 			"color": {
 				"red": 255,
@@ -61,7 +29,7 @@
 				"width": 113.70703125,
 				"height": 146.33203125
 			},
-			"displayable_fields_count": 5,
+			"displayable_fields_count": 4,
 			"fields_ordering": 1
 		},
 		"TaskAssignee": {
@@ -93,23 +61,7 @@
 				"width": 129.046875,
 				"height": 272.33203125
 			},
-			"displayable_fields_count": 11,
-			"fields_ordering": 1
-		},
-		"MessageRevision": {
-			"color": {
-				"red": 255,
-				"green": 255,
-				"blue": 255,
-				"alpha": 0
-			},
-			"coordinates": {
-				"left": 1081,
-				"top": 0,
-				"width": 129.234375,
-				"height": 146.33203125
-			},
-			"displayable_fields_count": 5,
+			"displayable_fields_count": 10,
 			"fields_ordering": 1
 		},
 		"Message": {
@@ -191,6 +143,56 @@
 			},
 			"displayable_fields_count": 83,
 			"fields_ordering": 1
+		}
+	},
+	"relations": {
+		"CFEF793E928C47478F8FED334EA013DB": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			}
+		},
+		"8B0D2BB730F347BC8A174D389347E2CD": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			}
+		},
+		"7CC0FF91843A42598A868A622E0B7917": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			}
+		},
+		"2AAFB04F839743CB8F46F328E9D80B66": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			}
+		},
+		"8C75EB369CDA43FB8D0A5B6C2C4F2B88": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			}
+		},
+		"FCEEA07B03F4426A811603FBA09CD54A": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			}
 		}
 	}
 }

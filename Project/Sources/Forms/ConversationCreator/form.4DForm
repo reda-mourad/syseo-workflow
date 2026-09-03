@@ -21,28 +21,18 @@
 		},
 		{
 			"objects": {
-				"txtCreatorTitle": {
-					"type": "text",
-					"text": "Nouvelle conversation",
-					"left": 20,
-					"top": 20,
-					"width": 300,
-					"height": 24,
-					"fontSize": 18,
-					"fontWeight": "bold"
-				},
 				"txtGroupTitleLabel": {
 					"type": "text",
 					"text": "Titre du groupe (requis pour plusieurs destinataires)",
-					"left": 20,
-					"top": 58,
+					"left": 19,
+					"top": 19,
 					"width": 460,
 					"height": 18
 				},
 				"bgGroupTitle": {
 					"type": "rectangle",
-					"left": 20,
-					"top": 80,
+					"left": 19,
+					"top": 41,
 					"width": 460,
 					"height": 34,
 					"stroke": "#c0c0c0",
@@ -50,8 +40,8 @@
 				},
 				"inputGroupTitle": {
 					"type": "input",
-					"left": 30,
-					"top": 88,
+					"left": 29,
+					"top": 49,
 					"width": 440,
 					"height": 18,
 					"dataSource": "Form:C1466.handler.groupTitle",
@@ -65,8 +55,8 @@
 				},
 				"lbRecipients": {
 					"type": "listbox",
-					"left": 20,
-					"top": 130,
+					"left": 19,
+					"top": 91,
 					"width": 460,
 					"height": 230,
 					"events": [
@@ -111,6 +101,22 @@
 						},
 						{
 							"header": {
+								"text": "Profil",
+								"name": "headerRecipientProfile"
+							},
+							"name": "columnRecipientProfile",
+							"width": 133,
+							"dataSource": "This:C1470.profile",
+							"horizontalPadding": 5,
+							"verticalAlign": "middle",
+							"enterable": false,
+							"verticalPadding": 5,
+							"footer": {
+								"name": "Footer3"
+							}
+						},
+						{
+							"header": {
 								"text": "Destinataire",
 								"name": "headerRecipientName"
 							},
@@ -128,8 +134,8 @@
 				},
 				"bgCancelConversation": {
 					"type": "rectangle",
-					"left": 160,
-					"top": 380,
+					"left": 159,
+					"top": 341,
 					"width": 150,
 					"height": 32,
 					"stroke": "#c0c0c0",
@@ -143,8 +149,8 @@
 					"borderStyle": "none",
 					"text": "Annuler",
 					"action": "cancel",
-					"left": 160,
-					"top": 380,
+					"left": 159,
+					"top": 341,
 					"width": 150,
 					"height": 32,
 					"sizingX": "move",
@@ -152,8 +158,8 @@
 				},
 				"bgCreateConversation": {
 					"type": "rectangle",
-					"left": 330,
-					"top": 380,
+					"left": 329,
+					"top": 341,
 					"width": 150,
 					"height": 32,
 					"stroke": "#c0c0c0",
@@ -168,8 +174,8 @@
 					"text": "Créer",
 					"action": "accept",
 					"enabled": false,
-					"left": 330,
-					"top": 380,
+					"left": 329,
+					"top": 341,
 					"width": 150,
 					"height": 32,
 					"sizingX": "move",
@@ -178,5 +184,6 @@
 			}
 		}
 	],
-	"method": "method.4dm"
+	"method": "method.4dm",
+	"geometryStamp": 2
 }

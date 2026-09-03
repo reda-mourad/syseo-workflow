@@ -8,7 +8,7 @@ var $membership : cs.ConversationMemberEntity
 var $lastMessage : cs.MessageEntity
 var $items : Collection
 var $item; $lastMessageInfo : Object
-var $title : Text
+var $title; $lastMessageAt : Text
 var $unreadCount : Integer
 
 $items:=New collection
@@ -17,7 +17,7 @@ If ($userId<=0)
 	$result.error:="A valid user ID is required."
 Else 
 	$memberships:=ds.ConversationMember.query("ID_Utilisateur = :1 AND left_at = null"; $userId)
-	$conversations:=$memberships.conversation.query("deleted_at = null AND kind # :1"; "task").orderBy("updated_at desc, ID desc")
+	$conversations:=$memberships.conversation.query("deleted_at = null AND kind # :1"; "task")
 	
 	For each ($conversation; $conversations)
 		$membership:=$conversation.members.query("ID_Utilisateur = :1 AND left_at = null"; $userId).first()
@@ -35,7 +35,9 @@ Else
 		
 		$lastMessage:=$conversation.messages.query("deleted_at = null").orderBy("created_at desc, ID desc").first()
 		$lastMessageInfo:=Null
+		$lastMessageAt:=""
 		If ($lastMessage#Null)
+			$lastMessageAt:=$lastMessage.created_at
 			$lastMessageInfo:=New object(\
 			"ID"; $lastMessage.ID; \
 			"senderId"; $lastMessage.ID_sender; \
@@ -54,10 +56,14 @@ Else
 		"name"; $conversation.name; \
 		"title"; $title; \
 		"updatedAt"; $conversation.updated_at; \
+		"lastMessageAt"; $lastMessageAt; \
 		"unreadCount"; $unreadCount; \
 		"lastMessage"; $lastMessageInfo)
 		$items.push($item)
 	End for each 
+	$items:=$items.orderBy(New collection(\
+	New object("propertyPath"; "lastMessageAt"; "descending"; True); \
+	New object("propertyPath"; "ID"; "descending"; True)))
 	
 	$result.success:=True
 End if 
