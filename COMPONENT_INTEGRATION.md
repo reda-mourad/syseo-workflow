@@ -117,6 +117,6 @@ A task has one global `completed_at` value. Any assigned user can complete the t
 4. Verify the native incoming-message notification.
 5. Right-click a message bubble and convert it into a prefilled task.
 6. Assign urgent and non-urgent tasks and verify that only urgent tasks display a notification.
-7. Verify that the launcher task badge counts only unfinished urgent tasks.
+7. Verify that the Tasks badge counts all unfinished tasks assigned to the current user, the Messaging badge counts unread conversations, and the launcher badge is their sum. Zero-count badges must be hidden.
 8. Complete a multi-assignee task from one assignee and verify it is completed for all.
 9. Run `compile-test.bat` outside the sandbox under 4D 20 R7.
