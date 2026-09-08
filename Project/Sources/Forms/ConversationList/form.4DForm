@@ -118,7 +118,7 @@
 					"sizingY": "grow",
 					"borderStyle": "solid"
 				},
-				"Input": {
+				"inputConversationTitle": {
 					"type": "input",
 					"left": 341,
 					"top": 20,
@@ -130,7 +130,7 @@
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
-					"dataSource": "Form:C1466.handler.conversationTitle(Form:C1466.handler.selectedConversation)",
+					"dataSource": "Form:C1466.handler.selectedConversationTitle",
 					"sizingX": "grow"
 				},
 				"Line": {

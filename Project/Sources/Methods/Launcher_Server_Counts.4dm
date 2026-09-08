@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true,"executedOnServer":true}
+//%attributes = {"invisible":true,"executedOnServer":true,"shared":true}
 #DECLARE($userId : Integer)->$result : Object
 
 var $conversationResponse; $conversation : Object

@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true,"executedOnServer":true}
+//%attributes = {"invisible":true,"executedOnServer":true,"shared":true}
 #DECLARE($participantId : Integer; $conversationId : Integer; $messageId : Integer; $state : Text)->$queuedCount : Integer
 
 var $members : cs.ConversationMemberSelection

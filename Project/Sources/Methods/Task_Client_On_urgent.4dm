@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true}
+//%attributes = {"invisible":true,"shared":true}
 #DECLARE($taskId : Integer)
 
 var $task : cs.TaskEntity

@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true,"executedOnServer":true}
+//%attributes = {"invisible":true,"executedOnServer":true,"shared":true}
 #DECLARE($recipientIds : Collection; $conversationId : Integer; $messageId : Integer; $senderId : Integer)->$queuedCount : Integer
 
 var $recipientId : Integer

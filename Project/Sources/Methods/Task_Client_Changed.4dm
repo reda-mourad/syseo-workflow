@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true}
+//%attributes = {"invisible":true,"shared":true}
 #DECLARE($recipientId : Integer; $taskId : Integer; $actorId : Integer; $kind : Text)
 
 var $window : Integer

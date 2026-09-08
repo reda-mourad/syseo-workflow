@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true}
+//%attributes = {"invisible":true,"shared":true}
 #DECLARE()
 
 EXECUTE METHOD IN SUBFORM("subformConversation"; "Conversation_panel_scroll"; *)

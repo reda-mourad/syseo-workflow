@@ -1,6 +1,9 @@
+//%attributes = {"shared":true}
 var $context; $sendResult : Object
 var $panelHeight; $panelWidth; $composerHeight; $composerTop; $messagesBottom; $currentUserId; $conversationId : Integer
 var $messageBody : Text
+var $window : Integer
+var $windows : Collection
 
 If (FORM Event.code=On Resize)
 	OBJECT GET SUBFORM CONTAINER SIZE($panelWidth; $panelHeight)
@@ -42,6 +45,15 @@ If ((FORM Event.code=On Before Keystroke) && (FORM Event.objectName="inputMessag
 			Form.messageBody:=""
 			OBJECT SET VALUE("inputMessage"; "")
 			Refresh_conversation_panel($currentUserId; $conversationId)
+			$windows:=New collection
+			If ((Value type(Storage.messagingClient)=Is object) && (Value type(Storage.messagingClient.windows)=Is collection))
+				Use (Storage.messagingClient.windows)
+					$windows:=Storage.messagingClient.windows.slice(0)
+				End use 
+			End if 
+			For each ($window; $windows)
+				CALL FORM($window; "Messaging_Client_Form_notify"; "sent"; $conversationId; $sendResult.messageId; $currentUserId; "")
+			End for each 
 		End if 
 	End if 
 End if 

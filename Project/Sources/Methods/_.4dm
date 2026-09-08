@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"shared":true}
 var $registration : Object
 var $userId : Integer
 

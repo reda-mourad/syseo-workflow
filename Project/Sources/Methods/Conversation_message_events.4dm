@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true}
+//%attributes = {"invisible":true,"shared":true}
 
 var $choice; $messageId; $userId : Integer
 var $objectName : Text

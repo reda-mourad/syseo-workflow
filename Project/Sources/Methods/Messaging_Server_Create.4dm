@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true,"executedOnServer":true}
+//%attributes = {"invisible":true,"executedOnServer":true,"shared":true}
 #DECLARE($creatorId : Integer; $recipientIds : Collection; $title : Text)->$result : Object
 
 var $creator; $recipient : cs.UtilisateurEntity

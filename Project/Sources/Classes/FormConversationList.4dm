@@ -1,6 +1,7 @@
 property userId : Integer
 property conversations : Collection
 property selectedConversation : Object
+property selectedConversationTitle : Text
 property selectedConversationPosition : Integer
 property conversationContext : Object
 property restoringConversationSelection : Boolean
@@ -39,6 +40,7 @@ Function load()
 		This.selectedConversation:=Null
 		This.selectedConversationPosition:=0
 	End if 
+	This.selectedConversationTitle:=This.conversationTitle(This.selectedConversation)
 
 
 Function refreshConversations()
@@ -155,6 +157,7 @@ Function selectConversation()
 		"lastNotificationId"; 0)
 	End if 
 	
+	This.selectedConversationTitle:=This.conversationTitle($conversation)
 	This.loadConversationPanel()
 
 
@@ -180,12 +183,10 @@ Function processNotification($kind : Text; $conversationId : Integer)
 	If ($kind="message")
 		If ($conversationId=$activeConversationId)
 			Messaging_Server_Mark_latest(This.userId; $activeConversationId; "read")
-			This.updateConversationUnread($conversationId; True)
-		Else 
-			If (Not(This.updateConversationUnread($conversationId; False)))
-				This.refreshConversations()
-			End if 
 		End if 
+	End if 
+	If (($kind="message") || ($kind="sent"))
+		This.refreshConversations()
 	End if 
 	If ($conversationId=$activeConversationId)
 		This.loadConversationPanel()
@@ -194,13 +195,16 @@ Function processNotification($kind : Text; $conversationId : Integer)
 
 Function addConversation()
 	var $window : Integer
+	var $accepted : Boolean
 	var $formData; $response; $recipient : Object
 	var $recipientIds : Collection
 	
 	$formData:={handler: cs.FormConversationCreator.new(This.userId)}
 	$window:=Open form window("ConversationCreator"; Movable form dialog box)
 	DIALOG("ConversationCreator"; $formData)
-	If ((OK=1) && ($formData.handler.selectedRecipients#Null))
+	$accepted:=(OK=1)
+	CLOSE WINDOW($window)
+	If ($accepted && ($formData.handler.selectedRecipients#Null))
 		$recipientIds:=New collection
 		For each ($recipient; $formData.handler.selectedRecipients)
 			$recipientIds.push($recipient.ID)
@@ -218,4 +222,3 @@ Function addConversation()
 			ALERT($response.error)
 		End if 
 	End if 
-	CLOSE WINDOW($window)

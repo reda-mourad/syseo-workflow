@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"shared":true}
 #DECLARE($currentUserId : Integer; $conversationId : Integer; $limit : Integer; $subformHeight : Integer; $subformWidth : Integer)->$form : Object
 
 var $messages : Collection

@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true,"executedOnServer":true}
+//%attributes = {"invisible":true,"executedOnServer":true,"shared":true}
 #DECLARE($recipientIds : Collection; $taskId : Integer; $actorId : Integer; $kind : Text)->$queuedCount : Integer
 
 var $recipientId : Integer

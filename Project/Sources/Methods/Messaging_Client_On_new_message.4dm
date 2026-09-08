@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true}
+//%attributes = {"invisible":true,"shared":true}
 #DECLARE($conversationId : Integer; $messageId : Integer; $senderId : Integer)
 
 var $message : cs.MessageEntity

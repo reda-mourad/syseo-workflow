@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true,"executedOnServer":true}
+//%attributes = {"invisible":true,"executedOnServer":true,"shared":true}
 #DECLARE($userId : Integer)->$result : Object
 
 var $memberships; $otherMembers : cs.ConversationMemberSelection
@@ -64,6 +64,7 @@ Else
 	$items:=$items.orderBy(New collection(\
 	New object("propertyPath"; "lastMessageAt"; "descending"; True); \
 	New object("propertyPath"; "ID"; "descending"; True)))
+	$result.conversations:=$items
 	
 	$result.success:=True
 End if 

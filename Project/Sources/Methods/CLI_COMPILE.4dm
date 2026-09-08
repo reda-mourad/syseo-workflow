@@ -1,3 +1,4 @@
+//%attributes = {"shared":true}
 var $options : Object
 var $result : Object
 var $error : Object

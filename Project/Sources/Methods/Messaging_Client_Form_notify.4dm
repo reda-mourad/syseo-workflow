@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true}
+//%attributes = {"invisible":true,"shared":true}
 #DECLARE($kind : Text; $conversationId : Integer; $messageId : Integer; $actorId : Integer; $state : Text)
 
 var $handler : Object

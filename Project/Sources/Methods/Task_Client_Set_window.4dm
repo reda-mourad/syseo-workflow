@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true}
+//%attributes = {"invisible":true,"shared":true}
 #DECLARE($window : Integer; $registered : Boolean)
 
 var $position : Integer

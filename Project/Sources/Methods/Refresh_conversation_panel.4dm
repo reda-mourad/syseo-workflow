@@ -1,3 +1,4 @@
+//%attributes = {"shared":true}
 #DECLARE($currentUserId : Integer; $conversationId : Integer)
 
 var $dynamicForm : Object
