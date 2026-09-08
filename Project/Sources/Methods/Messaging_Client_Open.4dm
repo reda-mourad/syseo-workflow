@@ -2,7 +2,10 @@
 #DECLARE()
 
 var $window : Integer
+var $handler : cs.FormWorkflowWorkspace
 
-$window:=Open form window("ConversationList"; Movable form dialog box)
-DIALOG("ConversationList"; {handler: cs.FormConversationList.new(Messaging_Client_User_id)})
+$handler:=cs.FormWorkflowWorkspace.new(Messaging_Client_User_id)
+$handler.initialFeature:="messages"
+$window:=Open form window("WorkflowWorkspace"; Movable form dialog box)
+DIALOG("WorkflowWorkspace"; {handler: $handler})
 CLOSE WINDOW($window)

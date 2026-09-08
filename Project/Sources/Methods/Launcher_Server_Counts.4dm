@@ -3,11 +3,11 @@
 
 var $conversationResponse; $conversation : Object
 var $tasks : cs.TaskSelection
-var $unreadConversationCount; $urgentTaskCount : Integer
+var $unreadConversationCount; $unfinishedTaskCount : Integer
 
 $unreadConversationCount:=0
-$urgentTaskCount:=0
-$result:=New object("success"; False; "unreadConversations"; 0; "urgentTasks"; 0; "error"; "")
+$unfinishedTaskCount:=0
+$result:=New object("success"; False; "unreadConversations"; 0; "unfinishedTasks"; 0; "error"; "")
 
 If (ds.Utilisateur.get($userId)=Null)
 	$result.error:="The current user does not exist."
@@ -19,11 +19,11 @@ Else
 				$unreadConversationCount:=$unreadConversationCount+1
 			End if 
 		End for each 
-		$tasks:=ds.Task.query("assignees.ID_Utilisateur = :1 AND completed_at = null AND is_urgent = true"; $userId)
-		$urgentTaskCount:=$tasks.length
+		$tasks:=ds.Task.query("assignees.ID_Utilisateur = :1 AND completed_at = null"; $userId)
+		$unfinishedTaskCount:=$tasks.length
 		$result.success:=True
 		$result.unreadConversations:=$unreadConversationCount
-		$result.urgentTasks:=$urgentTaskCount
+		$result.unfinishedTasks:=$unfinishedTaskCount
 	Else 
 		$result.error:=$conversationResponse.error
 	End if 

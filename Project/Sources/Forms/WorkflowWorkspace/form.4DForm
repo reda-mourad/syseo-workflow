@@ -1,0 +1,162 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowTitle": "Tâches et messagerie",
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onUnload",
+		"onClick",
+		"onResize"
+	],
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"bgTasksButton": {
+					"type": "rectangle",
+					"left": 440,
+					"top": 20,
+					"width": 210,
+					"height": 44,
+					"stroke": "#C0C0C0",
+					"fill": "#FFFFFF"
+				},
+				"btnTasks": {
+					"type": "button",
+					"style": "custom",
+					"borderStyle": "none",
+					"text": "Tâches",
+					"left": 440,
+					"top": 20,
+					"width": 210,
+					"height": 44,
+					"fontSize": 16,
+					"events": [
+						"onClick"
+					]
+				},
+				"bgTasksBadge": {
+					"type": "oval",
+					"left": 638,
+					"top": 8,
+					"width": 24,
+					"height": 24,
+					"stroke": "#B71C1C",
+					"fill": "#E53935"
+				},
+				"inputTasksBadge": {
+					"type": "input",
+					"left": 638,
+					"top": 12,
+					"width": 24,
+					"height": 20,
+					"dataSource": "Form:C1466.handler.taskBadge",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#FFFFFF",
+					"fontSize": 12,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"horizontalPadding": 0,
+					"verticalPadding": 0
+				},
+				"bgMessagesButton": {
+					"type": "rectangle",
+					"left": 670,
+					"top": 20,
+					"width": 210,
+					"height": 44,
+					"stroke": "#C0C0C0",
+					"fill": "#FFFFFF"
+				},
+				"btnMessages": {
+					"type": "button",
+					"style": "custom",
+					"borderStyle": "none",
+					"text": "Messagerie",
+					"left": 670,
+					"top": 20,
+					"width": 210,
+					"height": 44,
+					"fontSize": 16,
+					"events": [
+						"onClick"
+					]
+				},
+				"bgMessagesBadge": {
+					"type": "oval",
+					"left": 868,
+					"top": 8,
+					"width": 24,
+					"height": 24,
+					"stroke": "#B71C1C",
+					"fill": "#E53935"
+				},
+				"inputMessagesBadge": {
+					"type": "input",
+					"left": 868,
+					"top": 12,
+					"width": 24,
+					"height": 20,
+					"dataSource": "Form:C1466.handler.messageBadge",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#FFFFFF",
+					"fontSize": 12,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"horizontalPadding": 0,
+					"verticalPadding": 0
+				},
+				"subformTasks": {
+					"type": "subform",
+					"left": 0,
+					"top": 80,
+					"width": 1320,
+					"height": 550,
+					"dataSource": "Form:C1466.handler.taskContext",
+					"sizingX": "grow",
+					"sizingY": "grow"
+				},
+				"subformMessages": {
+					"type": "subform",
+					"left": 0,
+					"top": 80,
+					"width": 1320,
+					"height": 550,
+					"dataSource": "Form:C1466.handler.messageContext",
+					"sizingX": "grow",
+					"sizingY": "grow"
+				},
+				"Line": {
+					"type": "line",
+					"top": 80,
+					"left": 20,
+					"width": 1280,
+					"height": 0,
+					"stroke": "#c0c0c0",
+					"sizingX": "grow"
+				}
+			}
+		}
+	],
+	"method": "method.4dm",
+	"geometryStamp": 13,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

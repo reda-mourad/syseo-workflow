@@ -1,7 +1,7 @@
 //%attributes = {"invisible":true,"shared":true}
 #DECLARE($taskId : Integer)
 
-var $handler : cs.FormTaskManager
+var $handler : Object
 
 $handler:=Form.handler
 If ($handler#Null)

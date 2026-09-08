@@ -1,4 +1,5 @@
 property userId : Integer
+property embedded : Boolean
 property showAll : Integer
 property onlyMine : Integer
 property onlyDelegated : Integer
@@ -18,6 +19,7 @@ property initialDraft : Object
 
 Class constructor($userId : Integer)
 	This.userId:=$userId
+	This.embedded:=False
 	This.showAll:=0
 	This.onlyMine:=1
 	This.onlyDelegated:=0
@@ -525,7 +527,7 @@ Function saveTask()->$success : Boolean
 			This.selectedCategories:=Null
 			This.load()
 			Launcher_Client_Refresh
-			FORM GOTO PAGE(1)
+			This.goToPage(1)
 		Else 
 			ds.cancelTransaction()
 			ALERT("La tâche n'a pas pu être enregistrée. Veuillez réessayer.")
@@ -564,7 +566,7 @@ Function closeTask()->$success : Boolean
 			Task_Server_Notify_clients($recipientIds; $taskId; This.userId; "completed")
 			This.load()
 			Launcher_Client_Refresh
-			FORM GOTO PAGE(1)
+			This.goToPage(1)
 		Else 
 			This.currentTask.reload()
 			ALERT("La tâche n'a pas pu être clôturée. Veuillez réessayer.")
@@ -638,7 +640,7 @@ Function deleteTask()->$success : Boolean
 				This.selectedCategories:=Null
 				This.load()
 				Launcher_Client_Refresh
-				FORM GOTO PAGE(1)
+				This.goToPage(1)
 			Else 
 				ds.cancelTransaction()
 				ALERT("La tâche n'a pas pu être supprimée. Veuillez réessayer.")
@@ -688,7 +690,7 @@ Function prepareNewTask($description : Text)
 		This.originalUrgency:=False
 		This.selectedAssignees:=ds.Utilisateur.query("xNumUser = :1"; This.userId)
 		This.selectedCategories:=Null
-		FORM GOTO PAGE(2)
+		This.goToPage(2)
 	End if 
 
 
@@ -704,6 +706,11 @@ Function addTaskFromMessage()
 		$description:=This.initialDraft.description
 	End if 
 	This.initialDraft:=Null
+	This.prepareNewTask($description)
+
+Function openTaskFromMessage($description : Text)
+	// Return to the list first so entering the new draft triggers On Page Change.
+	This.goToPage(1)
 	This.prepareNewTask($description)
 	
 	
@@ -723,7 +730,7 @@ Function resetTaskChanges()->$success : Boolean
 		This.selectedCategories:=Null
 		This.load()
 		This.currentTask:=Null
-		FORM GOTO PAGE(1)
+		This.goToPage(1)
 	Else 
 		ALERT("Les modifications n'ont pas pu être annulées. Veuillez réessayer.")
 	End if 
@@ -770,30 +777,48 @@ Function processTaskNotification($taskId : Integer)
 		This.currentTask:=ds.Task.get($taskId)
 		If (This.currentTask#Null)
 			This.originalUrgency:=This.currentTask.is_urgent
-			If (FORM Get current page()=2)
+			If (This.currentPage()=2)
 				This.updateTaskEditState()
 				This.loadDiscussionPanel()
 			End if 
 		Else 
-			FORM GOTO PAGE(1)
+			This.goToPage(1)
 		End if 
 	End if 
 
 
+Function goToPage($page : Integer)
+	If (This.embedded)
+		FORM GOTO PAGE($page; *)
+	Else
+		FORM GOTO PAGE($page)
+	End if
+
+Function currentPage()->$page : Integer
+	If (This.embedded)
+		$page:=FORM Get current page(*)
+	Else
+		$page:=FORM Get current page()
+	End if
+
 Function handleEvents()
 	Case of 
 		: (FORM Event.code=On Load)
-			This.setWindowTitle()
-			Messaging_Client_Set_window(Current form window; True)
-			Task_Client_Set_window(Current form window; True)
+			If (Not(This.embedded))
+				This.setWindowTitle()
+				Messaging_Client_Set_window(Current form window; True)
+				Task_Client_Set_window(Current form window; True)
+			End if
 			Launcher_Client_Refresh
 			If (This.initialDraft#Null)
 				This.addTaskFromMessage()
 			End if 
 
 		: (FORM Event.code=On Unload)
-			Messaging_Client_Set_window(Current form window; False)
-			Task_Client_Set_window(Current form window; False)
+			If (Not(This.embedded))
+				Messaging_Client_Set_window(Current form window; False)
+				Task_Client_Set_window(Current form window; False)
+			End if
 
 		: (FORM Event.code=On Clicked) && (FORM Event.objectName="btnAddTask")
 			This.addTask()
@@ -811,7 +836,7 @@ Function handleEvents()
 				This.originalUrgency:=This.currentTask.is_urgent
 				This.selectedAssignees:=Null
 				This.selectedCategories:=Null
-				FORM GOTO PAGE(2)
+				This.goToPage(2)
 			End if 
 			
 		: (FORM Event.code=On Clicked) && (FORM Event.objectName="btnFindPatient")
@@ -839,7 +864,7 @@ Function handleEvents()
 			This.resetTaskChanges()
 			
 			
-		: (FORM Event.code=On Page Change) && (FORM Get current page()=2)
+		: (FORM Event.code=On Page Change) && (This.currentPage()=2)
 			This.updateTaskEditState()
 			This.loadDiscussionPanel()
 			If (Form.users=Null)

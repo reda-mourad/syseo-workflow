@@ -1,4 +1,5 @@
 property userId : Integer
+property embedded : Boolean
 property conversations : Collection
 property selectedConversation : Object
 property selectedConversationTitle : Text
@@ -8,6 +9,7 @@ property restoringConversationSelection : Boolean
 
 Class constructor($userId : Integer)
 	This.userId:=$userId
+	This.embedded:=False
 	This.restoringConversationSelection:=False
 	This.conversationContext:=New object("userId"; $userId; "conversationId"; 0; "messageBody"; ""; "lastNotificationId"; 0)
 	This.load()
@@ -113,12 +115,16 @@ Function setWindowTitle()
 Function handleEvents()
 	Case of 
 		: (FORM Event.code=On Load)
-			This.setWindowTitle()
-			Messaging_Client_Set_window(Current form window; True)
+			If (Not(This.embedded))
+				This.setWindowTitle()
+				Messaging_Client_Set_window(Current form window; True)
+			End if
 			This.loadConversationPanel()
 
 		: (FORM Event.code=On Unload)
-			Messaging_Client_Set_window(Current form window; False)
+			If (Not(This.embedded))
+				Messaging_Client_Set_window(Current form window; False)
+			End if
 			
 		: (FORM Event.code=On Selection Change) && (FORM Event.objectName="lbConversations")
 			If (Not(This.restoringConversationSelection))
