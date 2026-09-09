@@ -184,7 +184,7 @@ For each ($message; $messages)
 	"stroke"; "#C0C0C0"; \
 	"fill"; $bubbleColor; \
 	"cornerRadius"; 18)
-	$pageObjects["bgMessage"+$objectSuffix]:=$bubble
+	$pageObjects["bgMessage"+String($message.ID)]:=$bubble
 	
 	$messageInfoText:=New object(\
 	"type"; "text"; \

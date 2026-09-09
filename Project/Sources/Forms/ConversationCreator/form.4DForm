@@ -10,11 +10,7 @@
 	"windowMinHeight": 420,
 	"rightMargin": 20,
 	"bottomMargin": 20,
-	"events": [
-		"onLoad",
-		"onDataChange",
-		"onClick"
-	],
+	"events": ["onMouseEnter", "onMouseLeave", "onLoad", "onDataChange", "onClick"],
 	"pages": [
 		{
 			"objects": {}
@@ -45,9 +41,7 @@
 					"width": 440,
 					"height": 18,
 					"dataSource": "Form:C1466.handler.groupTitle",
-					"events": [
-						"onDataChange"
-					],
+					"events": ["onDataChange"],
 					"placeholder": "Titre de la conversation",
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -59,9 +53,7 @@
 					"top": 91,
 					"width": 460,
 					"height": 230,
-					"events": [
-						"onClick"
-					],
+					"events": ["onClick"],
 					"listboxType": "collection",
 					"dataSource": "Form:C1466.handler.recipients",
 					"selectionMode": "single",
@@ -87,9 +79,7 @@
 							"dataSource": "This:C1470.selected",
 							"dataSourceTypeHint": "boolean",
 							"controlType": "checkbox",
-							"events": [
-								"onDataChange"
-							],
+							"events": ["onDataChange"],
 							"textAlign": "center",
 							"verticalAlign": "middle",
 							"enterable": true,

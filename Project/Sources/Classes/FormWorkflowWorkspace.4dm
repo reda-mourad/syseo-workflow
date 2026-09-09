@@ -60,9 +60,9 @@ Function showFeature($feature : Text)
 	OBJECT SET RGB COLORS(*; "bgTasksButton"; "#C0C0C0"; "#FFFFFF")
 	OBJECT SET RGB COLORS(*; "bgMessagesButton"; "#C0C0C0"; "#FFFFFF")
 	If ($feature="tasks")
-		OBJECT SET RGB COLORS(*; "bgTasksButton"; "#C0C0C0"; "#DCEBFA")
+		OBJECT SET RGB COLORS(*; "bgTasksButton"; "#C0C0C0"; "#80DEEA")
 	Else
-		OBJECT SET RGB COLORS(*; "bgMessagesButton"; "#C0C0C0"; "#DCEBFA")
+		OBJECT SET RGB COLORS(*; "bgMessagesButton"; "#C0C0C0"; "#80DEEA")
 	End if
 	This.refreshBadges()
 	Launcher_Client_Refresh

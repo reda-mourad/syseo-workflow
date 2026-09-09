@@ -8,6 +8,8 @@
 	"windowTitle": "Recherche de patients",
 	"destination": "detailScreen",
 	"events": [
+		"onMouseEnter",
+		"onMouseLeave",
 		"onLoad",
 		"onDataChange",
 		"onSelectionChange",
@@ -90,7 +92,7 @@
 								"name": "headerLastName"
 							},
 							"name": "columnLastName",
-							"width": 240,
+							"width": 180,
 							"dataSource": "This:C1470.Nom",
 							"enterable": false,
 							"horizontalPadding": 6,
@@ -105,7 +107,7 @@
 								"name": "headerFirstName"
 							},
 							"name": "columnFirstName",
-							"width": 240,
+							"width": 180,
 							"dataSource": "This:C1470.Prénom",
 							"enterable": false,
 							"horizontalPadding": 6,
@@ -113,6 +115,23 @@
 							"footer": {
 								"name": "Footer3"
 							}
+						},
+						{
+							"header": {
+								"text": "Sexe",
+								"name": "headerGender"
+							},
+							"name": "columnGender",
+							"width": 120,
+							"dataSource": "Patient_Gender(This:C1470)",
+							"dataSourceTypeHint": "text",
+							"enterable": false,
+							"horizontalPadding": 6,
+							"verticalAlign": "middle",
+							"footer": {
+								"name": "footerGender"
+							},
+							"textAlign": "center"
 						},
 						{
 							"header": {
@@ -128,7 +147,8 @@
 							"verticalAlign": "middle",
 							"footer": {
 								"name": "Footer4"
-							}
+							},
+							"textAlign": "left"
 						}
 					]
 				},

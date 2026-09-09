@@ -8,11 +8,7 @@
   "windowSizingY": "fixed",
   "rightMargin": 30,
   "bottomMargin": 30,
-  "events": [
-    "onLoad",
-    "onUnload",
-    "onClick"
-  ],
+  "events": ["onMouseEnter", "onMouseLeave", "onLoad", "onUnload", "onClick"],
   "pages": [
     {
       "objects": {}
@@ -48,9 +44,7 @@
           "width": 280,
           "height": 64,
           "fontSize": 18,
-          "events": [
-            "onClick"
-          ]
+          "events": ["onMouseEnter", "onMouseLeave", "onClick"]
         },
         "bgWorkspaceBadge": {
           "type": "oval",

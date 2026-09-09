@@ -1,4 +1,5 @@
 property userId : Integer
+property pageTitle : Text
 property embedded : Boolean
 property showAll : Integer
 property onlyMine : Integer
@@ -19,6 +20,7 @@ property initialDraft : Object
 
 Class constructor($userId : Integer)
 	This.userId:=$userId
+	This.pageTitle:="Liste des tâches"
 	This.embedded:=False
 	This.showAll:=0
 	This.onlyMine:=1
@@ -148,10 +150,31 @@ Function taskFontStyle($isCompleted : Boolean; $isUrgent : Boolean)->$style : In
 	
 	
 Function patientFullName()->$fullName : Text
+	var $patient : cs.PatientEntity
+	var $birthDate; $today : Date
+	var $age : Integer
+	var $ageDisplay : Text
+
+	$fullName:=""
 	If ((This.currentTask#Null) && (This.currentTask.ID_Patient#Null))
-		$fullName:=This.currentTask.patient.Nom+" "+This.currentTask.patient.Prénom
-	Else 
-		$fullName:=""
+		$patient:=This.currentTask.patient
+		If ($patient#Null)
+			$birthDate:=$patient["Date Naissance"]
+			$today:=Current date
+			$ageDisplay:="Âge non renseigné"
+			If (($birthDate#!00-00-00!) && ($birthDate<=$today))
+				$age:=Year of($today)-Year of($birthDate)
+				If ((Month of($today)<Month of($birthDate)) || ((Month of($today)=Month of($birthDate)) && (Day of($today)<Day of($birthDate))))
+					$age:=$age-1
+				End if
+				If ($age=1)
+					$ageDisplay:="1 an"
+				Else
+					$ageDisplay:=String($age)+" ans"
+				End if
+			End if
+			$fullName:=$patient.Nom+" "+$patient.Prénom+" - "+Patient_Gender($patient)+" - "+$ageDisplay
+		End if
 	End if 
 	
 	
@@ -194,9 +217,9 @@ Function categoryLabels()->$labels : Text
 		$labels:=""
 	Else 
 		If (This.selectedCategories#Null)
-			$labels:=This.selectedCategories.label.join(" + ")
+			$labels:=This.selectedCategories.orderBy("label asc, ID asc").label.join(" + ")
 		Else 
-			$labels:=This.currentTask.taskTags.tag.label.join(" + ")
+			$labels:=This.currentTask.taskTags.tag.orderBy("label asc, ID asc").label.join(" + ")
 		End if 
 	End if 
 	
@@ -788,10 +811,21 @@ Function processTaskNotification($taskId : Integer)
 
 
 Function goToPage($page : Integer)
+	This.updatePageTitle($page)
 	If (This.embedded)
 		FORM GOTO PAGE($page; *)
 	Else
 		FORM GOTO PAGE($page)
+	End if
+
+Function updatePageTitle($page : Integer)
+	This.pageTitle:="Liste des tâches"
+	If (($page=2) && (This.currentTask#Null))
+		If (This.currentTask.isNew())
+			This.pageTitle:="Nouvelle tâche"
+		Else
+			This.pageTitle:="Modifier la tâche"
+		End if
 	End if
 
 Function currentPage()->$page : Integer
@@ -802,6 +836,9 @@ Function currentPage()->$page : Integer
 	End if
 
 Function handleEvents()
+	If (FORM Event.code=On Page Change)
+		This.updatePageTitle(This.currentPage())
+	End if
 	Case of 
 		: (FORM Event.code=On Load)
 			If (Not(This.embedded))

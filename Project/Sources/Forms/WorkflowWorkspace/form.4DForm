@@ -6,12 +6,7 @@
 	"windowTitle": "Tâches et messagerie",
 	"rightMargin": 0,
 	"bottomMargin": 0,
-	"events": [
-		"onLoad",
-		"onUnload",
-		"onClick",
-		"onResize"
-	],
+	"events": ["onMouseEnter", "onMouseLeave", "onLoad", "onUnload", "onClick", "onResize"],
 	"pages": [
 		{
 			"objects": {}
@@ -37,9 +32,7 @@
 					"width": 210,
 					"height": 44,
 					"fontSize": 16,
-					"events": [
-						"onClick"
-					]
+					"events": ["onMouseEnter", "onMouseLeave", "onClick"]
 				},
 				"bgTasksBadge": {
 					"type": "oval",
@@ -87,9 +80,7 @@
 					"width": 210,
 					"height": 44,
 					"fontSize": 16,
-					"events": [
-						"onClick"
-					]
+					"events": ["onMouseEnter", "onMouseLeave", "onClick"]
 				},
 				"bgMessagesBadge": {
 					"type": "oval",

@@ -1,4 +1,4 @@
-property searchText : Text
+property newCategoryLabel : Text
 property categories : Collection
 property selectedCategories : cs.TagSelection
 property initialCategories : cs.TagSelection
@@ -7,7 +7,7 @@ property selectedCategoryIds : Collection
 Class constructor($initialCategories : cs.TagSelection)
 	var $category : cs.TagEntity
 
-	This.searchText:=""
+	This.newCategoryLabel:=""
 	This.initialCategories:=$initialCategories
 	This.selectedCategoryIds:=New collection
 	This.selectedCategories:=ds.Tag.newSelection()
@@ -21,16 +21,10 @@ Class constructor($initialCategories : cs.TagSelection)
 
 
 Function load()
-	var $searchPattern : Text
 	var $selection : cs.TagSelection
 	var $category : cs.TagEntity
 
-	If (Length(This.searchText)>0)
-		$searchPattern:="@"+This.searchText+"@"
-		$selection:=ds.Tag.query("label = :1"; $searchPattern).orderBy("label asc")
-	Else 
-		$selection:=ds.Tag.all().orderBy("label asc")
-	End if 
+	$selection:=ds.Tag.all().orderBy("label asc, ID asc")
 	This.categories:=New collection
 	For each ($category; $selection)
 		This.categories.push(New object(\
@@ -43,6 +37,39 @@ Function load()
 
 Function hasSelection()->$hasSelection : Boolean
 	$hasSelection:=(This.selectedCategoryIds.length>0)
+
+
+Function addCategory($label : Text)
+	var $category : cs.TagEntity
+	var $result : Object
+
+	// Ignore whitespace-only names and keep the stored label tidy.
+	While ((Length($label)>0) && (Character code(Substring($label; 1; 1))<=32))
+		$label:=Substring($label; 2)
+	End while
+	While ((Length($label)>0) && (Character code(Substring($label; Length($label); 1))<=32))
+		$label:=Substring($label; 1; Length($label)-1)
+	End while
+	If (Length($label)=0)
+		return
+	End if
+	If (Length($label)>255)
+		ALERT("Le nom de la catégorie ne doit pas dépasser 255 caractères.")
+		return
+	End if
+	$category:=ds.Tag.new()
+	$category.label:=$label
+	$category.is_active:=True
+	$result:=$category.save()
+	If ($result.success)
+		This.selectedCategoryIds.push($category.ID)
+		This.load()
+		This.refreshSelectedCategories()
+		This.newCategoryLabel:=""
+		OBJECT SET VALUE("inputNewCategory"; "")
+	Else
+		ALERT("Impossible de créer la catégorie. Veuillez réessayer.")
+	End if
 
 
 Function categoryMeta($category : Object)->$meta : Object
@@ -98,10 +125,6 @@ Function refreshSelectedCategories()
 Function handleEvents()
 	Case of 
 		: (FORM Event.code=On Load)
-			OBJECT SET ENABLED(*; "btnSelect"; This.hasSelection())
-
-		: (FORM Event.code=On Data Change) && (FORM Event.objectName="inputSearch")
-			This.load()
 			OBJECT SET ENABLED(*; "btnSelect"; This.hasSelection())
 
 		: (FORM Event.code=On Clicked) && (FORM Event.objectName="lbCategories") && (FORM Event.row>0)

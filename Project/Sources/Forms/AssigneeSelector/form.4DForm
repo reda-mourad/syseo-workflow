@@ -7,11 +7,7 @@
 	"bottomMargin": 20,
 	"windowTitle": "Sélection des assignés",
 	"destination": "detailScreen",
-	"events": [
-		"onLoad",
-		"onDataChange",
-		"onClick"
-	],
+	"events": ["onMouseEnter", "onMouseLeave", "onLoad", "onDataChange", "onClick"],
 	"pages": [
 		{
 			"objects": {}
@@ -35,9 +31,7 @@
 					"height": 18,
 					"placeholder": "Rechercher par nom ou initiales",
 					"dataSource": "Form:C1466.handler.searchText",
-					"events": [
-						"onDataChange"
-					],
+					"events": ["onDataChange"],
 					"fill": "transparent",
 					"borderStyle": "none",
 					"sizingX": "grow"
@@ -48,9 +42,7 @@
 					"top": 75,
 					"width": 760,
 					"height": 320,
-					"events": [
-						"onClick"
-					],
+					"events": ["onClick"],
 					"listboxType": "collection",
 					"dataSource": "Form:C1466.handler.assignees",
 					"selectionMode": "single",
@@ -76,9 +68,7 @@
 							"dataSource": "This:C1470.selected",
 							"dataSourceTypeHint": "boolean",
 							"controlType": "checkbox",
-							"events": [
-								"onDataChange"
-							],
+							"events": ["onDataChange"],
 							"enterable": true,
 							"textAlign": "center",
 							"horizontalPadding": 5,

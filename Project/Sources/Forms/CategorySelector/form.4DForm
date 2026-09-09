@@ -7,18 +7,14 @@
 	"bottomMargin": 20,
 	"windowTitle": "Sélection des catégories",
 	"destination": "detailScreen",
-	"events": [
-		"onLoad",
-		"onDataChange",
-		"onClick"
-	],
+	"events": ["onMouseEnter", "onMouseLeave", "onLoad", "onDataChange", "onClick"],
 	"pages": [
 		{
 			"objects": {}
 		},
 		{
 			"objects": {
-				"bgSearch": {
+				"bgNewCategory": {
 					"type": "rectangle",
 					"left": 18,
 					"top": 20,
@@ -27,17 +23,16 @@
 					"stroke": "#c0c0c0",
 					"sizingX": "grow"
 				},
-				"inputSearch": {
+				"inputNewCategory": {
 					"type": "input",
 					"left": 28,
 					"top": 28,
 					"width": 400,
 					"height": 18,
-					"placeholder": "Rechercher une catégorie",
-					"dataSource": "Form:C1466.handler.searchText",
-					"events": [
-						"onDataChange"
-					],
+					"placeholder": "Ajouter une catégorie",
+					"dataSource": "Form:C1466.handler.newCategoryLabel",
+					"events": ["onDataChange"],
+					"method": "ObjectMethods/inputNewCategory.4dm",
 					"fill": "transparent",
 					"borderStyle": "none",
 					"sizingX": "grow"
@@ -48,9 +43,7 @@
 					"top": 70,
 					"width": 420,
 					"height": 320,
-					"events": [
-						"onClick"
-					],
+					"events": ["onClick"],
 					"listboxType": "collection",
 					"dataSource": "Form:C1466.handler.categories",
 					"selectionMode": "single",
@@ -77,9 +70,7 @@
 							"dataSource": "This:C1470.selected",
 							"dataSourceTypeHint": "boolean",
 							"controlType": "checkbox",
-							"events": [
-								"onDataChange"
-							],
+							"events": ["onDataChange"],
 							"enterable": true,
 							"textAlign": "center",
 							"horizontalPadding": 5,

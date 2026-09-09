@@ -3,12 +3,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"events": [
-		"onLoad",
-		"onUnload",
-		"onClick",
-		"onSelectionChange"
-	],
+	"events": ["onMouseEnter", "onMouseLeave", "onLoad", "onUnload", "onClick", "onSelectionChange"],
 	"pages": [
 		{
 			"objects": {}
@@ -44,9 +39,7 @@
 					"width": 280,
 					"height": 413,
 					"bottom": 476,
-					"events": [
-						"onSelectionChange"
-					],
+					"events": ["onSelectionChange"],
 					"listboxType": "collection",
 					"dataSource": "Form:C1466.handler.conversations",
 					"rowStrokeSource": "Form:C1466.handler.conversationColor(This:C1470)",
@@ -101,9 +94,7 @@
 					"top": 496,
 					"width": 280,
 					"height": 34,
-					"events": [
-						"onClick"
-					],
+					"events": ["onMouseEnter", "onMouseLeave", "onClick"],
 					"sizingX": "grow",
 					"sizingY": "move"
 				},

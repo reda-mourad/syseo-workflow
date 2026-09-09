@@ -31,8 +31,8 @@ ds.Conversation.all().drop()
 ds.Patient.all().drop()
 ds.Utilisateur.all().drop()
 
-$users:=ds.Utilisateur.fromCollection(JSON Parse(Folder(fk desktop folder).file("users.json").getText()))
-ds.Patient.fromCollection(JSON Parse(Folder(fk desktop folder).file("patients.json").getText()))
+$users:=ds.Utilisateur.fromCollection(JSON Parse(Folder(fk database folder).file("users.json").getText()))
+ds.Patient.fromCollection(JSON Parse(Folder(fk database folder).file("patients.json").getText()))
 $users:=ds.Utilisateur.all()
 $patients:=ds.Patient.all()
 
