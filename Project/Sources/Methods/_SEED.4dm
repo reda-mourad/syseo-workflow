@@ -263,3 +263,5 @@ For ($taskNumber; 1; 500)
 		$assignee.save()
 	End for 
 End for 
+
+ALERT("Seeding finished!")
