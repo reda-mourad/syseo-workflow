@@ -55,7 +55,11 @@ Else
 			ds.validateTransaction()
 			$result.success:=True
 			$result.messageId:=$message.ID
-			Messaging_Server_Notify_clients($recipientIds; $conversationId; $message.ID; $senderId)
+			// A task draft owns the outer transaction; notify only after its Save.
+			$result.deferred:=(Transaction level>0)
+			If (Not($result.deferred))
+				Messaging_Server_Notify_clients($recipientIds; $conversationId; $message.ID; $senderId)
+			End if
 		Else 
 			ds.cancelTransaction()
 			$result.error:=$error

@@ -17,6 +17,7 @@ property selectedCategories : cs.TagSelection
 property discussionContext : Object
 property originalUrgency : Boolean
 property initialDraft : Object
+property draftTransaction : Boolean
 
 Class constructor($userId : Integer)
 	This.userId:=$userId
@@ -31,6 +32,7 @@ Class constructor($userId : Integer)
 	This.taskUnreadCounts:=New object
 	This.originalUrgency:=False
 	This.initialDraft:=Null
+	This.draftTransaction:=False
 	This.discussionContext:=New object("userId"; $userId; "conversationId"; 0; "messageBody"; ""; "lastNotificationId"; 0)
 	This.load()
 	
@@ -230,6 +232,10 @@ Function canEditTask()->$canEdit : Boolean
 	
 Function canCloseTask()->$canClose : Boolean
 	var $assignments : cs.TaskAssigneeSelection
+	If (This.draftTransaction)
+		$canClose:=False
+		return
+	End if
 	
 	$canClose:=This.canEditTask() && Not(This.currentTask.isNew())
 	If ((This.currentTask#Null) && (This.currentTask.completed_at=Null) && Not($canClose))
@@ -241,7 +247,7 @@ Function canCloseTask()->$canClose : Boolean
 	
 	
 Function canDeleteTask()->$canDelete : Boolean
-	$canDelete:=(This.currentTask#Null) && Not(This.currentTask.isNew()) && (This.currentTask.ID_creator=This.userId)
+	$canDelete:=Not(This.draftTransaction) && (This.currentTask#Null) && Not(This.currentTask.isNew()) && (This.currentTask.ID_creator=This.userId)
 
 
 Function updateTaskEditState()
@@ -483,14 +489,17 @@ Function syncTaskConversation()->$success : Boolean
 
 Function saveTask()->$success : Boolean
 	var $result : Object
+	var $draftMessage : cs.MessageEntity
+	var $messageRecipientIds : Collection
 	var $previousAssignments; $currentAssignments : cs.TaskAssigneeSelection
 	var $assignment : cs.TaskAssigneeEntity
 	var $previousIds; $currentIds; $affectedIds; $urgentIds; $refreshIds : Collection
 	var $assigneeId; $taskId : Integer
-	var $wasUrgent : Boolean
+	var $wasUrgent; $wasDraft : Boolean
 	
 	$success:=False
 	If (This.canEditTask())
+		$wasDraft:=This.draftTransaction
 		$previousIds:=New collection
 		$currentIds:=New collection
 		$affectedIds:=New collection
@@ -520,6 +529,11 @@ Function saveTask()->$success : Boolean
 		
 		If ($success)
 			ds.validateTransaction()
+			If ($wasDraft)
+				// Commit the outer draft only after every task relation has been saved.
+				ds.validateTransaction()
+				This.draftTransaction:=False
+			End if
 			$taskId:=This.currentTask.ID
 			$currentAssignments:=ds.TaskAssignee.query("ID_Task = :1"; $taskId)
 			For each ($assignment; $currentAssignments)
@@ -545,14 +559,23 @@ Function saveTask()->$success : Boolean
 			End for each 
 			Task_Server_Notify_clients($refreshIds; $taskId; This.userId; "changed")
 			Task_Server_Notify_clients($urgentIds; $taskId; This.userId; "urgent")
+			If ($wasDraft)
+				$messageRecipientIds:=This.currentTask.conversation.members.query("ID_Utilisateur # :1 AND left_at = null"; This.userId).ID_Utilisateur
+				For each ($draftMessage; ds.Message.query("ID_Conversation = :1 AND deleted_at = null"; This.currentTask.ID_Conversation).orderBy("ID asc"))
+					Messaging_Server_Notify_clients($messageRecipientIds; This.currentTask.ID_Conversation; $draftMessage.ID; $draftMessage.ID_sender)
+				End for each
+			End if
 			This.originalUrgency:=This.currentTask.is_urgent
 			This.selectedAssignees:=Null
 			This.selectedCategories:=Null
 			This.load()
 			Launcher_Client_Refresh
 			This.goToPage(1)
-		Else 
+		Else
 			ds.cancelTransaction()
+			If ($wasDraft)
+				This.resetTaskChanges()
+			End if
 			ALERT("La tâche n'a pas pu être enregistrée. Veuillez réessayer.")
 		End if 
 	End if 
@@ -694,14 +717,17 @@ Function toggleUrgent()
 	End if 
 	
 	
-Function prepareNewTask($description : Text)
+Function beginTaskDraft($description : Text)->$success : Boolean
 	var $creator : cs.UtilisateurEntity
 	var $createdAt : Text
+	var $result : Object
 	
+	This.rollbackTaskDraft()
+	$success:=False
 	$creator:=ds.Utilisateur.get(This.userId)
-	If ($creator=Null)
-		ALERT("La tâche ne peut pas être créée car l'utilisateur courant est introuvable.")
-	Else 
+	If ($creator#Null)
+		ds.startTransaction()
+		This.draftTransaction:=True
 		$createdAt:=String(Current date; ISO date; Current time)
 		This.currentTask:=ds.Task.new()
 		This.currentTask.creator:=$creator
@@ -713,8 +739,37 @@ Function prepareNewTask($description : Text)
 		This.originalUrgency:=False
 		This.selectedAssignees:=ds.Utilisateur.query("xNumUser = :1"; This.userId)
 		This.selectedCategories:=Null
-		This.goToPage(2)
+		$result:=This.currentTask.save()
+		$success:=$result.success
+		If ($success)
+			$success:=This.syncTaskConversation()
+		End if
+		If (Not($success))
+			This.rollbackTaskDraft()
+		End if
 	End if 
+
+
+Function rollbackTaskDraft()
+	If (This.draftTransaction)
+		ds.cancelTransaction()
+		This.draftTransaction:=False
+		This.currentTask:=Null
+		This.selectedTask:=Null
+		This.selectedAssignees:=Null
+		This.selectedCategories:=Null
+		This.discussionContext:=New object("userId"; This.userId; "conversationId"; 0; "messageBody"; ""; "lastNotificationId"; 0)
+	End if
+
+
+Function prepareNewTask($description : Text)
+	If (This.beginTaskDraft($description))
+		This.goToPage(2)
+	Else
+		This.load()
+		This.goToPage(1)
+		ALERT("La tâche et sa discussion n'ont pas pu être créées. Veuillez réessayer.")
+	End if
 
 
 Function addTask()
@@ -733,6 +788,7 @@ Function addTaskFromMessage()
 
 Function openTaskFromMessage($description : Text)
 	// Return to the list first so entering the new draft triggers On Page Change.
+	This.rollbackTaskDraft()
 	This.goToPage(1)
 	This.prepareNewTask($description)
 	
@@ -740,6 +796,7 @@ Function openTaskFromMessage($description : Text)
 Function resetTaskChanges()->$success : Boolean
 	var $result : Object
 	
+	This.rollbackTaskDraft()
 	$success:=True
 	If (This.currentTask#Null)
 		If (Not(This.currentTask.isNew()))
@@ -770,7 +827,9 @@ Function loadDiscussionPanel()
 	This.discussionContext:=New object("userId"; This.userId; "conversationId"; $conversationId; "messageBody"; ""; "lastNotificationId"; 0)
 	OBJECT SET VISIBLE(*; "subformDiscussion"; $conversationId>0)
 	If ($conversationId>0)
-		Messaging_Server_Mark_latest(This.userId; $conversationId; "read")
+		If (Not(This.draftTransaction))
+			Messaging_Server_Mark_latest(This.userId; $conversationId; "read")
+		End if
 		OBJECT GET COORDINATES(*; "subformDiscussion"; $left; $top; $right; $bottom)
 		$panelHeight:=$bottom-$top
 		$panelWidth:=$right-$left
@@ -781,7 +840,7 @@ Function loadDiscussionPanel()
 
 Function processNotification($kind : Text; $conversationId : Integer)
 	If ((This.currentTask#Null) && (This.currentTask.ID_Conversation#Null) && (This.currentTask.ID_Conversation=$conversationId))
-		If ($kind="message")
+		If (($kind="message") && Not(This.draftTransaction))
 			Messaging_Server_Mark_latest(This.userId; $conversationId; "read")
 		End if 
 		This.loadDiscussionPanel()
@@ -790,6 +849,9 @@ Function processNotification($kind : Text; $conversationId : Integer)
 
 Function processTaskNotification($taskId : Integer)
 	var $activeTaskId : Integer
+	If (This.draftTransaction)
+		return
+	End if
 
 	$activeTaskId:=0
 	If ((This.currentTask#Null) && Not(This.currentTask.isNew()))
@@ -821,7 +883,7 @@ Function goToPage($page : Integer)
 Function updatePageTitle($page : Integer)
 	This.pageTitle:="Liste des tâches"
 	If (($page=2) && (This.currentTask#Null))
-		If (This.currentTask.isNew())
+		If (This.draftTransaction || This.currentTask.isNew())
 			This.pageTitle:="Nouvelle tâche"
 		Else
 			This.pageTitle:="Modifier la tâche"
@@ -852,6 +914,7 @@ Function handleEvents()
 			End if 
 
 		: (FORM Event.code=On Unload)
+			This.rollbackTaskDraft()
 			If (Not(This.embedded))
 				Messaging_Client_Set_window(Current form window; False)
 				Task_Client_Set_window(Current form window; False)

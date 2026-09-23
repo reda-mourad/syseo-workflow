@@ -46,7 +46,7 @@ If ((FORM Event.code=On Before Keystroke) && (FORM Event.objectName="inputMessag
 			OBJECT SET VALUE("inputMessage"; "")
 			Refresh_conversation_panel($currentUserId; $conversationId)
 			$windows:=New collection
-			If ((Value type(Storage.messagingClient)=Is object) && (Value type(Storage.messagingClient.windows)=Is collection))
+			If (Not(Bool($sendResult.deferred)) && (Value type(Storage.messagingClient)=Is object) && (Value type(Storage.messagingClient.windows)=Is collection))
 				Use (Storage.messagingClient.windows)
 					$windows:=Storage.messagingClient.windows.slice(0)
 				End use 

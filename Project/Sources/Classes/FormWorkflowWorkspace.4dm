@@ -1,4 +1,5 @@
 property userId : Integer
+property userName : Text
 property activeFeature : Text
 property initialFeature : Text
 property messageBadge : Text
@@ -9,7 +10,14 @@ property tasksLoaded : Boolean
 property messagesLoaded : Boolean
 
 Class constructor($userId : Integer)
+	var $user : cs.UtilisateurEntity
+
 	This.userId:=$userId
+	This.userName:="Utilisateur #"+String($userId)
+	$user:=ds.Utilisateur.get($userId)
+	If ($user#Null)
+		This.userName:=$user.Nom
+	End if
 	This.activeFeature:=""
 	This.initialFeature:="tasks"
 	This.messageBadge:="0"
@@ -35,6 +43,9 @@ Function refreshBadges()
 
 Function showFeature($feature : Text)
 	If ($feature#This.activeFeature)
+		If ((This.activeFeature="tasks") && This.taskContext.handler.draftTransaction)
+			EXECUTE METHOD IN SUBFORM("subformTasks"; Formula(Form.handler.resetTaskChanges()))
+		End if
 		This.activeFeature:=$feature
 		OBJECT SET VISIBLE(*; "subformTasks"; $feature="tasks")
 		OBJECT SET VISIBLE(*; "subformMessages"; $feature="messages")
@@ -85,30 +96,16 @@ Function processTaskNotification($taskId : Integer)
 	End if
 	This.refreshBadges()
 
-Function layoutNavigation()
-	var $left; $top; $right; $bottom; $navigationLeft : Integer
-	OBJECT GET COORDINATES(*; "subformTasks"; $left; $top; $right; $bottom)
-	$navigationLeft:=$left+Round(($right-$left-440)/2; 0)
-	This.positionNavigationButton("Tasks"; $navigationLeft)
-	This.positionNavigationButton("Messages"; $navigationLeft+230)
-
-Function positionNavigationButton($feature : Text; $left : Integer)
-	OBJECT SET COORDINATES(*; "bg"+$feature+"Button"; $left; 20; $left+210; 64)
-	OBJECT SET COORDINATES(*; "btn"+$feature; $left; 20; $left+210; 64)
-	OBJECT SET COORDINATES(*; "bg"+$feature+"Badge"; $left+198; 8; $left+222; 32)
-	OBJECT SET COORDINATES(*; "input"+$feature+"Badge"; $left+198; 12; $left+222; 32)
-
 Function handleEvents()
 	Case of
 		: (FORM Event.code=On Load)
+			SET WINDOW TITLE("Tâches et messagerie — "+This.userName; Current form window)
 			Launcher_Client_Set_window(Current form window; True)
 			Messaging_Client_Set_window(Current form window; True)
 			Task_Client_Set_window(Current form window; True)
 			This.showFeature(This.initialFeature)
-			This.layoutNavigation()
-		: (FORM Event.code=On Resize)
-			This.layoutNavigation()
 		: (FORM Event.code=On Unload)
+			This.taskContext.handler.rollbackTaskDraft()
 			Launcher_Client_Set_window(Current form window; False)
 			Messaging_Client_Set_window(Current form window; False)
 			Task_Client_Set_window(Current form window; False)

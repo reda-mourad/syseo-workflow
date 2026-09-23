@@ -11,8 +11,7 @@
 		"onMouseLeave",
 		"onLoad",
 		"onUnload",
-		"onClick",
-		"onResize"
+		"onClick"
 	],
 	"pages": [
 		{
@@ -22,8 +21,8 @@
 			"objects": {
 				"bgTasksButton": {
 					"type": "rectangle",
-					"left": 440,
-					"top": 20,
+					"left": 20,
+					"top": 16,
 					"width": 210,
 					"height": 44,
 					"stroke": "#C0C0C0",
@@ -34,8 +33,8 @@
 					"style": "custom",
 					"borderStyle": "none",
 					"text": "Tâches",
-					"left": 440,
-					"top": 20,
+					"left": 20,
+					"top": 16,
 					"width": 210,
 					"height": 44,
 					"fontSize": 16,
@@ -47,8 +46,8 @@
 				},
 				"bgTasksBadge": {
 					"type": "oval",
-					"left": 638,
-					"top": 8,
+					"left": 218,
+					"top": 4,
 					"width": 24,
 					"height": 24,
 					"stroke": "#B71C1C",
@@ -56,8 +55,8 @@
 				},
 				"inputTasksBadge": {
 					"type": "input",
-					"left": 638,
-					"top": 12,
+					"left": 218,
+					"top": 8,
 					"width": 24,
 					"height": 20,
 					"dataSource": "Form:C1466.handler.taskBadge",
@@ -74,8 +73,8 @@
 				},
 				"bgMessagesButton": {
 					"type": "rectangle",
-					"left": 670,
-					"top": 20,
+					"left": 250,
+					"top": 16,
 					"width": 210,
 					"height": 44,
 					"stroke": "#C0C0C0",
@@ -86,8 +85,8 @@
 					"style": "custom",
 					"borderStyle": "none",
 					"text": "Messagerie",
-					"left": 670,
-					"top": 20,
+					"left": 250,
+					"top": 16,
 					"width": 210,
 					"height": 44,
 					"fontSize": 16,
@@ -99,8 +98,8 @@
 				},
 				"bgMessagesBadge": {
 					"type": "oval",
-					"left": 868,
-					"top": 8,
+					"left": 448,
+					"top": 4,
 					"width": 24,
 					"height": 24,
 					"stroke": "#B71C1C",
@@ -108,8 +107,8 @@
 				},
 				"inputMessagesBadge": {
 					"type": "input",
-					"left": 868,
-					"top": 12,
+					"left": 448,
+					"top": 8,
 					"width": 24,
 					"height": 20,
 					"dataSource": "Form:C1466.handler.messageBadge",
@@ -152,12 +151,30 @@
 					"height": 0,
 					"stroke": "#c0c0c0",
 					"sizingX": "grow"
+				},
+				"inputCurrentUserName": {
+					"type": "input",
+					"left": 910,
+					"top": 27,
+					"width": 390,
+					"height": 23,
+					"dataSource": "Form:C1466.handler.userName",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontSize": 18,
+					"textAlign": "right",
+					"horizontalPadding": 0,
+					"verticalPadding": 0,
+					"fontWeight": "bold",
+					"sizingX": "move"
 				}
 			}
 		}
 	],
 	"method": "method.4dm",
-	"geometryStamp": 16,
+	"geometryStamp": 24,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
