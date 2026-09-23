@@ -6,8 +6,6 @@
 	"windowTitle": "Accueil",
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
-	"rightMargin": 30,
-	"bottomMargin": 30,
 	"events": [
 		"onMouseEnter",
 		"onMouseLeave",
@@ -21,22 +19,38 @@
 		},
 		{
 			"objects": {
-				"txtLauncherTitle": {
-					"type": "text",
-					"text": "Accueil",
-					"left": 40,
-					"top": 24,
-					"width": 300,
-					"height": 28,
-					"fontSize": 20,
-					"fontWeight": "bold"
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 229,
+					"height": 61,
+					"fill": "#ABABAB",
+					"stroke": "transparent"
+				},
+				"Button": {
+					"type": "button",
+					"text": "Button",
+					"top": 0,
+					"left": 0,
+					"width": 55,
+					"height": 27,
+					"events": [
+						"onClick"
+					],
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "[Esc]",
+					"visibility": "hidden"
 				},
 				"bgWorkspaceButton": {
 					"type": "rectangle",
-					"left": 40,
-					"top": 72,
-					"width": 280,
-					"height": 64,
+					"left": 15,
+					"top": 15,
+					"width": 200,
+					"height": 40,
 					"stroke": "#c0c0c0",
 					"fill": "#C1F3A0"
 				},
@@ -45,21 +59,21 @@
 					"style": "custom",
 					"borderStyle": "none",
 					"text": "Tâches et messagerie",
-					"left": 40,
-					"top": 72,
-					"width": 280,
-					"height": 64,
-					"fontSize": 18,
+					"left": 15,
+					"top": 15,
+					"width": 200,
+					"height": 40,
 					"events": [
 						"onMouseEnter",
 						"onMouseLeave",
 						"onClick"
-					]
+					],
+					"fontWeight": "bold"
 				},
 				"bgWorkspaceBadge": {
 					"type": "oval",
-					"left": 308,
-					"top": 60,
+					"left": 200,
+					"top": 3,
 					"width": 24,
 					"height": 24,
 					"stroke": "#B71C1C",
@@ -67,8 +81,8 @@
 				},
 				"inputWorkspaceBadge": {
 					"type": "input",
-					"left": 308,
-					"top": 64,
+					"left": 200,
+					"top": 7,
 					"width": 24,
 					"height": 20,
 					"dataSource": "Form:C1466.handler.combinedBadge",
@@ -87,12 +101,29 @@
 		}
 	],
 	"method": "method.4dm",
-	"geometryStamp": 1,
+	"geometryStamp": 52,
 	"editor": {
-		"activeView": "View 1",
+		"groups": {
+			"Group": [
+				"bgWorkspaceButton",
+				"btnWorkspace"
+			],
+			"Group1": [
+				"bgWorkspaceBadge",
+				"inputWorkspaceBadge"
+			]
+		},
+		"activeView": "View 2",
 		"defaultView": "View 1",
 		"views": {
-			"View 1": {}
+			"View 1": {},
+			"View 2": {
+				"objects": [
+					"Rectangle"
+				]
+			}
 		}
-	}
+	},
+	"rightMargin": 0,
+	"bottomMargin": 0
 }

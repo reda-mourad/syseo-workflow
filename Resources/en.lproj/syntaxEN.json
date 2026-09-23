@@ -1,0 +1,1827 @@
+{
+	"_method_": {
+		"Build_conversation_form": {
+			"Syntax": "**Build_conversation_form**( *currentUserId* : Integer; *conversationId* : Integer; *limit* : Integer; *subformHeight* : Integer; *subformWidth* : Integer )->form : Object",
+			"Params": [
+				[
+					"currentUserId",
+					"Integer",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				],
+				[
+					"limit",
+					"Integer",
+					"->"
+				],
+				[
+					"subformHeight",
+					"Integer",
+					"->"
+				],
+				[
+					"subformWidth",
+					"Integer",
+					"->"
+				],
+				[
+					"form",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Build_conversation_panel_form": {
+			"Syntax": "**Build_conversation_panel_form**( *currentUserId* : Integer; *conversationId* : Integer; *panelHeight* : Integer; *panelWidth* : Integer )->form : Object",
+			"Params": [
+				[
+					"currentUserId",
+					"Integer",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				],
+				[
+					"panelHeight",
+					"Integer",
+					"->"
+				],
+				[
+					"panelWidth",
+					"Integer",
+					"->"
+				],
+				[
+					"form",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"CLI_COMPILE": {
+			"Syntax": "**CLI_COMPILE**() : Variant",
+			"Params": [
+				[
+					"",
+					"Variant",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Conversation_message_events": {
+			"Syntax": "**Conversation_message_events**() : Variant",
+			"Params": [
+				[
+					"",
+					"Variant",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Conversation_panel_events": {
+			"Syntax": "**Conversation_panel_events**() : Variant",
+			"Params": [
+				[
+					"",
+					"Variant",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Conversation_panel_scroll": {
+			"Syntax": "**Conversation_panel_scroll**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"Init_Task_Chat": {
+			"Syntax": "**Init_Task_Chat**( *userId* : Integer )",
+			"Params": [
+				[
+					"userId",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Launcher_Client_Form_refresh": {
+			"Syntax": "**Launcher_Client_Form_refresh**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"Launcher_Client_Open": {
+			"Syntax": "**Launcher_Client_Open**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"Launcher_Client_Refresh": {
+			"Syntax": "**Launcher_Client_Refresh**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"Launcher_Client_Set_window": {
+			"Syntax": "**Launcher_Client_Set_window**( *window* : Integer; *registered* : Boolean )",
+			"Params": [
+				[
+					"window",
+					"Integer",
+					"->"
+				],
+				[
+					"registered",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Launcher_Server_Counts": {
+			"Syntax": "**Launcher_Server_Counts**( *userId* : Integer )->result : Object",
+			"Params": [
+				[
+					"userId",
+					"Integer",
+					"->"
+				],
+				[
+					"result",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Client_Form_notify": {
+			"Syntax": "**Messaging_Client_Form_notify**( *kind* : Text; *conversationId* : Integer; *messageId* : Integer; *actorId* : Integer; *state* : Text )",
+			"Params": [
+				[
+					"kind",
+					"Text",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				],
+				[
+					"messageId",
+					"Integer",
+					"->"
+				],
+				[
+					"actorId",
+					"Integer",
+					"->"
+				],
+				[
+					"state",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Client_Form_scroll": {
+			"Syntax": "**Messaging_Client_Form_scroll**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"Messaging_Client_New_message": {
+			"Syntax": "**Messaging_Client_New_message**( *recipientId* : Integer; *conversationId* : Integer; *messageId* : Integer; *senderId* : Integer )",
+			"Params": [
+				[
+					"recipientId",
+					"Integer",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				],
+				[
+					"messageId",
+					"Integer",
+					"->"
+				],
+				[
+					"senderId",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Client_On_new_message": {
+			"Syntax": "**Messaging_Client_On_new_message**( *conversationId* : Integer; *messageId* : Integer; *senderId* : Integer )",
+			"Params": [
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				],
+				[
+					"messageId",
+					"Integer",
+					"->"
+				],
+				[
+					"senderId",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Client_Open": {
+			"Syntax": "**Messaging_Client_Open**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"Messaging_Client_Register": {
+			"Syntax": "**Messaging_Client_Register**( *userId* : Integer )->result : Object",
+			"Params": [
+				[
+					"userId",
+					"Integer",
+					"->"
+				],
+				[
+					"result",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Client_Set_window": {
+			"Syntax": "**Messaging_Client_Set_window**( *window* : Integer; *registered* : Boolean )",
+			"Params": [
+				[
+					"window",
+					"Integer",
+					"->"
+				],
+				[
+					"registered",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Client_Status": {
+			"Syntax": "**Messaging_Client_Status**( *participantId* : Integer; *conversationId* : Integer; *messageId* : Integer; *state* : Text )",
+			"Params": [
+				[
+					"participantId",
+					"Integer",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				],
+				[
+					"messageId",
+					"Integer",
+					"->"
+				],
+				[
+					"state",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Client_Unregister": {
+			"Syntax": "**Messaging_Client_Unregister**()->result : Object",
+			"Params": [
+				[
+					"result",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Client_User_id": {
+			"Syntax": "**Messaging_Client_User_id**()->userId : Integer",
+			"Params": [
+				[
+					"userId",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Server_Conversations": {
+			"Syntax": "**Messaging_Server_Conversations**( *userId* : Integer )->result : Object",
+			"Params": [
+				[
+					"userId",
+					"Integer",
+					"->"
+				],
+				[
+					"result",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Server_Create": {
+			"Syntax": "**Messaging_Server_Create**( *creatorId* : Integer; *recipientIds* : Collection; *title* : Text )->result : Object",
+			"Params": [
+				[
+					"creatorId",
+					"Integer",
+					"->"
+				],
+				[
+					"recipientIds",
+					"Collection",
+					"->"
+				],
+				[
+					"title",
+					"Text",
+					"->"
+				],
+				[
+					"result",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Server_Mark_latest": {
+			"Syntax": "**Messaging_Server_Mark_latest**( *userId* : Integer; *conversationId* : Integer; *state* : Text )->result : Object",
+			"Params": [
+				[
+					"userId",
+					"Integer",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				],
+				[
+					"state",
+					"Text",
+					"->"
+				],
+				[
+					"result",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Server_Notify_clients": {
+			"Syntax": "**Messaging_Server_Notify_clients**( *recipientIds* : Collection; *conversationId* : Integer; *messageId* : Integer; *senderId* : Integer )->queuedCount : Integer",
+			"Params": [
+				[
+					"recipientIds",
+					"Collection",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				],
+				[
+					"messageId",
+					"Integer",
+					"->"
+				],
+				[
+					"senderId",
+					"Integer",
+					"->"
+				],
+				[
+					"queuedCount",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Server_Notify_status": {
+			"Syntax": "**Messaging_Server_Notify_status**( *participantId* : Integer; *conversationId* : Integer; *messageId* : Integer; *state* : Text )->queuedCount : Integer",
+			"Params": [
+				[
+					"participantId",
+					"Integer",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				],
+				[
+					"messageId",
+					"Integer",
+					"->"
+				],
+				[
+					"state",
+					"Text",
+					"->"
+				],
+				[
+					"queuedCount",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Server_Read_messages": {
+			"Syntax": "**Messaging_Server_Read_messages**( *userId* : Integer; *conversationId* : Integer; *limit* : Integer )->result : Object",
+			"Params": [
+				[
+					"userId",
+					"Integer",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				],
+				[
+					"limit",
+					"Integer",
+					"->"
+				],
+				[
+					"result",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Server_Recipients": {
+			"Syntax": "**Messaging_Server_Recipients**( *userId* : Integer )->result : Object",
+			"Params": [
+				[
+					"userId",
+					"Integer",
+					"->"
+				],
+				[
+					"result",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Messaging_Server_Send_message": {
+			"Syntax": "**Messaging_Server_Send_message**( *senderId* : Integer; *conversationId* : Integer; *body* : Text )->result : Object",
+			"Params": [
+				[
+					"senderId",
+					"Integer",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				],
+				[
+					"body",
+					"Text",
+					"->"
+				],
+				[
+					"result",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Patient_Gender": {
+			"Syntax": "**Patient_Gender**( *patient* : cs.Workflow.PatientEntity )->gender : Text",
+			"Params": [
+				[
+					"patient",
+					"cs.Workflow.PatientEntity",
+					"->"
+				],
+				[
+					"gender",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Refresh_conversation_panel": {
+			"Syntax": "**Refresh_conversation_panel**( *currentUserId* : Integer; *conversationId* : Integer )",
+			"Params": [
+				[
+					"currentUserId",
+					"Integer",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Task_Client_Changed": {
+			"Syntax": "**Task_Client_Changed**( *recipientId* : Integer; *taskId* : Integer; *actorId* : Integer; *kind* : Text )",
+			"Params": [
+				[
+					"recipientId",
+					"Integer",
+					"->"
+				],
+				[
+					"taskId",
+					"Integer",
+					"->"
+				],
+				[
+					"actorId",
+					"Integer",
+					"->"
+				],
+				[
+					"kind",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Task_Client_Form_from_message": {
+			"Syntax": "**Task_Client_Form_from_message**( *description* : Text )",
+			"Params": [
+				[
+					"description",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Task_Client_Form_refresh": {
+			"Syntax": "**Task_Client_Form_refresh**( *taskId* : Integer )",
+			"Params": [
+				[
+					"taskId",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Task_Client_On_urgent": {
+			"Syntax": "**Task_Client_On_urgent**( *taskId* : Integer )",
+			"Params": [
+				[
+					"taskId",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Task_Client_Open_from_message": {
+			"Syntax": "**Task_Client_Open_from_message**( *userId* : Integer; *messageId* : Integer )",
+			"Params": [
+				[
+					"userId",
+					"Integer",
+					"->"
+				],
+				[
+					"messageId",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Task_Client_Set_window": {
+			"Syntax": "**Task_Client_Set_window**( *window* : Integer; *registered* : Boolean )",
+			"Params": [
+				[
+					"window",
+					"Integer",
+					"->"
+				],
+				[
+					"registered",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Task_Server_Notify_clients": {
+			"Syntax": "**Task_Server_Notify_clients**( *recipientIds* : Collection; *taskId* : Integer; *actorId* : Integer; *kind* : Text )->queuedCount : Integer",
+			"Params": [
+				[
+					"recipientIds",
+					"Collection",
+					"->"
+				],
+				[
+					"taskId",
+					"Integer",
+					"->"
+				],
+				[
+					"actorId",
+					"Integer",
+					"->"
+				],
+				[
+					"kind",
+					"Text",
+					"->"
+				],
+				[
+					"queuedCount",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"UI_Button_hover": {
+			"Syntax": "**UI_Button_hover**( *backgrounds* : Object )",
+			"Params": [
+				[
+					"backgrounds",
+					"Object",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"Workflow_User_Profile": {
+			"Syntax": "**Workflow_User_Profile**( *privileges* : Integer )->profile : Text",
+			"Params": [
+				[
+					"privileges",
+					"Integer",
+					"->"
+				],
+				[
+					"profile",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"Workspace_Client_Open": {
+			"Syntax": "**Workspace_Client_Open**( *userId* : Integer )",
+			"Params": [
+				[
+					"userId",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		}
+	},
+	"cs.Workflow": {
+		"FormAssigneeSelector": {
+			"new()": {
+				"Syntax": "**.new**( *initialAssignees* : cs.Workflow.UtilisateurSelection )",
+				"Params": [
+					[
+						"initialAssignees",
+						"cs.Workflow.UtilisateurSelection",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"FormTaskManager": {
+			"new()": {
+				"Syntax": "**.new**( *userId* : Integer )",
+				"Params": [
+					[
+						"userId",
+						"Integer",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"FormCategorySelector": {
+			"new()": {
+				"Syntax": "**.new**( *initialCategories* : cs.Workflow.TagSelection )",
+				"Params": [
+					[
+						"initialCategories",
+						"cs.Workflow.TagSelection",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"FormConversationCreator": {
+			"new()": {
+				"Syntax": "**.new**( *userId* : Integer )",
+				"Params": [
+					[
+						"userId",
+						"Integer",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"FormConversationList": {
+			"new()": {
+				"Syntax": "**.new**( *userId* : Integer )",
+				"Params": [
+					[
+						"userId",
+						"Integer",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"FormWorkflowWorkspace": {
+			"new()": {
+				"Syntax": "**.new**( *userId* : Integer )",
+				"Params": [
+					[
+						"userId",
+						"Integer",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"FormLauncher": {
+			"new()": {
+				"Syntax": "**.new**( *userId* : Integer )",
+				"Params": [
+					[
+						"userId",
+						"Integer",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"FormPatientFinder": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		}
+	},
+	"FormAssigneeSelector": {
+		"load()": {
+			"Syntax": "**.load**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"hasSelection()": {
+			"Syntax": "**.hasSelection**()->hasSelection : Boolean",
+			"Params": [
+				[
+					"hasSelection",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"toggleAssignee()": {
+			"Syntax": "**.toggleAssignee**( *row* : Integer )",
+			"Params": [
+				[
+					"row",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"refreshSelectedAssignees()": {
+			"Syntax": "**.refreshSelectedAssignees**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"handleEvents()": {
+			"Syntax": "**.handleEvents**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"searchText": {
+			"Syntax": "searchText : Text"
+		},
+		"selectedAssignees": {
+			"Syntax": "selectedAssignees : cs.Workflow.UtilisateurSelection"
+		},
+		"assignees": {
+			"Syntax": "assignees : Collection"
+		},
+		"selectedAssigneeIds": {
+			"Syntax": "selectedAssigneeIds : Collection"
+		},
+		"initialAssignees": {
+			"Syntax": "initialAssignees : cs.Workflow.UtilisateurSelection"
+		}
+	},
+	"FormTaskManager": {
+		"setWindowTitle()": {
+			"Syntax": "**.setWindowTitle**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"load()": {
+			"Syntax": "**.load**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"loadUnreadMessageCounts()": {
+			"Syntax": "**.loadUnreadMessageCounts**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"taskUnreadMessageCount()": {
+			"Syntax": "**.taskUnreadMessageCount**( *taskId* : Integer )->count : Integer",
+			"Params": [
+				[
+					"taskId",
+					"Integer",
+					"->"
+				],
+				[
+					"count",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"completionEmoji()": {
+			"Syntax": "**.completionEmoji**( *isCompleted* : Boolean; *isUrgent* : Boolean )->emoji : Text",
+			"Params": [
+				[
+					"isCompleted",
+					"Boolean",
+					"->"
+				],
+				[
+					"isUrgent",
+					"Boolean",
+					"->"
+				],
+				[
+					"emoji",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"taskBackgroundColor()": {
+			"Syntax": "**.taskBackgroundColor**( *task* : cs.Workflow.TaskEntity )->color : Integer",
+			"Params": [
+				[
+					"task",
+					"cs.Workflow.TaskEntity",
+					"->"
+				],
+				[
+					"color",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"selectCategories()": {
+			"Syntax": "**.selectCategories**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"canEditTask()": {
+			"Syntax": "**.canEditTask**()->canEdit : Boolean",
+			"Params": [
+				[
+					"canEdit",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"taskFontColor()": {
+			"Syntax": "**.taskFontColor**( *isCompleted* : Boolean; *isUrgent* : Boolean )->color : Integer",
+			"Params": [
+				[
+					"isCompleted",
+					"Boolean",
+					"->"
+				],
+				[
+					"isUrgent",
+					"Boolean",
+					"->"
+				],
+				[
+					"color",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"taskPatientFullName()": {
+			"Syntax": "**.taskPatientFullName**( *patient* : cs.Workflow.PatientEntity )->fullName : Text",
+			"Params": [
+				[
+					"patient",
+					"cs.Workflow.PatientEntity",
+					"->"
+				],
+				[
+					"fullName",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"taskFontStyle()": {
+			"Syntax": "**.taskFontStyle**( *isCompleted* : Boolean; *isUrgent* : Boolean )->style : Integer",
+			"Params": [
+				[
+					"isCompleted",
+					"Boolean",
+					"->"
+				],
+				[
+					"isUrgent",
+					"Boolean",
+					"->"
+				],
+				[
+					"style",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"patientFullName()": {
+			"Syntax": "**.patientFullName**()->fullName : Text",
+			"Params": [
+				[
+					"fullName",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"taskDueDate()": {
+			"Syntax": "**.taskDueDate**( *dueAt* : Text )->display : Text",
+			"Params": [
+				[
+					"dueAt",
+					"Text",
+					"->"
+				],
+				[
+					"display",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"deleteTask()": {
+			"Syntax": "**.deleteTask**()->success : Boolean",
+			"Params": [
+				[
+					"success",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"assigneeNames()": {
+			"Syntax": "**.assigneeNames**()->names : Text",
+			"Params": [
+				[
+					"names",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"resetTaskChanges()": {
+			"Syntax": "**.resetTaskChanges**()->success : Boolean",
+			"Params": [
+				[
+					"success",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"categoryLabels()": {
+			"Syntax": "**.categoryLabels**()->labels : Text",
+			"Params": [
+				[
+					"labels",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"canCloseTask()": {
+			"Syntax": "**.canCloseTask**()->canClose : Boolean",
+			"Params": [
+				[
+					"canClose",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"canDeleteTask()": {
+			"Syntax": "**.canDeleteTask**()->canDelete : Boolean",
+			"Params": [
+				[
+					"canDelete",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"updateTaskEditState()": {
+			"Syntax": "**.updateTaskEditState**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"findPatient()": {
+			"Syntax": "**.findPatient**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"selectAssignees()": {
+			"Syntax": "**.selectAssignees**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"goToPage()": {
+			"Syntax": "**.goToPage**( *page* : Integer )",
+			"Params": [
+				[
+					"page",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"saveAssignees()": {
+			"Syntax": "**.saveAssignees**()->success : Boolean",
+			"Params": [
+				[
+					"success",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"addTask()": {
+			"Syntax": "**.addTask**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"toggleUrgent()": {
+			"Syntax": "**.toggleUrgent**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"saveCategories()": {
+			"Syntax": "**.saveCategories**()->success : Boolean",
+			"Params": [
+				[
+					"success",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"syncTaskConversation()": {
+			"Syntax": "**.syncTaskConversation**()->success : Boolean",
+			"Params": [
+				[
+					"success",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"openTaskFromMessage()": {
+			"Syntax": "**.openTaskFromMessage**( *description* : Text )",
+			"Params": [
+				[
+					"description",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"saveTask()": {
+			"Syntax": "**.saveTask**()->success : Boolean",
+			"Params": [
+				[
+					"success",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"closeTask()": {
+			"Syntax": "**.closeTask**()->success : Boolean",
+			"Params": [
+				[
+					"success",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"prepareNewTask()": {
+			"Syntax": "**.prepareNewTask**( *description* : Text )",
+			"Params": [
+				[
+					"description",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"updateUrgentButton()": {
+			"Syntax": "**.updateUrgentButton**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"beginTaskDraft()": {
+			"Syntax": "**.beginTaskDraft**( *description* : Text )->success : Boolean",
+			"Params": [
+				[
+					"description",
+					"Text",
+					"->"
+				],
+				[
+					"success",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"currentPage()": {
+			"Syntax": "**.currentPage**()->page : Integer",
+			"Params": [
+				[
+					"page",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"rollbackTaskDraft()": {
+			"Syntax": "**.rollbackTaskDraft**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"addTaskFromMessage()": {
+			"Syntax": "**.addTaskFromMessage**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"loadDiscussionPanel()": {
+			"Syntax": "**.loadDiscussionPanel**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"handleEvents()": {
+			"Syntax": "**.handleEvents**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"processNotification()": {
+			"Syntax": "**.processNotification**( *kind* : Text; *conversationId* : Integer )",
+			"Params": [
+				[
+					"kind",
+					"Text",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"processTaskNotification()": {
+			"Syntax": "**.processTaskNotification**( *taskId* : Integer )",
+			"Params": [
+				[
+					"taskId",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"updatePageTitle()": {
+			"Syntax": "**.updatePageTitle**( *page* : Integer )",
+			"Params": [
+				[
+					"page",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"userId": {
+			"Syntax": "userId : Integer"
+		},
+		"embedded": {
+			"Syntax": "embedded : Boolean"
+		},
+		"selectedTask": {
+			"Syntax": "selectedTask : cs.Workflow.TaskEntity"
+		},
+		"pageTitle": {
+			"Syntax": "pageTitle : Text"
+		},
+		"currentTask": {
+			"Syntax": "currentTask : cs.Workflow.TaskEntity"
+		},
+		"showAll": {
+			"Syntax": "showAll : Integer"
+		},
+		"showCompleted": {
+			"Syntax": "showCompleted : Integer"
+		},
+		"onlyMine": {
+			"Syntax": "onlyMine : Integer"
+		},
+		"onlyDelegated": {
+			"Syntax": "onlyDelegated : Integer"
+		},
+		"onlyToday": {
+			"Syntax": "onlyToday : Integer"
+		},
+		"searchText": {
+			"Syntax": "searchText : Text"
+		},
+		"taskUnreadCounts": {
+			"Syntax": "taskUnreadCounts : Object"
+		},
+		"taskCounter": {
+			"Syntax": "taskCounter : Text"
+		},
+		"discussionContext": {
+			"Syntax": "discussionContext : Object"
+		},
+		"tasks": {
+			"Syntax": "tasks : cs.Workflow.TaskSelection"
+		},
+		"selectedAssignees": {
+			"Syntax": "selectedAssignees : cs.Workflow.UtilisateurSelection"
+		},
+		"selectedCategories": {
+			"Syntax": "selectedCategories : cs.Workflow.TagSelection"
+		},
+		"originalUrgency": {
+			"Syntax": "originalUrgency : Boolean"
+		},
+		"draftTransaction": {
+			"Syntax": "draftTransaction : Boolean"
+		},
+		"initialDraft": {
+			"Syntax": "initialDraft : Object"
+		}
+	},
+	"FormCategorySelector": {
+		"load()": {
+			"Syntax": "**.load**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"toggleCategory()": {
+			"Syntax": "**.toggleCategory**( *row* : Integer )",
+			"Params": [
+				[
+					"row",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"hasSelection()": {
+			"Syntax": "**.hasSelection**()->hasSelection : Boolean",
+			"Params": [
+				[
+					"hasSelection",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"addCategory()": {
+			"Syntax": "**.addCategory**( *label* : Text )",
+			"Params": [
+				[
+					"label",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"categoryMeta()": {
+			"Syntax": "**.categoryMeta**( *category* : Object )->meta : Object",
+			"Params": [
+				[
+					"category",
+					"Object",
+					"->"
+				],
+				[
+					"meta",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"handleEvents()": {
+			"Syntax": "**.handleEvents**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"refreshSelectedCategories()": {
+			"Syntax": "**.refreshSelectedCategories**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"initialCategories": {
+			"Syntax": "initialCategories : cs.Workflow.TagSelection"
+		},
+		"categories": {
+			"Syntax": "categories : Collection"
+		},
+		"newCategoryLabel": {
+			"Syntax": "newCategoryLabel : Text"
+		},
+		"selectedCategories": {
+			"Syntax": "selectedCategories : cs.Workflow.TagSelection"
+		},
+		"selectedCategoryIds": {
+			"Syntax": "selectedCategoryIds : Collection"
+		}
+	},
+	"FormConversationCreator": {
+		"updateState()": {
+			"Syntax": "**.updateState**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"canCreate()": {
+			"Syntax": "**.canCreate**()->canCreate : Boolean",
+			"Params": [
+				[
+					"canCreate",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"toggleRecipient()": {
+			"Syntax": "**.toggleRecipient**( *row* : Integer )",
+			"Params": [
+				[
+					"row",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"refreshSelectedRecipients()": {
+			"Syntax": "**.refreshSelectedRecipients**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"handleEvents()": {
+			"Syntax": "**.handleEvents**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"selectedRecipients": {
+			"Syntax": "selectedRecipients : Collection"
+		},
+		"userId": {
+			"Syntax": "userId : Integer"
+		},
+		"recipients": {
+			"Syntax": "recipients : Collection"
+		},
+		"groupTitle": {
+			"Syntax": "groupTitle : Text"
+		}
+	},
+	"FormConversationList": {
+		"setWindowTitle()": {
+			"Syntax": "**.setWindowTitle**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"load()": {
+			"Syntax": "**.load**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"updateConversationUnread()": {
+			"Syntax": "**.updateConversationUnread**( *conversationId* : Integer; *isRead* : Boolean )->found : Boolean",
+			"Params": [
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				],
+				[
+					"isRead",
+					"Boolean",
+					"->"
+				],
+				[
+					"found",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"conversationStyle()": {
+			"Syntax": "**.conversationStyle**( *conversation* : Object )->style : Integer",
+			"Params": [
+				[
+					"conversation",
+					"Object",
+					"->"
+				],
+				[
+					"style",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"refreshConversations()": {
+			"Syntax": "**.refreshConversations**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"conversationBackgroundColor()": {
+			"Syntax": "**.conversationBackgroundColor**( *conversation* : Object )->color : Integer",
+			"Params": [
+				[
+					"conversation",
+					"Object",
+					"->"
+				],
+				[
+					"color",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"conversationTitle()": {
+			"Syntax": "**.conversationTitle**( *conversation* : Object )->title : Text",
+			"Params": [
+				[
+					"conversation",
+					"Object",
+					"->"
+				],
+				[
+					"title",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"conversationColor()": {
+			"Syntax": "**.conversationColor**( *conversation* : Object )->color : Integer",
+			"Params": [
+				[
+					"conversation",
+					"Object",
+					"->"
+				],
+				[
+					"color",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"processNotification()": {
+			"Syntax": "**.processNotification**( *kind* : Text; *conversationId* : Integer )",
+			"Params": [
+				[
+					"kind",
+					"Text",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"handleEvents()": {
+			"Syntax": "**.handleEvents**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"selectConversation()": {
+			"Syntax": "**.selectConversation**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"loadConversationPanel()": {
+			"Syntax": "**.loadConversationPanel**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"addConversation()": {
+			"Syntax": "**.addConversation**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"selectedConversationPosition": {
+			"Syntax": "selectedConversationPosition : Integer"
+		},
+		"selectedConversationTitle": {
+			"Syntax": "selectedConversationTitle : Text"
+		},
+		"selectedConversation": {
+			"Syntax": "selectedConversation : Object"
+		},
+		"embedded": {
+			"Syntax": "embedded : Boolean"
+		},
+		"userId": {
+			"Syntax": "userId : Integer"
+		},
+		"conversations": {
+			"Syntax": "conversations : Collection"
+		},
+		"restoringConversationSelection": {
+			"Syntax": "restoringConversationSelection : Boolean"
+		},
+		"conversationContext": {
+			"Syntax": "conversationContext : Object"
+		}
+	},
+	"FormWorkflowWorkspace": {
+		"openTaskFromMessage()": {
+			"Syntax": "**.openTaskFromMessage**( *description* : Text )",
+			"Params": [
+				[
+					"description",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"refreshBadges()": {
+			"Syntax": "**.refreshBadges**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"showFeature()": {
+			"Syntax": "**.showFeature**( *feature* : Text )",
+			"Params": [
+				[
+					"feature",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"handleEvents()": {
+			"Syntax": "**.handleEvents**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"processNotification()": {
+			"Syntax": "**.processNotification**( *kind* : Text; *conversationId* : Integer )",
+			"Params": [
+				[
+					"kind",
+					"Text",
+					"->"
+				],
+				[
+					"conversationId",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"processTaskNotification()": {
+			"Syntax": "**.processTaskNotification**( *taskId* : Integer )",
+			"Params": [
+				[
+					"taskId",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"userId": {
+			"Syntax": "userId : Integer"
+		},
+		"messageContext": {
+			"Syntax": "messageContext : Object"
+		},
+		"userName": {
+			"Syntax": "userName : Text"
+		},
+		"activeFeature": {
+			"Syntax": "activeFeature : Text"
+		},
+		"initialFeature": {
+			"Syntax": "initialFeature : Text"
+		},
+		"messageBadge": {
+			"Syntax": "messageBadge : Text"
+		},
+		"taskBadge": {
+			"Syntax": "taskBadge : Text"
+		},
+		"taskContext": {
+			"Syntax": "taskContext : Object"
+		},
+		"tasksLoaded": {
+			"Syntax": "tasksLoaded : Boolean"
+		},
+		"messagesLoaded": {
+			"Syntax": "messagesLoaded : Boolean"
+		}
+	},
+	"FormLauncher": {
+		"refreshBadges()": {
+			"Syntax": "**.refreshBadges**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"openWorkspace()": {
+			"Syntax": "**.openWorkspace**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"handleEvents()": {
+			"Syntax": "**.handleEvents**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"userId": {
+			"Syntax": "userId : Integer"
+		},
+		"combinedBadge": {
+			"Syntax": "combinedBadge : Text"
+		},
+		"workspaceProcess": {
+			"Syntax": "workspaceProcess : Integer"
+		}
+	},
+	"FormPatientFinder": {
+		"load()": {
+			"Syntax": "**.load**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"patientFileNumber()": {
+			"Syntax": "**.patientFileNumber**( *fileNumber* : Integer )->display : Text",
+			"Params": [
+				[
+					"fileNumber",
+					"Integer",
+					"->"
+				],
+				[
+					"display",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"handleEvents()": {
+			"Syntax": "**.handleEvents**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"searchText": {
+			"Syntax": "searchText : Text"
+		},
+		"patients": {
+			"Syntax": "patients : cs.Workflow.PatientSelection"
+		},
+		"currentPatient": {
+			"Syntax": "currentPatient : cs.Workflow.PatientEntity"
+		}
+	}
+}
