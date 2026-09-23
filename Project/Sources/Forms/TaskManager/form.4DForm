@@ -155,6 +155,7 @@
 					"sizingY": "grow",
 					"resizingMode": "legacy",
 					"rowStrokeSource": "Form:C1466.handler.taskFontColor(This:C1470.completed_at#Null:C1517; This:C1470.is_urgent)",
+					"rowFillSource": "Form:C1466.handler.taskBackgroundColor(This:C1470)",
 					"rowStyleSource": "Form:C1466.handler.taskFontStyle(This:C1470.completed_at#Null:C1517; This:C1470.is_urgent)",
 					"headerHeight": "34px",
 					"rowHeight": "28px",

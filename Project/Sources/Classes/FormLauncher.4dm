@@ -1,9 +1,11 @@
 property userId : Integer
 property combinedBadge : Text
+property workspaceProcess : Integer
 
 Class constructor($userId : Integer)
 	This.userId:=$userId
 	This.combinedBadge:="0"
+	This.workspaceProcess:=0
 
 Function refreshBadges()
 	var $response : Object
@@ -15,11 +17,12 @@ Function refreshBadges()
 	OBJECT SET VISIBLE(*; "inputWorkspaceBadge"; Num(This.combinedBadge)>0)
 
 Function openWorkspace()
-	var $window : Integer
-	$window:=Open form window("WorkflowWorkspace"; Movable form dialog box)
-	DIALOG("WorkflowWorkspace"; {handler: cs.FormWorkflowWorkspace.new(This.userId)})
-	CLOSE WINDOW($window)
-	This.refreshBadges()
+	// The unique process name reuses an open workspace and allows reopening after close.
+	This.workspaceProcess:=New process("Workspace_Client_Open"; 0; "WorkflowWorkspace."+String(This.userId); This.userId; *)
+	If (This.workspaceProcess>0)
+		SHOW PROCESS(This.workspaceProcess)
+		BRING TO FRONT(This.workspaceProcess)
+	End if
 
 Function handleEvents()
 	Case of

@@ -100,6 +100,15 @@ Function conversationColor($conversation : Object)->$color : Integer
 	End if 
 
 
+Function conversationBackgroundColor($conversation : Object)->$color : Integer
+	$color:=lk inherited
+	If (($conversation#Null) && (This.selectedConversation#Null))
+		If ($conversation.ID=This.selectedConversation.ID)
+			$color:=0x0080DEEA
+		End if
+	End if
+
+
 Function setWindowTitle()
 	var $user : cs.UtilisateurEntity
 	var $userLabel : Text

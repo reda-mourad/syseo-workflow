@@ -148,9 +148,18 @@ Function taskFontStyle($isCompleted : Boolean; $isUrgent : Boolean)->$style : In
 		$style:=Bold
 	Else 
 		$style:=lk inherited
-	End if 
-	
-	
+	End if
+
+
+Function taskBackgroundColor($task : cs.TaskEntity)->$color : Integer
+	$color:=lk inherited
+	If (($task#Null) && (This.selectedTask#Null))
+		If ($task.ID=This.selectedTask.ID)
+			$color:=0x0080DEEA
+		End if
+	End if
+
+
 Function patientFullName()->$fullName : Text
 	var $patient : cs.PatientEntity
 	var $birthDate; $today : Date

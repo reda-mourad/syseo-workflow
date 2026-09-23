@@ -52,6 +52,8 @@
 					"listboxType": "collection",
 					"dataSource": "Form:C1466.handler.conversations",
 					"rowStrokeSource": "Form:C1466.handler.conversationColor(This:C1470)",
+					"rowFillSource": "Form:C1466.handler.conversationBackgroundColor(This:C1470)",
+					"hideSystemHighlight": true,
 					"currentItemSource": "Form:C1466.handler.selectedConversation",
 					"currentItemPositionSource": "Form:C1466.handler.selectedConversationPosition",
 					"selectionMode": "single",
