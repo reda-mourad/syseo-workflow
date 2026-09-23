@@ -1,80 +1,98 @@
 {
-  "$4d": {
-    "version": "1",
-    "kind": "form"
-  },
-  "windowTitle": "Accueil",
-  "windowSizingX": "fixed",
-  "windowSizingY": "fixed",
-  "rightMargin": 30,
-  "bottomMargin": 30,
-  "events": ["onMouseEnter", "onMouseLeave", "onLoad", "onUnload", "onClick"],
-  "pages": [
-    {
-      "objects": {}
-    },
-    {
-      "objects": {
-        "txtLauncherTitle": {
-          "type": "text",
-          "text": "Accueil",
-          "left": 40,
-          "top": 24,
-          "width": 300,
-          "height": 28,
-          "fontSize": 20,
-          "fontWeight": "bold"
-        },
-        "bgWorkspaceButton": {
-          "type": "rectangle",
-          "left": 40,
-          "top": 72,
-          "width": 280,
-          "height": 64,
-          "stroke": "#c0c0c0",
-          "fill": "#C1F3A0"
-        },
-        "btnWorkspace": {
-          "type": "button",
-          "style": "custom",
-          "borderStyle": "none",
-          "text": "Tâches et messagerie",
-          "left": 40,
-          "top": 72,
-          "width": 280,
-          "height": 64,
-          "fontSize": 18,
-          "events": ["onMouseEnter", "onMouseLeave", "onClick"]
-        },
-        "bgWorkspaceBadge": {
-          "type": "oval",
-          "left": 308,
-          "top": 60,
-          "width": 24,
-          "height": 24,
-          "stroke": "#B71C1C",
-          "fill": "#E53935"
-        },
-        "inputWorkspaceBadge": {
-          "type": "input",
-          "left": 308,
-          "top": 64,
-          "width": 24,
-          "height": 20,
-          "dataSource": "Form:C1466.handler.combinedBadge",
-          "enterable": false,
-          "focusable": false,
-          "fill": "transparent",
-          "borderStyle": "none",
-          "stroke": "#FFFFFF",
-          "fontSize": 12,
-          "fontWeight": "bold",
-          "textAlign": "center",
-          "horizontalPadding": 0,
-          "verticalPadding": 0
-        }
-      }
-    }
-  ],
-  "method": "method.4dm"
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowTitle": "Accueil",
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"rightMargin": 30,
+	"bottomMargin": 30,
+	"events": [
+		"onMouseEnter",
+		"onMouseLeave",
+		"onLoad",
+		"onUnload",
+		"onClick"
+	],
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"txtLauncherTitle": {
+					"type": "text",
+					"text": "Accueil",
+					"left": 40,
+					"top": 24,
+					"width": 300,
+					"height": 28,
+					"fontSize": 20,
+					"fontWeight": "bold"
+				},
+				"bgWorkspaceButton": {
+					"type": "rectangle",
+					"left": 40,
+					"top": 72,
+					"width": 280,
+					"height": 64,
+					"stroke": "#c0c0c0",
+					"fill": "#C1F3A0"
+				},
+				"btnWorkspace": {
+					"type": "button",
+					"style": "custom",
+					"borderStyle": "none",
+					"text": "Tâches et messagerie",
+					"left": 40,
+					"top": 72,
+					"width": 280,
+					"height": 64,
+					"fontSize": 18,
+					"events": [
+						"onMouseEnter",
+						"onMouseLeave",
+						"onClick"
+					]
+				},
+				"bgWorkspaceBadge": {
+					"type": "oval",
+					"left": 308,
+					"top": 60,
+					"width": 24,
+					"height": 24,
+					"stroke": "#B71C1C",
+					"fill": "#E53935"
+				},
+				"inputWorkspaceBadge": {
+					"type": "input",
+					"left": 308,
+					"top": 64,
+					"width": 24,
+					"height": 20,
+					"dataSource": "Form:C1466.handler.combinedBadge",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"stroke": "#FFFFFF",
+					"fontSize": 12,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"horizontalPadding": 0,
+					"verticalPadding": 0
+				}
+			}
+		}
+	],
+	"method": "method.4dm",
+	"geometryStamp": 1,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
 }

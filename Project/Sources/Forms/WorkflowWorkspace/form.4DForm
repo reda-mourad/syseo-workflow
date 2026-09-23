@@ -6,7 +6,14 @@
 	"windowTitle": "Tâches et messagerie",
 	"rightMargin": 0,
 	"bottomMargin": 0,
-	"events": ["onMouseEnter", "onMouseLeave", "onLoad", "onUnload", "onClick", "onResize"],
+	"events": [
+		"onMouseEnter",
+		"onMouseLeave",
+		"onLoad",
+		"onUnload",
+		"onClick",
+		"onResize"
+	],
 	"pages": [
 		{
 			"objects": {}
@@ -32,7 +39,11 @@
 					"width": 210,
 					"height": 44,
 					"fontSize": 16,
-					"events": ["onMouseEnter", "onMouseLeave", "onClick"]
+					"events": [
+						"onMouseEnter",
+						"onMouseLeave",
+						"onClick"
+					]
 				},
 				"bgTasksBadge": {
 					"type": "oval",
@@ -80,7 +91,11 @@
 					"width": 210,
 					"height": 44,
 					"fontSize": 16,
-					"events": ["onMouseEnter", "onMouseLeave", "onClick"]
+					"events": [
+						"onMouseEnter",
+						"onMouseLeave",
+						"onClick"
+					]
 				},
 				"bgMessagesBadge": {
 					"type": "oval",
@@ -142,7 +157,7 @@
 		}
 	],
 	"method": "method.4dm",
-	"geometryStamp": 13,
+	"geometryStamp": 16,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

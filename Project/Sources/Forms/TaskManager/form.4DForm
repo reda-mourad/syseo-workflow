@@ -226,7 +226,7 @@
 						},
 						{
 							"header": {
-								"text": "Catégories",
+								"text": "Catégorie",
 								"name": "headerCategories"
 							},
 							"name": "columnCategories",
