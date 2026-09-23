@@ -243,6 +243,7 @@ For ($taskNumber; 1; 500)
 	End for 
 	
 	// Assign between one and five distinct random users.
+	$conversationUsers:=New collection($creator)
 	$availableIndexes:=New collection
 	For ($assigneeNumber; 0; $users.length-1)
 		$availableIndexes.push($assigneeNumber)
@@ -261,7 +262,30 @@ For ($taskNumber; 1; 500)
 		$assignee.task:=$task
 		$assignee.utilisateur:=$assignedUser
 		$assignee.save()
+		If ($assignedUser.xNumUser#$creator.xNumUser)
+			$conversationUsers.push($assignedUser)
+		End if
 	End for 
+
+	// Every task has an empty discussion shared by its creator and assignees.
+	$conversation:=ds.Conversation.new()
+	$conversation.kind:="task"
+	$conversation.name:=Substring("Tâche #"+String($task.ID)+" — "+$task.description; 1; 255)
+	$conversation.creator:=$creator
+	$conversation.created_at:=$task.created_at
+	$conversation.updated_at:=$task.updated_at
+	$conversation.save()
+	$task.conversation:=$conversation
+	$task.save()
+
+	For each ($conversationUser; $conversationUsers)
+		$conversationMember:=ds.ConversationMember.new()
+		$conversationMember.conversation:=$conversation
+		$conversationMember.utilisateur:=$conversationUser
+		$conversationMember.joined_at:=$task.created_at
+		$conversationMember.notifications_enabled:=True
+		$conversationMember.save()
+	End for each
 End for 
 
 ALERT("Seeding finished!")
