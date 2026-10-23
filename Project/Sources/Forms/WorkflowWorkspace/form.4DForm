@@ -174,12 +174,14 @@
 		}
 	],
 	"method": "method.4dm",
-	"geometryStamp": 24,
+	"geometryStamp": 26,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
 		"views": {
 			"View 1": {}
 		}
-	}
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed"
 }

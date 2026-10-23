@@ -1,4 +1,4 @@
-//%attributes = {"shared":true}
+//%attributes = {}
 var $descriptions; $tagLabels; $availableIndexes; $conversationDefinitions; $conversationUsers; $messageBodies : Collection
 var $users : cs.UtilisateurSelection
 var $otherUsers : cs.UtilisateurSelection

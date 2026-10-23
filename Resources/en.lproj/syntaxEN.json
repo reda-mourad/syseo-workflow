@@ -1772,6 +1772,16 @@
 			"Params": [],
 			"Summary": ""
 		},
+		"trackWorkspacePointer()": {
+			"Syntax": "**.trackWorkspacePointer**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"beginWorkspacePointer()": {
+			"Syntax": "**.beginWorkspacePointer**()",
+			"Params": [],
+			"Summary": ""
+		},
 		"handleEvents()": {
 			"Syntax": "**.handleEvents**()",
 			"Params": [],
@@ -1785,6 +1795,9 @@
 		},
 		"workspaceProcess": {
 			"Syntax": "workspaceProcess : Integer"
+		},
+		"pointerTracking": {
+			"Syntax": "pointerTracking : Object"
 		}
 	},
 	"FormPatientFinder": {

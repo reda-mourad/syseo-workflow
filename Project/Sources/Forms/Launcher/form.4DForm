@@ -3,7 +3,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"windowTitle": "Accueil",
+	"windowTitle": "Launcher",
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"events": [
@@ -11,6 +11,8 @@
 		"onMouseLeave",
 		"onLoad",
 		"onUnload",
+		"onCloseBox",
+		"onTimer",
 		"onClick"
 	],
 	"pages": [
@@ -28,9 +30,10 @@
 					"fill": "#ABABAB",
 					"stroke": "transparent"
 				},
-				"Button": {
+				"btnIgnoreEscape": {
 					"type": "button",
-					"text": "Button",
+					"display": false,
+					"text": "",
 					"top": 0,
 					"left": 0,
 					"width": 55,
@@ -43,7 +46,7 @@
 					"shortcutShift": false,
 					"shortcutAlt": false,
 					"shortcutKey": "[Esc]",
-					"visibility": "hidden"
+					"visibility": "visible"
 				},
 				"bgWorkspaceButton": {
 					"type": "rectangle",
@@ -54,8 +57,20 @@
 					"stroke": "#c0c0c0",
 					"fill": "#C1F3A0"
 				},
+				"txtWorkspaceLabel": {
+					"type": "text",
+					"text": "Tâches et messagerie",
+					"left": 15,
+					"top": 25,
+					"width": 200,
+					"height": 20,
+					"fill": "transparent",
+					"textAlign": "center",
+					"fontWeight": "bold"
+				},
 				"btnWorkspace": {
 					"type": "button",
+					"display": false,
 					"style": "custom",
 					"borderStyle": "none",
 					"text": "Tâches et messagerie",
@@ -64,9 +79,9 @@
 					"width": 200,
 					"height": 40,
 					"events": [
+						"onClick",
 						"onMouseEnter",
-						"onMouseLeave",
-						"onClick"
+						"onMouseLeave"
 					],
 					"fontWeight": "bold"
 				},
@@ -106,6 +121,7 @@
 		"groups": {
 			"Group": [
 				"bgWorkspaceButton",
+				"txtWorkspaceLabel",
 				"btnWorkspace"
 			],
 			"Group1": [
