@@ -908,6 +908,17 @@
 			],
 			"Summary": ""
 		},
+		"normalizeDueDate()": {
+			"Syntax": "**.normalizeDueDate**()->success : Boolean",
+			"Params": [
+				[
+					"success",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
 		"completionEmoji()": {
 			"Syntax": "**.completionEmoji**( *isCompleted* : Boolean; *isUrgent* : Boolean )->emoji : Text",
 			"Params": [
@@ -1028,6 +1039,11 @@
 					"<-"
 				]
 			],
+			"Summary": ""
+		},
+		"loadDueDateText()": {
+			"Syntax": "**.loadDueDateText**()",
+			"Params": [],
 			"Summary": ""
 		},
 		"taskDueDate()": {
@@ -1359,6 +1375,9 @@
 		},
 		"tasks": {
 			"Syntax": "tasks : cs.Workflow.TaskSelection"
+		},
+		"dueDateText": {
+			"Syntax": "dueDateText : Text"
 		},
 		"selectedAssignees": {
 			"Syntax": "selectedAssignees : cs.Workflow.UtilisateurSelection"

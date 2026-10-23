@@ -672,12 +672,12 @@
 					"top": 322,
 					"width": 230,
 					"height": 18,
-					"placeholder": "Aucune échéance",
-					"fill": "transparent",
+					"placeholder": "Date (JJ/MM/AAAA)",
+					"fill": "#FFFFFF",
 					"borderStyle": "none",
-					"dataSource": "Date:C102(Form:C1466.handler.currentTask.due_at)",
-					"dateFormat": "systemShort",
-					"focusable": false,
+					"dataSource": "Form:C1466.handler.dueDateText",
+					"dataSourceTypeHint": "text",
+					"focusable": true,
 					"enterable": false
 				},
 				"inputPatient": {

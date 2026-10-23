@@ -12,6 +12,7 @@ property taskUnreadCounts : Object
 property tasks : cs.TaskSelection
 property selectedTask : cs.TaskEntity
 property currentTask : cs.TaskEntity
+property dueDateText : Text
 property selectedAssignees : cs.UtilisateurSelection
 property selectedCategories : cs.TagSelection
 property discussionContext : Object
@@ -33,6 +34,7 @@ Class constructor($userId : Integer)
 	This.originalUrgency:=False
 	This.initialDraft:=Null
 	This.draftTransaction:=False
+	This.dueDateText:=""
 	This.discussionContext:=New object("userId"; $userId; "conversationId"; 0; "messageBody"; ""; "lastNotificationId"; 0)
 	This.load()
 	
@@ -197,6 +199,20 @@ Function taskPatientFullName($patient : cs.PatientEntity)->$fullName : Text
 	End if 
 	
 	
+Function loadDueDateText()
+	var $dueDate : Date
+
+	This.dueDateText:=""
+	If (This.currentTask#Null)
+		If (This.currentTask.due_at#Null)
+			$dueDate:=Date(This.currentTask.due_at)
+			If ($dueDate#!00-00-00!)
+				This.dueDateText:=String($dueDate; "dd/MM/yyyy")
+			End if
+		End if
+	End if
+
+
 Function taskDueDate($dueAt : Text)->$display : Text
 	var $dueDate : Date
 	var $remainingDays : Integer
@@ -206,7 +222,7 @@ Function taskDueDate($dueAt : Text)->$display : Text
 		$dueDate:=Date($dueAt)
 		If ($dueDate#!00-00-00!)
 			$remainingDays:=$dueDate-Current date
-			$display:=String($dueDate; System date short)+" ("+String($remainingDays)+")"
+			$display:=String($dueDate; "dd/MM/yyyy")+" ("+String($remainingDays)+")"
 		End if 
 	End if 
 	
@@ -295,6 +311,7 @@ Function updateTaskEditState()
 	OBJECT SET RGB COLORS(*; "bgAssignees"; ""; $backgroundColor)
 	OBJECT SET RGB COLORS(*; "bgCategories"; ""; $backgroundColor)
 	OBJECT SET RGB COLORS(*; "bgDueDate"; ""; $backgroundColor)
+	OBJECT SET RGB COLORS(*; "inputDueDate"; ""; $backgroundColor)
 	OBJECT SET RGB COLORS(*; "bgPatient"; ""; $backgroundColor)
 	OBJECT SET RGB COLORS(*; "bgDescription"; ""; $backgroundColor)
 	This.updateUrgentButton()
@@ -496,6 +513,29 @@ Function syncTaskConversation()->$success : Boolean
 	End for each 
 
 
+Function normalizeDueDate()->$success : Boolean
+	var $dueText : Text
+	var $dueDate : Date
+
+	$success:=False
+	$dueText:=This.dueDateText
+	If (Length($dueText)=0)
+		This.currentTask.due_at:=Null
+	Else
+		// Parse day/month/year explicitly, independently of system settings.
+		$dueDate:=!00-00-00!
+		If ((Length($dueText)=10) && (Substring($dueText; 3; 1)="/") && (Substring($dueText; 6; 1)="/"))
+			$dueDate:=Date(Substring($dueText; 7; 4)+"-"+Substring($dueText; 4; 2)+"-"+Substring($dueText; 1; 2)+"T00:00:00")
+		End if
+		If (($dueDate=!00-00-00!) || (String($dueDate; "dd/MM/yyyy")#$dueText))
+			ALERT("Saisissez une échéance valide au format JJ/MM/AAAA, ou laissez le champ vide.")
+			return
+		End if
+		This.currentTask.due_at:=String($dueDate; ISO date)
+	End if
+	$success:=True
+
+
 Function saveTask()->$success : Boolean
 	var $result : Object
 	var $draftMessage : cs.MessageEntity
@@ -508,6 +548,10 @@ Function saveTask()->$success : Boolean
 	
 	$success:=False
 	If (This.canEditTask())
+		// Keep partial edits as text; convert only when the user saves.
+		If (Not(This.normalizeDueDate()))
+			return
+		End if
 		$wasDraft:=This.draftTransaction
 		$previousIds:=New collection
 		$currentIds:=New collection
@@ -600,6 +644,9 @@ Function closeTask()->$success : Boolean
 	
 	$success:=False
 	If (This.canCloseTask())
+		If (Not(This.normalizeDueDate()))
+			return
+		End if
 		$taskId:=This.currentTask.ID
 		$recipientIds:=New collection
 		$assignments:=ds.TaskAssignee.query("ID_Task = :1"; $taskId)
@@ -624,6 +671,7 @@ Function closeTask()->$success : Boolean
 			This.goToPage(1)
 		Else 
 			This.currentTask.reload()
+			This.loadDueDateText()
 			ALERT("La tâche n'a pas pu être clôturée. Veuillez réessayer.")
 		End if 
 	End if 
@@ -691,6 +739,7 @@ Function deleteTask()->$success : Boolean
 				ds.validateTransaction()
 				Task_Server_Notify_clients($recipientIds; $taskId; This.userId; "deleted")
 				This.currentTask:=Null
+				This.loadDueDateText()
 				This.selectedAssignees:=Null
 				This.selectedCategories:=Null
 				This.load()
@@ -742,6 +791,7 @@ Function beginTaskDraft($description : Text)->$success : Boolean
 		This.currentTask.creator:=$creator
 		This.currentTask.description:=$description
 		This.currentTask.due_at:=String(Current date; ISO date)
+		This.loadDueDateText()
 		This.currentTask.created_at:=$createdAt
 		This.currentTask.updated_at:=$createdAt
 		This.currentTask.is_urgent:=False
@@ -764,6 +814,7 @@ Function rollbackTaskDraft()
 		ds.cancelTransaction()
 		This.draftTransaction:=False
 		This.currentTask:=Null
+		This.loadDueDateText()
 		This.selectedTask:=Null
 		This.selectedAssignees:=Null
 		This.selectedCategories:=Null
@@ -819,6 +870,7 @@ Function resetTaskChanges()->$success : Boolean
 		This.selectedCategories:=Null
 		This.load()
 		This.currentTask:=Null
+		This.loadDueDateText()
 		This.goToPage(1)
 	Else 
 		ALERT("Les modifications n'ont pas pu être annulées. Veuillez réessayer.")
@@ -869,6 +921,7 @@ Function processTaskNotification($taskId : Integer)
 	This.load()
 	If (($activeTaskId>0) && ($activeTaskId=$taskId))
 		This.currentTask:=ds.Task.get($taskId)
+		This.loadDueDateText()
 		If (This.currentTask#Null)
 			This.originalUrgency:=This.currentTask.is_urgent
 			If (This.currentPage()=2)
@@ -942,6 +995,7 @@ Function handleEvents()
 		: (FORM Event.code=On Clicked) && (FORM Event.objectName="lbTasks") && (FORM Event.row>0)
 			If (This.selectedTask#Null)
 				This.currentTask:=This.selectedTask
+				This.loadDueDateText()
 				This.originalUrgency:=This.currentTask.is_urgent
 				This.selectedAssignees:=Null
 				This.selectedCategories:=Null
