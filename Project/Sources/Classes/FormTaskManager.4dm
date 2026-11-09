@@ -286,6 +286,7 @@ Function updateTaskEditState()
 	OBJECT SET ENABLED(*; "btnSelectAssignees"; $canEdit)
 	OBJECT SET ENABLED(*; "btnSelectCategories"; $canEdit)
 	OBJECT SET ENABLED(*; "btnFindPatient"; $canEdit)
+	OBJECT SET ENABLED(*; "btnRemovePatient"; $canEdit && (This.currentTask.ID_Patient#Null))
 	OBJECT SET ENABLED(*; "btnSave"; $canEdit)
 	OBJECT SET ENABLED(*; "btnComplete"; $canClose)
 	OBJECT SET VISIBLE(*; "bgDelete"; $canDelete)
@@ -329,9 +330,17 @@ Function findPatient()
 			This.currentTask.ID_Patient:=$formData.handler.currentPatient.NoDossier
 		End if 
 		CLOSE WINDOW($window)
+		This.updateTaskEditState()
 	End if 
 	
 	
+Function removePatient()
+	If (This.canEditTask())
+		This.currentTask.ID_Patient:=Null
+		This.updateTaskEditState()
+	End if
+
+
 Function selectAssignees()
 	var $window : Integer
 	var $formData : Object
@@ -1004,6 +1013,9 @@ Function handleEvents()
 			
 		: (FORM Event.code=On Clicked) && (FORM Event.objectName="btnFindPatient")
 			This.findPatient()
+
+		: (FORM Event.code=On Clicked) && (FORM Event.objectName="btnRemovePatient")
+			This.removePatient()
 			
 		: (FORM Event.code=On Clicked) && (FORM Event.objectName="btnSelectAssignees")
 			This.selectAssignees()
