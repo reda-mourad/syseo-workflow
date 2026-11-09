@@ -335,9 +335,12 @@ Function findPatient()
 	
 	
 Function removePatient()
-	If (This.canEditTask())
-		This.currentTask.ID_Patient:=Null
-		This.updateTaskEditState()
+	If (This.canEditTask() && (This.currentTask.ID_Patient#Null))
+		CONFIRM("Retirer le lien entre cette tâche et le patient sélectionné ?"; "Retirer"; "Annuler")
+		If (OK=1)
+			This.currentTask.ID_Patient:=Null
+			This.updateTaskEditState()
+		End if
 	End if
 
 
