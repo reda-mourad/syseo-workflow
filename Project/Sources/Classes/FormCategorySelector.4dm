@@ -132,6 +132,6 @@ Function handleEvents()
 				This.toggleCategory(FORM Event.row)
 			End if 
 
-		: (FORM Event.code=On Data Change) && (FORM Event.objectName="columnCategorySelected")
+		: (FORM Event.code=On Data Change) && (FORM Event.columnName="columnCategorySelected")
 			This.refreshSelectedCategories()
 	End case 

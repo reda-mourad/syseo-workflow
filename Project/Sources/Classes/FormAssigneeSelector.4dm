@@ -100,6 +100,6 @@ Function handleEvents()
 				This.toggleAssignee(FORM Event.row)
 			End if 
 
-		: (FORM Event.code=On Data Change) && (FORM Event.objectName="columnAssigneeSelected")
+		: (FORM Event.code=On Data Change) && (FORM Event.columnName="columnAssigneeSelected")
 			This.refreshSelectedAssignees()
 	End case 

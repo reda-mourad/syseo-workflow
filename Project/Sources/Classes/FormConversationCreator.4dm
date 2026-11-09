@@ -74,7 +74,7 @@ Function handleEvents()
 				This.toggleRecipient(FORM Event.row)
 			End if 
 
-		: (FORM Event.code=On Data Change) && (FORM Event.objectName="columnRecipientSelected")
+		: (FORM Event.code=On Data Change) && (FORM Event.columnName="columnRecipientSelected")
 			This.refreshSelectedRecipients()
 
 		: (FORM Event.code=On Data Change) && (FORM Event.objectName="inputGroupTitle")
