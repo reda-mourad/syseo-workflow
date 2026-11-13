@@ -1,5 +1,254 @@
 {
 	"tables": {
+		"Utilisateur": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 0,
+				"top": 0,
+				"width": 177.720703125,
+				"height": 1658.33203125
+			},
+			"displayable_fields_count": 77,
+			"fields_ordering": 6,
+			"fields": {
+				"zone": {
+					"position": 77
+				},
+				"Z": {
+					"position": 76
+				},
+				"xTransfert": {
+					"position": 75
+				},
+				"xSuperviseur": {
+					"position": 74
+				},
+				"xNumUser": {
+					"position": 73
+				},
+				"xNumMessagerie": {
+					"position": 72
+				},
+				"xNum_UserAnnuaire": {
+					"position": 71
+				},
+				"xIDSRM": {
+					"position": 70
+				},
+				"xIDRéférence": {
+					"position": 69
+				},
+				"xIDOperateur_Associé": {
+					"position": 68
+				},
+				"xDesactivation": {
+					"position": 67
+				},
+				"WpZoom": {
+					"position": 66
+				},
+				"ValiditéMP": {
+					"position": 65
+				},
+				"UID_Creation": {
+					"position": 64
+				},
+				"UID": {
+					"position": 63
+				},
+				"Titre": {
+					"position": 62
+				},
+				"SYSEO_Code": {
+					"position": 61
+				},
+				"Statistique": {
+					"position": 60
+				},
+				"Spécialité": {
+					"position": 59
+				},
+				"SMS_Autorisation": {
+					"position": 58
+				},
+				"Site_Emetteur": {
+					"position": 57
+				},
+				"Site_Creation": {
+					"position": 56
+				},
+				"SeniorsAssocies": {
+					"position": 55
+				},
+				"SaisieHono": {
+					"position": 54
+				},
+				"RPPS": {
+					"position": 53
+				},
+				"Rapport_Auto": {
+					"position": 52
+				},
+				"Privilèges": {
+					"position": 51
+				},
+				"PréférencesCR": {
+					"position": 50
+				},
+				"PAYS": {
+					"position": 49
+				},
+				"PassWordOld": {
+					"position": 48
+				},
+				"PasRepriseAppareil": {
+					"position": 47
+				},
+				"NumSénior": {
+					"position": 46
+				},
+				"Numero": {
+					"position": 45
+				},
+				"NumCompte": {
+					"position": 44
+				},
+				"NumBanque": {
+					"position": 43
+				},
+				"Num_Identification": {
+					"position": 42
+				},
+				"NotifPlaWeb": {
+					"position": 41
+				},
+				"Nom": {
+					"position": 40
+				},
+				"MultiSession": {
+					"position": 1
+				},
+				"Mot de passe": {
+					"position": 38
+				},
+				"Mistral_UserID_Ref": {
+					"position": 37
+				},
+				"Mistral_NbExemples": {
+					"position": 36
+				},
+				"Maj_UID": {
+					"position": 35
+				},
+				"Licence Mistral": {
+					"position": 34
+				},
+				"Lib6": {
+					"position": 33
+				},
+				"Lib5": {
+					"position": 32
+				},
+				"Lib4": {
+					"position": 31
+				},
+				"Lib3": {
+					"position": 30
+				},
+				"Lib2": {
+					"position": 29
+				},
+				"Lib1": {
+					"position": 28
+				},
+				"LDAP_SSO": {
+					"position": 27
+				},
+				"LDAP_Matricule": {
+					"position": 26
+				},
+				"LDAP_Actif": {
+					"position": 25
+				},
+				"JuniorsAssocies": {
+					"position": 24
+				},
+				"ISD": {
+					"position": 23
+				},
+				"INS_Appel": {
+					"position": 22
+				},
+				"INS_Affiche": {
+					"position": 21
+				},
+				"Initiales": {
+					"position": 20
+				},
+				"IK": {
+					"position": 19
+				},
+				"ID_Creation": {
+					"position": 18
+				},
+				"HeureConnection": {
+					"position": 17
+				},
+				"Guichet": {
+					"position": 16
+				},
+				"Groupe": {
+					"position": 15
+				},
+				"EnteteFact": {
+					"position": 14
+				},
+				"EditionFS": {
+					"position": 13
+				},
+				"DateReference": {
+					"position": 12
+				},
+				"DateDesactivation": {
+					"position": 11
+				},
+				"DateConnection": {
+					"position": 10
+				},
+				"Date_Creation": {
+					"position": 9
+				},
+				"CR_TypeSaisie": {
+					"position": 8
+				},
+				"CONV": {
+					"position": 7
+				},
+				"CodeOperateur": {
+					"position": 6
+				},
+				"Clé": {
+					"position": 5
+				},
+				"CAB": {
+					"position": 4
+				},
+				"Banque": {
+					"position": 3
+				},
+				"AffichagePalette": {
+					"position": 2
+				},
+				"AffichageCristal": {
+					"position": 39
+				}
+			}
+		},
 		"TaskTag": {
 			"color": {
 				"red": 255,
@@ -8,13 +257,13 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 1306,
-				"top": 324,
+				"left": 1180,
+				"top": 323,
 				"width": 100.34765625,
 				"height": 104.33203125
 			},
 			"displayable_fields_count": 3,
-			"fields_ordering": 1
+			"fields_ordering": 6
 		},
 		"Tag": {
 			"color": {
@@ -24,13 +273,13 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 1060,
-				"top": 464,
+				"left": 963,
+				"top": 339,
 				"width": 113.70703125,
 				"height": 146.33203125
 			},
 			"displayable_fields_count": 4,
-			"fields_ordering": 1
+			"fields_ordering": 6
 		},
 		"TaskAssignee": {
 			"color": {
@@ -46,7 +295,7 @@
 				"height": 125.33203125
 			},
 			"displayable_fields_count": 4,
-			"fields_ordering": 1
+			"fields_ordering": 6
 		},
 		"Task": {
 			"color": {
@@ -62,6 +311,22 @@
 				"height": 272.33203125
 			},
 			"displayable_fields_count": 10,
+			"fields_ordering": 6
+		},
+		"Mail_Recepteur": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 440,
+				"top": 287,
+				"width": 120,
+				"height": 167.33203125
+			},
+			"displayable_fields_count": 6,
 			"fields_ordering": 1
 		},
 		"Message": {
@@ -78,7 +343,7 @@
 				"height": 188.33203125
 			},
 			"displayable_fields_count": 7,
-			"fields_ordering": 1
+			"fields_ordering": 6
 		},
 		"ConversationMember": {
 			"color": {
@@ -94,7 +359,7 @@
 				"height": 251.33203125
 			},
 			"displayable_fields_count": 10,
-			"fields_ordering": 1
+			"fields_ordering": 6
 		},
 		"Conversation": {
 			"color": {
@@ -110,7 +375,7 @@
 				"height": 167.33203125
 			},
 			"displayable_fields_count": 6,
-			"fields_ordering": 1
+			"fields_ordering": 6
 		},
 		"Patient": {
 			"color": {
@@ -126,9 +391,9 @@
 				"height": 3737.33203125
 			},
 			"displayable_fields_count": 176,
-			"fields_ordering": 1
+			"fields_ordering": 6
 		},
-		"Utilisateur": {
+		"Mail": {
 			"color": {
 				"red": 255,
 				"green": 255,
@@ -136,17 +401,49 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 0,
-				"top": 0,
-				"width": 177.720703125,
-				"height": 1784.33203125
+				"left": 240,
+				"top": 287,
+				"width": 131.0390625,
+				"height": 314.33203125
 			},
-			"displayable_fields_count": 83,
+			"displayable_fields_count": 13,
 			"fields_ordering": 1
 		}
 	},
 	"relations": {
-		"CFEF793E928C47478F8FED334EA013DB": {
+		"C23CA9975AAE4498806432C1C7D2F3CF": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			}
+		},
+		"96E4358BB9B149A983345068C92A24AE": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			}
+		},
+		"408D70DE94CF6840B77ABAD5A975EE4F": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"8DD7E2B8FBA9427483085F064C1C1ADA": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			}
+		},
+		"DA8DBE1E92C04D82809830C3A280508E": {
 			"color": {
 				"red": 255,
 				"green": 255,
@@ -162,7 +459,15 @@
 				"alpha": 0
 			}
 		},
-		"7CC0FF91843A42598A868A622E0B7917": {
+		"111717700399834CB3BCB1592CCFBDB4": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"D000056DA96D4390B4CA94D813AF6567": {
 			"color": {
 				"red": 255,
 				"green": 255,
@@ -170,7 +475,23 @@
 				"alpha": 0
 			}
 		},
-		"2AAFB04F839743CB8F46F328E9D80B66": {
+		"616AEFC669A22947ACD2D137D900EF7A": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"DADD939D1933D548AC3206C3E034BE49": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"5512A822D4E1439880F88059E5EAF569": {
 			"color": {
 				"red": 255,
 				"green": 255,
@@ -178,19 +499,11 @@
 				"alpha": 0
 			}
 		},
-		"8C75EB369CDA43FB8D0A5B6C2C4F2B88": {
+		"2B5D8FC47082394FA09AAE07262B066E": {
 			"color": {
-				"red": 255,
-				"green": 255,
-				"blue": 255,
-				"alpha": 0
-			}
-		},
-		"FCEEA07B03F4426A811603FBA09CD54A": {
-			"color": {
-				"red": 255,
-				"green": 255,
-				"blue": 255,
+				"red": 240,
+				"green": 240,
+				"blue": 240,
 				"alpha": 0
 			}
 		}

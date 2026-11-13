@@ -1041,6 +1041,11 @@
 			],
 			"Summary": ""
 		},
+		"removePatient()": {
+			"Syntax": "**.removePatient**()",
+			"Params": [],
+			"Summary": ""
+		},
 		"loadDueDateText()": {
 			"Syntax": "**.loadDueDateText**()",
 			"Params": [],

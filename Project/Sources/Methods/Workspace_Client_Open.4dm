@@ -3,7 +3,7 @@
 
 var $window : Integer
 
-$window:=Open form window("WorkflowWorkspace"; Movable form dialog box)
+$window:=Open form window("WorkflowWorkspace")
 DIALOG("WorkflowWorkspace"; {handler: cs.FormWorkflowWorkspace.new($userId)})
 CLOSE WINDOW($window)
 Launcher_Client_Refresh

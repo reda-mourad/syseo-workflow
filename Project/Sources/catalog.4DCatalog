@@ -2,96 +2,20 @@
 <!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
 <base name="syseo-workflow" uuid="9A5FDF89F3D16B4DA4ACF03BAA71EE63" collation_locale="en">
 	<schema name="DEFAULT_SCHEMA"/>
-	<table name="Utilisateur" uuid="5E35284DDAEBFA4D8356C24B552461AD" id="1">
-		<field name="Nom" uuid="7D9E695B4179E14181ED540BA7CE060A" type="10" limiting_length="50" never_null="true" id="1"/>
-		<field name="xNumUser" uuid="42B89A41E4789A49BCDE67BF5434DE6F" type="4" unique="true" never_null="true" id="2"/>
-		<field name="Privilèges" uuid="BDF4DD4D13CEF042B2C2F30E26D8B6E1" type="4" never_null="true" id="3"/>
-		<field name="ValiditéMP" uuid="2A61DBD8B8F74248B3F86719E6F5AF1E" type="4" never_null="true" id="4"/>
-		<field name="AffichageCristal" uuid="7888DDB2E4EAD44C924511801CB41B98" type="1" never_null="true" id="5"/>
-		<field name="x" uuid="AB40CF595C56E84380E33C662542141F" type="4" never_null="true" id="6"/>
-		<field name="PréférencesCR" uuid="FEA905699B96024FAE1A29916849848D" type="1" never_null="true" id="7"/>
-		<field name="Mot de passe" uuid="61BEB156BBE4064FA562BA45987F707E" type="10" limiting_length="255" never_null="true" id="8"/>
-		<field name="DateReference" uuid="9F32498C91BB2F45A0A26ABB05BCC2A2" type="8" never_null="true" id="9"/>
-		<field name="SaisieHono" uuid="4D25DF2D35CA2941853874CE4DC12CB9" type="1" never_null="true" id="10"/>
-		<field name="NumSénior" uuid="3C178B4DA00995438E772172C85B5970" type="4" never_null="true" id="11"/>
-		<field name="Initiales" uuid="9292DDD18C5444448BC941FE09286961" type="10" limiting_length="3" never_null="true" id="12"/>
-		<field name="Lib1" uuid="392DD83CEE7BD84CA5727884205F0288" type="10" limiting_length="50" never_null="true" id="13"/>
-		<field name="Lib2" uuid="92D9C10A40D16340B4D3D4182A4E4886" type="10" limiting_length="50" never_null="true" id="14"/>
-		<field name="Lib3" uuid="56EDE66A64E8734E8F312AE9C31FFBD2" type="10" limiting_length="50" never_null="true" id="15"/>
-		<field name="Lib4" uuid="4ED1B27F8B5B9245AF9AFD195D5AA4FF" type="10" limiting_length="50" never_null="true" id="16"/>
-		<field name="Lib5" uuid="63F5AD03BC7C314A9E990AB5FF86DBED" type="10" limiting_length="50" never_null="true" id="17"/>
-		<field name="Lib6" uuid="FBB5F279C55EAB46826EAA50BD4FB4E2" type="10" limiting_length="50" never_null="true" id="18"/>
-		<field name="Numero" uuid="ABA2F3332E8D8C4387205375E78403C9" type="4" never_null="true" id="19"/>
-		<field name="CAB" uuid="E7633861E9872E4FA9961644AE6B880B" type="4" never_null="true" id="20"/>
-		<field name="CONV" uuid="79A2902E0711D146A592DA7082A542F7" type="4" never_null="true" id="21"/>
-		<field name="Z" uuid="66FED3162941C6459B0CE69D619CEA90" type="4" never_null="true" id="22"/>
-		<field name="ISD" uuid="F42746FA8549B9499F42652EF7277B49" type="4" never_null="true" id="23"/>
-		<field name="IK" uuid="BB528C02CB55E146843707B1B3B93FA7" type="4" never_null="true" id="24"/>
-		<field name="EnteteFact" uuid="7ACDCBA52DCD85449AE775EE278FEE31" type="10" never_null="true" id="25"/>
-		<field name="xIDSRM" uuid="A3FF2F9831E3F94C8D46485529278612" type="4" never_null="true" id="26"/>
-		<field name="Groupe" uuid="2F1E30F1C08B2B4386AEA44C4649AC04" type="4" never_null="true" id="27"/>
-		<field name="DateConnection" uuid="D7D629D812D7464F91BA16A6B8CBBD2E" type="8" never_null="true" id="28"/>
-		<field name="HeureConnection" uuid="8AEE25D8DD0D4945BF3A0BF27AD80EB0" type="9" never_null="true" id="29"/>
-		<field name="xIDRéférence" uuid="A870D7E41406D54C8D8D5B13E1898533" type="10" limiting_length="20" never_null="true" id="30"/>
-		<field name="Spécialité" uuid="79E11F35F1BA7C49A11A78AF8C0F9629" type="10" limiting_length="4" never_null="true" id="31"/>
-		<field name="zone" uuid="A68222C1B8794543A54B884D1CB01F59" type="10" limiting_length="2" never_null="true" id="32"/>
-		<field name="Banque" uuid="20A51A72031EC7448D7FE3349A66B983" type="10" limiting_length="20" never_null="true" id="33"/>
-		<field name="NumBanque" uuid="C138901721F1AD4AAC99E8DC6433AA09" type="10" limiting_length="7" never_null="true" id="34"/>
-		<field name="Guichet" uuid="853BDF16AFD38B4C9D0423710B5F7340" type="10" limiting_length="7" never_null="true" id="35"/>
-		<field name="NumCompte" uuid="57C6FC86E1F1D246BCA974CCEC0B9484" type="10" limiting_length="15" never_null="true" id="36"/>
-		<field name="Clé" uuid="29038E4962649F459C9CA3ED05CF3002" type="10" limiting_length="2" never_null="true" id="37"/>
-		<field name="xDesactivation" uuid="E17709600AC20A4B90B17ECF4098934F" type="1" never_null="true" id="38"/>
-		<field name="xTransfert" uuid="E0BA55AF7D7A7645B480517DB63EC361" type="4" never_null="true" id="39"/>
-		<field name="Num_Identification" uuid="9FF9332AD3F1DA4A94F0FBADDED18906" type="10" limiting_length="20" never_null="true" id="40"/>
-		<field name="UserPict" uuid="F9E8935DF8A5344C81CB7B05DCAB7754" type="12" never_null="true" id="41"/>
-		<field name="EditionFS" uuid="173EFEC135218E4980FB26002E543CED" type="1" never_null="true" id="42"/>
-		<field name="Blob_GroupeAutorisé" uuid="3EC7630706E2454B8E944C33BAEA041E" type="18" never_null="true" id="43"/>
-		<field name="DateDesactivation" uuid="41D27C8BE1C37344BFC73DA5AAA15949" type="8" never_null="true" id="44"/>
-		<field name="xSuperviseur" uuid="358DCC27AFB7874FB8940859222499CC" type="1" never_null="true" id="45"/>
-		<field name="CR_TypeSaisie" uuid="97DD8603AA51284EB86F4A173EF4757C" type="4" never_null="true" id="46"/>
-		<field name="xIDOperateur_Associé" uuid="7F9DE4FE4608C74DAD1EE05ACC78D98E" type="4" never_null="true" id="47"/>
-		<field name="SeniorsAssocies" uuid="7D4345CF13BF074AA977C33C63C73DDA" type="1" never_null="true" id="48"/>
-		<field name="JuniorsAssocies" uuid="A5832B74F66E34449A08D927378F7F96" type="1" never_null="true" id="49"/>
-		<field name="xNumMessagerie" uuid="506C7322ACC4EE41A7EB36C5F5D8267D" type="4" never_null="true" id="50"/>
-		<field name="PAYS" uuid="58E1E1911899FD43B52663CD48B14C2A" type="10" limiting_length="20" never_null="true" id="51" hide_in_REST="true">
-			<field_extra visible="false"/>
-		</field>
-		<field name="AffichagePalette" uuid="3D58A1BC47E3694A8A3C47E20ED5FAC3" type="1" never_null="true" id="52"/>
-		<field name="PasRepriseAppareil" uuid="EC42707A4FD8B248B842E3A0E634B8D4" type="1" never_null="true" id="53"/>
-		<field name="SMS_Autorisation" uuid="C8583C3CF2E0464692E8A426BDF9955B" type="1" never_null="true" id="54"/>
-		<field name="CodeOperateur" uuid="42057EA56886BD4284118E052351826A" type="10" limiting_length="20" never_null="true" id="55"/>
-		<field name="NotifPlaWeb" uuid="28436787CEE93346A7F0F9A407FB3B46" type="1" never_null="true" id="56"/>
-		<field name="xNum_UserAnnuaire" uuid="7D65FDD8E3E6BD41AAF1225FC8D5F168" type="4" never_null="true" id="57"/>
-		<field name="UID" uuid="A145F274E909CA43B75AB6A36D9C0F44" type="4" never_null="true" id="58"/>
-		<field name="ID_Creation" uuid="710FE520EA549344A2BDC83E86124B39" type="4" never_null="true" id="59"/>
-		<field name="Date_Creation" uuid="4D642910C441034F8A765DBA24CBCA79" type="8" never_null="true" id="60"/>
-		<field name="Site_Creation" uuid="44E917CF1D22D7458461891F820D9EC4" type="4" never_null="true" id="61"/>
-		<field name="Maj_UID" uuid="83B245B58C1D824093DB94F2A6808992" type="1" never_null="true" id="62"/>
-		<field name="UID_Creation" uuid="3C8F5EADE80A0B438FAABE40A8B51895" type="4" never_null="true" id="63"/>
-		<field name="Site_Emetteur" uuid="DF3E5E4D38FDBE4BBD5359F8748AED9B" type="4" never_null="true" id="64"/>
-		<field name="INS_Affiche" uuid="344F1BECD497F04BBCA143272379C72E" type="1" never_null="true" id="65"/>
-		<field name="INS_Appel" uuid="395B36A2593ABC4B8120654E27ADD5CF" type="1" never_null="true" id="66"/>
-		<field name="Statistique" uuid="1D76EF673E877B4AAA51267F6348D44F" type="1" never_null="true" id="67"/>
-		<field name="SYSEO_LB1" uuid="14FEE40951A2884991BE399C440FF8C8" type="18" never_null="true" id="68"/>
-		<field name="SYSEO_LB2" uuid="361158FB9102FF4DA46831098D5DE122" type="18" never_null="true" id="69"/>
-		<field name="SYSEO_LB3" uuid="5EC9E8E151080F4A9CA648157D2765F4" type="18" blob_switch_size="2147483647" never_null="true" id="70"/>
-		<field name="SYSEO_PJ" uuid="EB842DFC156B68468F3EAD49AA9A5A26" type="21" blob_switch_size="2147483647" id="71"/>
-		<field name="SYSEO_Code" uuid="86565F2AEB10DD4F994A16A530738B84" type="10" limiting_length="255" id="72"/>
-		<field name="LDAP_Matricule" uuid="7400E7CC0F8E2A41840226153626F4EF" type="10" limiting_length="255" id="73"/>
-		<field name="LDAP_Actif" uuid="836D06EDC96F3E4BB26ED222AD74B7A8" type="1" id="74"/>
-		<field name="LDAP_SSO" uuid="BB663AA1CBC60044ADBAEA8FD76F1148" type="1" id="75"/>
-		<field name="WpZoom" uuid="6CD72E5B9FF86D4F89B0D327C9B41333" type="4" id="76"/>
-		<field name="PassWordOld" uuid="BE6383C3EB4CE04EAE8DD5A181FC60E1" type="10" limiting_length="255" id="77"/>
-		<field name="Licence Mistral" uuid="E4CA4A4F9483A34581D769CE5EE41647" type="1" id="78"/>
-		<field name="Rapport_Auto" uuid="A08EBED96C0E9340A2A34C09E12C1BF5" type="1" id="79"/>
-		<field name="RPPS" uuid="F5B09F8278EDB547A3BB409D00A5B4AC" type="10" limiting_length="255" id="80"/>
-		<field name="Titre" uuid="2408EC8EC406F34893780BF2D6375367" type="10" id="81">
-			<field_extra multi_line="true"/>
-		</field>
-		<field name="Mistral_UserID_Ref" uuid="F8003C26BCADAA4EAF2031393B4C05D2" type="4" id="82"/>
-		<field name="Mistral_NbExemples" uuid="BE850DD877557646A676C9C5EDF821DF" type="4" id="83"/>
-		<primary_key field_name="xNumUser" field_uuid="42B89A41E4789A49BCDE67BF5434DE6F"/>
-		<table_extra trigger_insert="true" trigger_delete="true" trigger_update="true"/>
+	<table name="Mail" uuid="E140A05890F9D6488434E951D65C8F62" id="1" prevent_journaling="true">
+		<field name="DateMessage" uuid="F0B58D6ADED78B419732B4D8ED16A309" type="8" id="1"/>
+		<field name="Emetteur" uuid="EC8A15D65744B1409A7D2DEFF66E3522" type="10" id="2"/>
+		<field name="Free" uuid="31A8D3248F6CED47B9F8783AFB2F76D2" type="10" id="3"/>
+		<field name="Free" uuid="90F93296646E5046BA9CD1E188D461DC" type="10" id="4"/>
+		<field name="Message" uuid="983A4DF98F53BE4EB5E2C4EF3BB682C6" type="10" id="5"/>
+		<field name="Objet" uuid="2C0BA5CBE2439F41A1C76E1FD4B4D286" type="10" id="6"/>
+		<field name="Reponse" uuid="80A8930B8C797E49B25A6B9DF2272229" type="10" id="7"/>
+		<field name="TimeStamp" uuid="D33BD1436590064B87E72E5B8A5A6203" type="4" id="8"/>
+		<field name="xFree" uuid="BECCF74C5F9EFA4DBFE8F876CDB10C45" type="10" id="9"/>
+		<field name="xFree" uuid="C13EF0C5E8982149A33AE4F1C6D6FE50" type="10" id="10"/>
+		<field name="xFree" uuid="19EA07254888A240B367B2A5F12057F7" type="10" id="11"/>
+		<field name="xIdEmmeteur" uuid="B1B6D4BE33CF9D418270231CC964694D" type="4" id="12"/>
+		<field name="xNumID" uuid="F50F23B07F23444B9E4C2716992E1688" type="4" id="13"/>
 	</table>
 	<table name="Patient" uuid="FA881584FA334247A62D2AAFCC421EB7" id="2">
 		<field name="NoDossier" uuid="BC9A30FB27D29F44A25487E5829405F6" type="4" unique="true" never_null="true" id="1"/>
@@ -308,6 +232,15 @@
 		<field name="deleted_at" uuid="5D74B050274D48FE8D8C918E3D7BAAA0" type="10" limiting_length="24" id="7"/>
 		<primary_key field_name="ID" field_uuid="C4D6A1FE6B7044FB807CDEDC095DBEB0"/>
 	</table>
+	<table name="Mail_Recepteur" uuid="F4FC6E5C37C6FD468B6791BB8B069DAE" id="6" prevent_journaling="true">
+		<field name="Acquitte" uuid="B6BD6E12418CA54FA6C77F2B6DF40AB3" type="1" id="1"/>
+		<field name="DateRappel" uuid="53BA1C567DCE264DA979B7062FD6EC4F" type="8" id="2"/>
+		<field name="Envoye" uuid="E9E6AAB976E7554FAE9136C31FCB3782" type="1" id="3"/>
+		<field name="Id_Recepteur" uuid="1549A7F691124744ACDBA9950880C2F9" type="4" id="4"/>
+		<field name="Recepteur" uuid="4D59D5207DB54B4E8B79E9F7309B636C" type="10" id="5"/>
+		<field name="xNum_ID" uuid="532D7B97A8AEDC4798226F8318FA8182" type="4" id="6"/>
+		<field name="xNum_Mail" uuid="29AB07A3A2CC304C8F1F322EE68AA95A" type="4" id="7"/>
+	</table>
 	<table name="Task" uuid="569CBDEDA5C648D387A5CBF3AEB7577C" id="8">
 		<field name="ID" uuid="78A1B519A55149AE87370F63642DE29C" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
 		<field name="description" uuid="EC7BB31066EE466685902E546DB8A412" type="10" id="3"/>
@@ -341,15 +274,95 @@
 		<field name="ID_Tag" uuid="198D34C3A25F4B9F8A98B5285DB04D18" type="4" not_null="true" id="3"/>
 		<primary_key field_name="ID" field_uuid="1F60749B5C30433F8E3F0259FCA6D2E5"/>
 	</table>
-	<relation uuid="FCEEA07B03F4426A811603FBA09CD54A" name_Nto1="creator" name_1toN="createdConversations" state="1">
+	<table name="Utilisateur" uuid="19A1B25070384043A06161E1C79DB007" id="12" prevent_journaling="true">
+		<field name="AffichageCristal" uuid="6498D3625CBD4C44BBBBE46535F2D220" type="1" id="1"/>
+		<field name="AffichagePalette" uuid="7AEB4B38041FA14BAFF31C0268246688" type="1" id="2"/>
+		<field name="Banque" uuid="EE81CCAAD368A04CB83D6CAD54479823" type="10" id="3"/>
+		<field name="CAB" uuid="A20F23646C630E4E902AC3D6E735747A" type="4" id="4"/>
+		<field name="Clé" uuid="2CD381CF19F0814982E2943538F4228C" type="10" id="5"/>
+		<field name="CodeOperateur" uuid="33D0EAFC3D99D94E835DF8D3E38E8B2A" type="10" id="6"/>
+		<field name="CONV" uuid="1C1841445408AC42B7B89CFFA03DE0C4" type="4" id="7"/>
+		<field name="CR_TypeSaisie" uuid="BA9A08C0C4871742AE3F1242A35492F8" type="4" id="8"/>
+		<field name="Date_Creation" uuid="98E871D1C79B02468AACE06B63685BC2" type="8" id="9"/>
+		<field name="DateConnection" uuid="734218DD7B1F7545BD16A3175726638D" type="8" id="10"/>
+		<field name="DateDesactivation" uuid="0029C9BA1D14894DB0D46A0A6D62B5AB" type="8" id="11"/>
+		<field name="DateReference" uuid="CCB79F39EC2807418F5F71C503309959" type="8" id="12"/>
+		<field name="EditionFS" uuid="727630E3D049874E809679A2F1037F19" type="1" id="13"/>
+		<field name="EnteteFact" uuid="D8CBE42A13367846B8BDF2E52FE230D5" type="10" id="14"/>
+		<field name="Groupe" uuid="815F7EB3AC09024096ADF99590338E12" type="4" id="15"/>
+		<field name="Guichet" uuid="A15BA5AAD986B2468C826559E299F306" type="10" id="16"/>
+		<field name="HeureConnection" uuid="7B4433CA62CEA64DA5F90193BA657319" type="9" id="17"/>
+		<field name="ID_Creation" uuid="C54615843494B246B458C4C9546AE073" type="4" id="18"/>
+		<field name="IK" uuid="15A92C2AA3265C489CFF8E4A468DB9B6" type="4" id="19"/>
+		<field name="Initiales" uuid="EB2FFBC45CD8574E9ED8D234A50D16F4" type="10" id="20"/>
+		<field name="INS_Affiche" uuid="96BF6B0D9B4DDE498DBA446CF81D6899" type="1" id="21"/>
+		<field name="INS_Appel" uuid="1740858CD902224BA1FE4825F501AE82" type="1" id="22"/>
+		<field name="ISD" uuid="5A540FF5F8598D41A55873275EFC6417" type="4" id="23"/>
+		<field name="JuniorsAssocies" uuid="36A1B94C8D8FEB4DAAF66920DE0D5B19" type="1" id="24"/>
+		<field name="LDAP_Actif" uuid="A90CA4FD8978D64DA8FB37A06EC0E881" type="1" id="25"/>
+		<field name="LDAP_Matricule" uuid="7E74BC50FDE83E4EAFE9017E09F622D4" type="10" id="26"/>
+		<field name="LDAP_SSO" uuid="5122559BDE480041B35138723962F00F" type="1" id="27"/>
+		<field name="Lib1" uuid="1FF4C551214EFD4AA42CE7624CB87C97" type="10" id="28"/>
+		<field name="Lib2" uuid="00DEBC677A4F7F49A8C4703D5EEE3AEE" type="10" id="29"/>
+		<field name="Lib3" uuid="60ACAF9CE700D34297C92B0200D36A06" type="10" id="30"/>
+		<field name="Lib4" uuid="808C8A3D73C30042977289EE77017071" type="10" id="31"/>
+		<field name="Lib5" uuid="B10DAACA170CED4AA35C93E95EB692FD" type="10" id="32"/>
+		<field name="Lib6" uuid="CED4180992D33F4EB01BA67757768C23" type="10" id="33"/>
+		<field name="Licence Mistral" uuid="D23CF9AF427F5947974C1C78071A9D9A" type="1" id="34"/>
+		<field name="Maj_UID" uuid="E6EFF0E61C7319449214D8E1B3F56928" type="1" id="35"/>
+		<field name="Mistral_NbExemples" uuid="386E9059F461704BB61C8A6D90CA8E73" type="4" id="36"/>
+		<field name="Mistral_UserID_Ref" uuid="FDD17B39B425FC428F4FD9E916AC9E6B" type="4" id="37"/>
+		<field name="Mot de passe" uuid="295BD96B5D35E9418D125D1A93C917FB" type="10" id="38"/>
+		<field name="MultiSession" uuid="E82BE815E957BD4BB443E8981567485B" type="1" id="39"/>
+		<field name="Nom" uuid="8101DC720ECA23418C99569E2438D1B3" type="10" id="40"/>
+		<field name="NotifPlaWeb" uuid="95101C6AF308D441BDBB163E4FB1CB34" type="1" id="41"/>
+		<field name="Num_Identification" uuid="5D9FAB22B8724F4583AC70EE30EAEF7C" type="10" id="42"/>
+		<field name="NumBanque" uuid="1C3578ADF0062B4A81596FCC5436F0FC" type="10" id="43"/>
+		<field name="NumCompte" uuid="81A7D2B2D491184283BDD9ECF08D5167" type="10" id="44"/>
+		<field name="Numero" uuid="D0F32206413A3241BC0840C67F9DFE87" type="4" id="45"/>
+		<field name="NumSénior" uuid="1E440E9B3309924E80A7205E93F3576F" type="4" id="46"/>
+		<field name="PasRepriseAppareil" uuid="1CE880A9B9C3DA4C9F556FA5515241BD" type="1" id="47"/>
+		<field name="PassWordOld" uuid="495E6072B98EE24FBAB4FCDD50ADB615" type="10" id="48"/>
+		<field name="PAYS" uuid="7533F7D1E0F05C48BA4798C6E9030B62" type="10" id="49"/>
+		<field name="PréférencesCR" uuid="E60CF6A569F9034CBE04AEB6BB3D5384" type="1" id="50"/>
+		<field name="Privilèges" uuid="AD441A21835440409AFEF908A4341197" type="4" id="51"/>
+		<field name="Rapport_Auto" uuid="A91801D5C0B2BF47BD716645823DE9F0" type="1" id="52"/>
+		<field name="RPPS" uuid="C2A0114ABF248846BE681AD57C5092E8" type="10" id="53"/>
+		<field name="SaisieHono" uuid="BD4EDB05ADBE8C4FBC9B21C61011E153" type="1" id="54"/>
+		<field name="SeniorsAssocies" uuid="8CF7A925CBE39D4AABE41FFA829A4851" type="1" id="55"/>
+		<field name="Site_Creation" uuid="6937708C16FE4643B12AED9008F506DE" type="4" id="56"/>
+		<field name="Site_Emetteur" uuid="146DF2D49D414F4F8335915FBD89DFE6" type="4" id="57"/>
+		<field name="SMS_Autorisation" uuid="FC658AF9C8B65E43859EB75F3E5F7FEB" type="1" id="58"/>
+		<field name="Spécialité" uuid="6AE0A146969E9F4691EB855286C71A4B" type="10" id="59"/>
+		<field name="Statistique" uuid="8FAB323A97E2AB409B6803B97AA3D39C" type="1" id="60"/>
+		<field name="SYSEO_Code" uuid="CAD91EBF41E44E4A913412F60467A196" type="10" id="61"/>
+		<field name="Titre" uuid="715EF1F2A33C9C499C9F5E562F67E553" type="10" id="62"/>
+		<field name="UID" uuid="EB6F090FD4DB034FB588917AF1AB071E" type="4" id="63"/>
+		<field name="UID_Creation" uuid="702FE691C32DAD46ACBD58478A0226B2" type="4" id="64"/>
+		<field name="ValiditéMP" uuid="7338CD6B83F14A4E901B205B90BBDFC8" type="4" id="65"/>
+		<field name="WpZoom" uuid="33EFEFBE987E554CBF634FA4BF59BBB2" type="4" id="66"/>
+		<field name="xDesactivation" uuid="DE4FEFC921318E4EA62D0B02C5F96587" type="1" id="67"/>
+		<field name="xIDOperateur_Associé" uuid="6FEBA30150602C48B513CB466622CD11" type="4" id="68"/>
+		<field name="xIDRéférence" uuid="79EA2C3617C9C54A82DE8A2A1783F567" type="10" id="69"/>
+		<field name="xIDSRM" uuid="E6A4051DCAAD7B4B869598D4C76FD909" type="4" id="70"/>
+		<field name="xNum_UserAnnuaire" uuid="314661CBD02EA8419CBF6E3C331F53A5" type="4" id="71"/>
+		<field name="xNumMessagerie" uuid="6908604FDB081246B1E33FE1D2433DF1" type="4" id="72"/>
+		<field name="xNumUser" uuid="18E5F7A1AFC0A1439C9F5F2358C831B8" type="4" unique="true" id="73"/>
+		<field name="xSuperviseur" uuid="DFF6D07B57625747BCF52FF63729E5A2" type="1" id="74"/>
+		<field name="xTransfert" uuid="1C217A4B7B639E4AB7054BFFF01BC1B7" type="4" id="75"/>
+		<field name="Z" uuid="4FBEA333D136ED4ABBF20BD21F29FE1A" type="4" id="76"/>
+		<field name="zone" uuid="8A52C7896D1B1C4F9BFFAADEA5632950" type="10" id="77"/>
+		<primary_key field_name="xNumUser" field_uuid="18E5F7A1AFC0A1439C9F5F2358C831B8"/>
+	</table>
+	<relation uuid="2B5D8FC47082394FA09AAE07262B066E" name_Nto1="creator" name_1toN="createdConversations" state="1">
 		<related_field kind="source">
 			<field_ref uuid="C6763F68582C4F2687BA41224DEC7561" name="ID_creator">
 				<table_ref uuid="230B9D5257B74A898F0618C40C26CF86" name="Conversation"/>
 			</field_ref>
 		</related_field>
 		<related_field kind="destination">
-			<field_ref uuid="42B89A41E4789A49BCDE67BF5434DE6F" name="xNumUser">
-				<table_ref uuid="5E35284DDAEBFA4D8356C24B552461AD" name="Utilisateur"/>
+			<field_ref uuid="18E5F7A1AFC0A1439C9F5F2358C831B8" name="xNumUser">
+				<table_ref uuid="19A1B25070384043A06161E1C79DB007" name="Utilisateur"/>
 			</field_ref>
 		</related_field>
 	</relation>
@@ -365,15 +378,15 @@
 			</field_ref>
 		</related_field>
 	</relation>
-	<relation uuid="8C75EB369CDA43FB8D0A5B6C2C4F2B88" name_Nto1="utilisateur" name_1toN="conversationMemberships" state="1">
+	<relation uuid="DADD939D1933D548AC3206C3E034BE49" name_Nto1="utilisateur" name_1toN="conversationMemberships" state="1">
 		<related_field kind="source">
 			<field_ref uuid="E4EC6B9DB32F430486957826AEACE30B" name="ID_Utilisateur">
 				<table_ref uuid="A4807F8119CB4A71818EC040767301EA" name="ConversationMember"/>
 			</field_ref>
 		</related_field>
 		<related_field kind="destination">
-			<field_ref uuid="42B89A41E4789A49BCDE67BF5434DE6F" name="xNumUser">
-				<table_ref uuid="5E35284DDAEBFA4D8356C24B552461AD" name="Utilisateur"/>
+			<field_ref uuid="18E5F7A1AFC0A1439C9F5F2358C831B8" name="xNumUser">
+				<table_ref uuid="19A1B25070384043A06161E1C79DB007" name="Utilisateur"/>
 			</field_ref>
 		</related_field>
 	</relation>
@@ -389,15 +402,15 @@
 			</field_ref>
 		</related_field>
 	</relation>
-	<relation uuid="2AAFB04F839743CB8F46F328E9D80B66" name_Nto1="sender" name_1toN="sentMessages" state="1">
+	<relation uuid="616AEFC669A22947ACD2D137D900EF7A" name_Nto1="sender" name_1toN="sentMessages" state="1">
 		<related_field kind="source">
 			<field_ref uuid="61ADE331EF7740DA85637AE954955EE1" name="ID_sender">
 				<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message"/>
 			</field_ref>
 		</related_field>
 		<related_field kind="destination">
-			<field_ref uuid="42B89A41E4789A49BCDE67BF5434DE6F" name="xNumUser">
-				<table_ref uuid="5E35284DDAEBFA4D8356C24B552461AD" name="Utilisateur"/>
+			<field_ref uuid="18E5F7A1AFC0A1439C9F5F2358C831B8" name="xNumUser">
+				<table_ref uuid="19A1B25070384043A06161E1C79DB007" name="Utilisateur"/>
 			</field_ref>
 		</related_field>
 	</relation>
@@ -425,15 +438,15 @@
 			</field_ref>
 		</related_field>
 	</relation>
-	<relation uuid="7CC0FF91843A42598A868A622E0B7917" name_Nto1="creator" name_1toN="createdTasks" state="1">
+	<relation uuid="111717700399834CB3BCB1592CCFBDB4" name_Nto1="creator" name_1toN="createdTasks" state="1">
 		<related_field kind="source">
 			<field_ref uuid="964C67A682444BF88D8D5DD8714134EF" name="ID_creator">
 				<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task"/>
 			</field_ref>
 		</related_field>
 		<related_field kind="destination">
-			<field_ref uuid="42B89A41E4789A49BCDE67BF5434DE6F" name="xNumUser">
-				<table_ref uuid="5E35284DDAEBFA4D8356C24B552461AD" name="Utilisateur"/>
+			<field_ref uuid="18E5F7A1AFC0A1439C9F5F2358C831B8" name="xNumUser">
+				<table_ref uuid="19A1B25070384043A06161E1C79DB007" name="Utilisateur"/>
 			</field_ref>
 		</related_field>
 	</relation>
@@ -473,15 +486,15 @@
 			</field_ref>
 		</related_field>
 	</relation>
-	<relation uuid="CFEF793E928C47478F8FED334EA013DB" name_Nto1="utilisateur" name_1toN="taskAssignments" state="1">
+	<relation uuid="408D70DE94CF6840B77ABAD5A975EE4F" name_Nto1="utilisateur" name_1toN="taskAssignments" state="1">
 		<related_field kind="source">
 			<field_ref uuid="79B328B8CF8845308A07D4BB789DF5BB" name="ID_Utilisateur">
 				<table_ref uuid="14DB888A59254A328B1F95738F0F4CFA" name="TaskAssignee"/>
 			</field_ref>
 		</related_field>
 		<related_field kind="destination">
-			<field_ref uuid="42B89A41E4789A49BCDE67BF5434DE6F" name="xNumUser">
-				<table_ref uuid="5E35284DDAEBFA4D8356C24B552461AD" name="Utilisateur"/>
+			<field_ref uuid="18E5F7A1AFC0A1439C9F5F2358C831B8" name="xNumUser">
+				<table_ref uuid="19A1B25070384043A06161E1C79DB007" name="Utilisateur"/>
 			</field_ref>
 		</related_field>
 	</relation>
@@ -509,6 +522,11 @@
 			</field_ref>
 		</related_field>
 	</relation>
+	<index kind="regular" uuid="00070ACDB8FADD46924C8F5D84AD458D" type="7">
+		<field_ref uuid="FA35F0E018D14B7D85AAE6AE4EDD44EB" name="ID_Conversation">
+			<table_ref uuid="A4807F8119CB4A71818EC040767301EA" name="ConversationMember"/>
+		</field_ref>
+	</index>
 	<index kind="regular" name="Task_conversation" uuid="0D8D833C76DE463194CEABF0EB6BE020" type="3">
 		<field_ref uuid="30795CBBB9494F64A1A033600BAF17B2" name="ID_Conversation">
 			<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task"/>
@@ -520,6 +538,11 @@
 		</field_ref>
 		<field_ref uuid="7FE571E56AB8487984AB675BCAB73A9C" name="due_at">
 			<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="3294A7F1A015F64094BB3588BF08099C" type="7">
+		<field_ref uuid="CE4611A9A46A41D687D6759CE84656AB" name="ID_Conversation">
+			<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" name="Tag_label" uuid="363300AAFD4142B487080B39B49681E0" type="1">
@@ -547,9 +570,14 @@
 			<table_ref uuid="6A83019E0B924E5A8A6D98B245315F47" name="TaskTag"/>
 		</field_ref>
 	</index>
-	<index kind="regular" unique_keys="true" uuid="6A97F5DCCF1A0243B6417B0FCB3FC488" type="1">
-		<field_ref uuid="42B89A41E4789A49BCDE67BF5434DE6F" name="xNumUser">
-			<table_ref uuid="5E35284DDAEBFA4D8356C24B552461AD" name="Utilisateur"/>
+	<index kind="regular" unique_keys="true" uuid="5F54A4E2150D3C45A1D44F2BB8E214B4" type="1">
+		<field_ref uuid="18E5F7A1AFC0A1439C9F5F2358C831B8" name="xNumUser">
+			<table_ref uuid="19A1B25070384043A06161E1C79DB007" name="Utilisateur"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="67841D260E937440995AA7C90F25C299" type="7">
+		<field_ref uuid="F0E070AD917C4FD285894522573AAE68" name="ID_Task">
+			<table_ref uuid="14DB888A59254A328B1F95738F0F4CFA" name="TaskAssignee"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" name="TaskAssignee_assignment" uuid="880F17EDF62F4C018523A869A50E2FFF" type="1">
@@ -588,6 +616,11 @@
 	<index kind="regular" unique_keys="true" uuid="A5D4042FBDD6694AA52C2BBC1058D1FD" type="1">
 		<field_ref uuid="BC9A30FB27D29F44A25487E5829405F6" name="NoDossier">
 			<table_ref uuid="FA881584FA334247A62D2AAFCC421EB7" name="Patient"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="AC25721BA4E639418D61A7C3D171AA81" type="7">
+		<field_ref uuid="58759BD1076749158F810E609CD6DB25" name="ID_Task">
+			<table_ref uuid="6A83019E0B924E5A8A6D98B245315F47" name="TaskTag"/>
 		</field_ref>
 	</index>
 	<index kind="regular" name="TaskAssignee_user" uuid="C57869767AE246498EBE33D42A475C9C" type="3">
