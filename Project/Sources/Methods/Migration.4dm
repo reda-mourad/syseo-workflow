@@ -51,9 +51,8 @@ For ($i; 1; Size of array($emmeteurs))
 			
 		End for 
 		
-		$conversation:=ds.Consultation.new()
-		$conversation.creator:=[Mail]xIdEmmeteur
-		$conversation.
+		$conversation:=ds.Conversation.new()
+		$conversation.ID_creator:=[Mail]xIdEmmeteur
 		$conversation.save()
 		
 		NEXT RECORD([Mail])

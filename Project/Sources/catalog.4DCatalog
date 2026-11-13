@@ -15,7 +15,8 @@
 		<field name="xFree" uuid="C13EF0C5E8982149A33AE4F1C6D6FE50" type="10" id="10"/>
 		<field name="xFree" uuid="19EA07254888A240B367B2A5F12057F7" type="10" id="11"/>
 		<field name="xIdEmmeteur" uuid="B1B6D4BE33CF9D418270231CC964694D" type="4" id="12"/>
-		<field name="xNumID" uuid="F50F23B07F23444B9E4C2716992E1688" type="4" id="13"/>
+		<field name="xNumID" uuid="F50F23B07F23444B9E4C2716992E1688" type="4" unique="true" id="13"/>
+		<primary_key field_name="xNumID" field_uuid="F50F23B07F23444B9E4C2716992E1688"/>
 	</table>
 	<table name="Patient" uuid="FA881584FA334247A62D2AAFCC421EB7" id="2">
 		<field name="NoDossier" uuid="BC9A30FB27D29F44A25487E5829405F6" type="4" unique="true" never_null="true" id="1"/>
@@ -238,8 +239,9 @@
 		<field name="Envoye" uuid="E9E6AAB976E7554FAE9136C31FCB3782" type="1" id="3"/>
 		<field name="Id_Recepteur" uuid="1549A7F691124744ACDBA9950880C2F9" type="4" id="4"/>
 		<field name="Recepteur" uuid="4D59D5207DB54B4E8B79E9F7309B636C" type="10" id="5"/>
-		<field name="xNum_ID" uuid="532D7B97A8AEDC4798226F8318FA8182" type="4" id="6"/>
+		<field name="xNum_ID" uuid="532D7B97A8AEDC4798226F8318FA8182" type="4" unique="true" id="6"/>
 		<field name="xNum_Mail" uuid="29AB07A3A2CC304C8F1F322EE68AA95A" type="4" id="7"/>
+		<primary_key field_name="xNum_ID" field_uuid="532D7B97A8AEDC4798226F8318FA8182"/>
 	</table>
 	<table name="Task" uuid="569CBDEDA5C648D387A5CBF3AEB7577C" id="8">
 		<field name="ID" uuid="78A1B519A55149AE87370F63642DE29C" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
