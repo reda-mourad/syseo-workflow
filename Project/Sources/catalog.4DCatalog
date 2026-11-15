@@ -557,6 +557,11 @@
 			<table_ref uuid="E03EE0C4A9A641828381162EDDF670ED" name="Message"/>
 		</field_ref>
 	</index>
+	<index kind="regular" unique_keys="true" uuid="49E5DE66104A2C449257E52A983343A9" type="1">
+		<field_ref uuid="532D7B97A8AEDC4798226F8318FA8182" name="xNum_ID">
+			<table_ref uuid="F4FC6E5C37C6FD468B6791BB8B069DAE" name="Mail_Recepteur"/>
+		</field_ref>
+	</index>
 	<index kind="regular" name="Task_patient" uuid="4BD1E5CBF64449B482B5D2ACB8977CF6" type="3">
 		<field_ref uuid="274A956B9BFB475B8F2987B99CDFCDA3" name="ID_Patient">
 			<table_ref uuid="569CBDEDA5C648D387A5CBF3AEB7577C" name="Task"/>
@@ -608,6 +613,11 @@
 	<index kind="regular" unique_keys="true" name="TaskAssignee_ID" uuid="9F8A248DEF9D4E688E2D342341AFDDAB" type="7">
 		<field_ref uuid="712954B0844C4462897CD949AEA3B6E2" name="ID">
 			<table_ref uuid="14DB888A59254A328B1F95738F0F4CFA" name="TaskAssignee"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="A2DBAEED59E9AE469D4D65901EB915BC" type="1">
+		<field_ref uuid="F50F23B07F23444B9E4C2716992E1688" name="xNumID">
+			<table_ref uuid="E140A05890F9D6488434E951D65C8F62" name="Mail"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" name="Tag_ID" uuid="A55EC7D21F5341EA8EF9AD1FF0FA2477" type="7">
