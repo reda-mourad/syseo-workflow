@@ -70,6 +70,9 @@ Function trackWorkspacePointer()
 	End if
 	If ($mouseButton#1)
 		$openWorkspace:=($mouseButton=0) && (Not($tracking.dragging))
+		If ($tracking.dragging)
+			cs.WindowPosition.new("Launcher").save($tracking.window)
+		End if
 		This.pointerTracking:=Null
 		SET TIMER(0)
 		If ($openWorkspace)
@@ -87,9 +90,11 @@ Function handleEvents()
 			// Consume Escape without closing the launcher.
 			return
 		: (FORM Event.code=On Load)
+			cs.WindowPosition.new("Launcher").restore(Current form window)
 			Launcher_Client_Set_window(Current form window; True)
 			This.refreshBadges()
 		: (FORM Event.code=On Unload)
+			cs.WindowPosition.new("Launcher").save(Current form window)
 			SET TIMER(0)
 			This.pointerTracking:=Null
 			Launcher_Client_Set_window(Current form window; False)

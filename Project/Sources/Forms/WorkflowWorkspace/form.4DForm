@@ -11,6 +11,7 @@
 		"onMouseLeave",
 		"onLoad",
 		"onUnload",
+		"onDeactivate",
 		"onClick"
 	],
 	"pages": [

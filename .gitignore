@@ -17,3 +17,6 @@ userPreferences.*/
 .DS_Store
 ehthumbs.db
 Thumbs.db
+
+# Local window positions
+/Resources/syseo-workflow.*.position.json

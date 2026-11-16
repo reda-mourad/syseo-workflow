@@ -323,10 +323,10 @@
 			"coordinates": {
 				"left": 440,
 				"top": 287,
-				"width": 120,
-				"height": 167.33203125
+				"width": 129.046875,
+				"height": 188.33203125
 			},
-			"displayable_fields_count": 6,
+			"displayable_fields_count": 7,
 			"fields_ordering": 1
 		},
 		"Message": {
