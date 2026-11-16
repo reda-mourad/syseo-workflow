@@ -7,7 +7,10 @@ var $senderHistory : cs.MailEntity
 var $recipients : cs.Mail_RecepteurSelection
 var $recipient : cs.Mail_RecepteurEntity
 var $user : cs.UtilisateurEntity
-var $conversation : cs.ConversationEntity
+var $conversation; $candidateConversation : cs.ConversationEntity
+var $dmConversations : cs.ConversationSelection
+var $userMemberships; $activeMembers : cs.ConversationMemberSelection
+var $cleanImport; $newConversation : Boolean
 var $member : cs.ConversationMemberEntity
 var $message : cs.MessageEntity
 var $identities; $candidateIds; $memberIds; $headers : Collection
@@ -20,13 +23,7 @@ var $messageTime : Time
 
 CONFIRM("Poursuivre avec une importation propre ? (Supprimer les données du nouveau système de discussion)"; "Oui"; "Non")
 
-If (OK=1)
-	
-	ds.Message.all().drop()
-	ds.ConversationMember.all().drop()
-	ds.Conversation.all().drop()
-	
-End if 
+$cleanImport:=(OK=1)
 
 $result:={success: False; conversations: 0; members: 0; messages: 0; mailId: 0; error: ""}
 $error:=""
@@ -60,13 +57,15 @@ If ($error="")
 	
 	// A failed save or unresolved user rolls back the entire import.
 	ds.startTransaction()
-	// Keep the requested replacement of messaging data inside the transaction.
-	ds.Message.all().drop()
-	ds.ConversationMember.all().drop()
-	ds.Conversation.all().drop()
-	If ((ds.Conversation.getCount()>0) || (ds.ConversationMember.getCount()>0) || (ds.Message.getCount()>0))
-		$error:="Existing messaging data could not be cleared."
-	End if 
+	// Clear only when requested, so an incremental import can reuse existing DMs.
+	If ($cleanImport)
+		ds.Message.all().drop()
+		ds.ConversationMember.all().drop()
+		ds.Conversation.all().drop()
+		If ((ds.Conversation.getCount()>0) || (ds.ConversationMember.getCount()>0) || (ds.Message.getCount()>0))
+			$error:="Existing messaging data could not be cleared."
+		End if
+	End if
 	For each ($mail; $mails) While ($error="")
 		$result.mailId:=$mail.xNumID
 		$memberIds:=New collection($mail.xIdEmmeteur)
@@ -155,39 +154,72 @@ If ($error="")
 		End if 
 		$timestamp:=String($messageDate; ISO date; $messageTime)
 		
+		$conversation:=Null
+		$newConversation:=False
+		If (($error="") && ($memberIds.length=2))
+			// Find the same pair regardless of who sent this mail or its subject.
+			$userMemberships:=ds.ConversationMember.query("ID_Utilisateur = :1 AND left_at = null"; $memberIds[0])
+			$dmConversations:=$userMemberships.conversation.query("kind = :1 AND deleted_at = null"; "dm").orderBy("ID asc")
+			For each ($candidateConversation; $dmConversations) While ($conversation=Null)
+				$activeMembers:=$candidateConversation.members.query("left_at = null")
+				If (($activeMembers.length=2) && ($activeMembers.query("ID_Utilisateur = :1"; $memberIds[1]).length=1))
+					$conversation:=$candidateConversation
+				End if
+			End for each
+		End if
 		If ($error="")
-			$conversation:=ds.Conversation.new()
-			$conversation.ID_creator:=$mail.xIdEmmeteur
-			$conversation.kind:="group"
-			If ($memberIds.length=2)
-				$conversation.kind:="dm"
-			End if 
-			$conversation.name:=Substring($mail.Objet; 1; 255)
-			$conversation.created_at:=$timestamp
-			$conversation.updated_at:=$timestamp
+			$newConversation:=($conversation=Null)
+			If ($newConversation)
+				$conversation:=ds.Conversation.new()
+				$conversation.ID_creator:=$mail.xIdEmmeteur
+				$conversation.kind:="group"
+				If ($memberIds.length=2)
+					$conversation.kind:="dm"
+				Else
+					$conversation.name:=Substring($mail.Objet; 1; 255)
+				End if
+				$conversation.created_at:=$timestamp
+				$conversation.updated_at:=$timestamp
+			Else
+				// Keep the full date range when appending historical mail to a DM.
+				If (($conversation.created_at=Null) || ($conversation.created_at>$timestamp))
+					$conversation.created_at:=$timestamp
+				End if
+				If (($conversation.updated_at=Null) || ($conversation.updated_at<$timestamp))
+					$conversation.updated_at:=$timestamp
+				End if
+			End if
+			If ($conversation.kind="dm")
+				// The displayed title is the other participant's name for each user.
+				$conversation.name:=""
+			End if
 			$saveStatus:=$conversation.save()
 			If (Not($saveStatus.success))
 				$error:="Conversation: "+$saveStatus.statusText
-			Else 
-				$conversationCount:=$conversationCount+1
-			End if 
-		End if 
-		
-		For each ($userId; $memberIds) While ($error="")
-			$member:=ds.ConversationMember.new()
-			$member.ID_Conversation:=$conversation.ID
-			$member.ID_Utilisateur:=$userId
-			$member.joined_at:=$timestamp
-			$member.notifications_enabled:=True
-			// Leave per-message delivery/read timestamps unknown.
-			$saveStatus:=$member.save()
-			If (Not($saveStatus.success))
-				$error:="ConversationMember: "+$saveStatus.statusText
-			Else 
-				$memberCount:=$memberCount+1
-			End if 
-		End for each 
-		
+			Else
+				If ($newConversation)
+					$conversationCount:=$conversationCount+1
+				End if
+			End if
+		End if
+
+		If ($newConversation)
+			For each ($userId; $memberIds) While ($error="")
+				$member:=ds.ConversationMember.new()
+				$member.ID_Conversation:=$conversation.ID
+				$member.ID_Utilisateur:=$userId
+				$member.joined_at:=$timestamp
+				$member.notifications_enabled:=True
+				// Leave per-message delivery/read timestamps unknown.
+				$saveStatus:=$member.save()
+				If (Not($saveStatus.success))
+					$error:="ConversationMember: "+$saveStatus.statusText
+				Else
+					$memberCount:=$memberCount+1
+				End if
+			End for each
+		End if
+
 		// Save oldest replies first so auto-generated IDs follow conversation order.
 		For ($i; $headers.length-1; 0; -1)
 			If ($error="")

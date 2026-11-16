@@ -105,6 +105,17 @@
 			"Params": [],
 			"Summary": ""
 		},
+		"ImportChatFromMail": {
+			"Syntax": "**ImportChatFromMail**()->result : Object",
+			"Params": [
+				[
+					"result",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
 		"Init_Task_Chat": {
 			"Syntax": "**Init_Task_Chat**( *userId* : Integer )",
 			"Params": [
@@ -818,6 +829,19 @@
 			"new()": {
 				"Syntax": "**.new**()",
 				"Params": [],
+				"Summary": ""
+			}
+		},
+		"WindowPosition": {
+			"new()": {
+				"Syntax": "**.new**( *formName* : Text )",
+				"Params": [
+					[
+						"formName",
+						"Text",
+						"->"
+					]
+				],
 				"Summary": ""
 			}
 		}
@@ -1633,6 +1657,11 @@
 			],
 			"Summary": ""
 		},
+		"updateConversationTooltip()": {
+			"Syntax": "**.updateConversationTooltip**()",
+			"Params": [],
+			"Summary": ""
+		},
 		"processNotification()": {
 			"Syntax": "**.processNotification**( *kind* : Text; *conversationId* : Integer )",
 			"Params": [
@@ -1859,6 +1888,44 @@
 		},
 		"currentPatient": {
 			"Syntax": "currentPatient : cs.Workflow.PatientEntity"
+		}
+	},
+	"WindowPosition": {
+		"positionFile()": {
+			"Syntax": "**.positionFile**() : 4D.File",
+			"Params": [
+				[
+					"",
+					"4D.File",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"save()": {
+			"Syntax": "**.save**( *window* : Integer )",
+			"Params": [
+				[
+					"window",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"restore()": {
+			"Syntax": "**.restore**( *window* : Integer )",
+			"Params": [
+				[
+					"window",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"formName": {
+			"Syntax": "formName : Text"
 		}
 	}
 }
