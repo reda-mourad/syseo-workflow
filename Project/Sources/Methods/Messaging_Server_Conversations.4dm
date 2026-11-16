@@ -1,7 +1,7 @@
 //%attributes = {"invisible":true,"executedOnServer":true,"shared":true}
 #DECLARE($userId : Integer)->$result : Object
 
-var $memberships; $otherMembers : cs.ConversationMemberSelection
+var $memberships; $otherMembers; $participants : cs.ConversationMemberSelection
 var $conversations : cs.ConversationSelection
 var $conversation : cs.ConversationEntity
 var $membership : cs.ConversationMemberEntity
@@ -25,6 +25,7 @@ Else
 		If ($conversation.name#Null)
 			$title:=$conversation.name
 		End if 
+		$participants:=$conversation.members.query("left_at = null")
 		$otherMembers:=$conversation.members.query("ID_Utilisateur # :1 AND left_at = null"; $userId)
 		If (($conversation.kind="dm") || (Length($title)=0))
 			$title:=$otherMembers.utilisateur.Nom.join(", ")
@@ -55,6 +56,7 @@ Else
 		"kind"; $conversation.kind; \
 		"name"; $conversation.name; \
 		"title"; $title; \
+		"participantNames"; $participants.utilisateur.orderBy("Nom asc").Nom.join(", "); \
 		"updatedAt"; $conversation.updated_at; \
 		"lastMessageAt"; $lastMessageAt; \
 		"unreadCount"; $unreadCount; \

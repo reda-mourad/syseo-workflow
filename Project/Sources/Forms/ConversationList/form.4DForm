@@ -5,6 +5,7 @@
 	},
 	"events": [
 		"onMouseEnter",
+		"onMouseMove",
 		"onMouseLeave",
 		"onLoad",
 		"onUnload",
@@ -47,7 +48,10 @@
 					"height": 413,
 					"bottom": 476,
 					"events": [
-						"onSelectionChange"
+						"onSelectionChange",
+						"onMouseEnter",
+						"onMouseMove",
+						"onMouseLeave"
 					],
 					"listboxType": "collection",
 					"dataSource": "Form:C1466.handler.conversations",

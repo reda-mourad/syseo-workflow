@@ -127,8 +127,30 @@ Function setWindowTitle()
 	SET WINDOW TITLE("Messagerie — "+$userLabel; Current form window)
 
 
+Function updateConversationTooltip()
+	var $mouseX; $mouseY; $mouseButton : Real
+	var $column; $row : Integer
+	var $tip : Text
+
+	$tip:=""
+	If (FORM Event.code#On Mouse Leave)
+		MOUSE POSITION($mouseX; $mouseY; $mouseButton)
+		LISTBOX GET CELL POSITION(*; "lbConversations"; $mouseX; $mouseY; $column; $row)
+		If (($column=1) && ($row>0) && ($row<=This.conversations.length))
+			$tip:=This.conversations[$row-1].participantNames
+		End if
+	End if
+	// Avoid restarting the tooltip while moving within the same conversation.
+	If ($tip#OBJECT Get help tip(*; "lbConversations"))
+		OBJECT SET HELP TIP(*; "lbConversations"; $tip)
+	End if
+
+
 Function handleEvents()
 	Case of 
+		: ((FORM Event.code=On Mouse Enter) || (FORM Event.code=On Mouse Move) || (FORM Event.code=On Mouse Leave)) && (FORM Event.objectName="lbConversations")
+			This.updateConversationTooltip()
+
 		: (FORM Event.code=On Load)
 			If (Not(This.embedded))
 				This.setWindowTitle()

@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"shared":true}
 #DECLARE()->$result : Object
 
 var $mails : cs.MailSelection
@@ -18,9 +18,15 @@ var $conversationCount; $memberCount; $messageCount : Integer
 var $messageDate : Date
 var $messageTime : Time
 
-ds.Message.all().drop()
-ds.ConversationMember.all().drop()
-ds.Conversation.all().drop()
+CONFIRM("Poursuivre avec une importation propre ? (Supprimer les données du nouveau système de discussion)"; "Oui"; "Non")
+
+If (OK=1)
+	
+	ds.Message.all().drop()
+	ds.ConversationMember.all().drop()
+	ds.Conversation.all().drop()
+	
+End if 
 
 $result:={success: False; conversations: 0; members: 0; messages: 0; mailId: 0; error: ""}
 $error:=""
@@ -227,4 +233,5 @@ If ($error#"")
 	LOG EVENT(Into system standard outputs; "Migration failed at Mail "+String($result.mailId)+": "+$error; Error message)
 Else 
 	LOG EVENT(Into system standard outputs; "Migration completed: "+String($result.conversations)+" conversations, "+String($result.members)+" members, "+String($result.messages)+" messages."; Information message)
+	ALERT("Migration finie!")
 End if 
