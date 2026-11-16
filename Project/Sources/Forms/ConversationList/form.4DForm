@@ -80,8 +80,9 @@
 							"horizontalPadding": 5,
 							"verticalPadding": 5,
 							"verticalAlign": "middle",
+							"enterable": false,
 							"wordwrap": "normal",
-							"enterable": false
+							"rowHeightAuto": true
 						}
 					]
 				},

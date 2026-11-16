@@ -18,6 +18,10 @@ var $conversationCount; $memberCount; $messageCount : Integer
 var $messageDate : Date
 var $messageTime : Time
 
+ds.Message.all().drop()
+ds.ConversationMember.all().drop()
+ds.Conversation.all().drop()
+
 $result:={success: False; conversations: 0; members: 0; messages: 0; mailId: 0; error: ""}
 $error:=""
 $mails:=ds.Mail.all().orderBy("TimeStamp asc, xNumID asc")
@@ -56,7 +60,7 @@ If ($error="")
 	ds.Conversation.all().drop()
 	If ((ds.Conversation.getCount()>0) || (ds.ConversationMember.getCount()>0) || (ds.Message.getCount()>0))
 		$error:="Existing messaging data could not be cleared."
-	End if
+	End if 
 	For each ($mail; $mails) While ($error="")
 		$result.mailId:=$mail.xNumID
 		$memberIds:=New collection($mail.xIdEmmeteur)
@@ -99,8 +103,8 @@ If ($error="")
 						$senderHistory:=ds.Mail.query("Emetteur = :1 AND xIdEmmeteur in :2 AND TimeStamp <= :3"; $name; $candidateIds; $mail.TimeStamp).orderBy("TimeStamp desc, xNumID desc").first()
 						If ($senderHistory#Null)
 							$senderId:=$senderHistory.xIdEmmeteur
-						End if
-					End if
+						End if 
+					End if 
 				End if 
 				If ($senderId=0)
 					$error:="Cannot resolve sender: "+$name

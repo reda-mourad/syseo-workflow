@@ -95,9 +95,15 @@ Function conversationStyle($conversation : Object)->$style : Integer
 
 Function conversationColor($conversation : Object)->$color : Integer
 	$color:=Foreground color
-	If (($conversation#Null) && ($conversation.unreadCount=0))
-		$color:=0x00555555
-	End if 
+	If ($conversation#Null)
+		If ($conversation.kind="group")
+			$color:=0x008B4513  // Brown (#8B4513).
+		Else
+			If ($conversation.unreadCount=0)
+				$color:=0x00555555
+			End if
+		End if
+	End if
 
 
 Function conversationBackgroundColor($conversation : Object)->$color : Integer
